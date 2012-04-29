@@ -1,4 +1,2 @@
-Project-Euler
-=============
+Problems Solved so far...
 
-Project Euler
