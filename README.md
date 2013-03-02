@@ -6,10 +6,12 @@ Here is where I put all of the code that I use to solve Project Euler problems.
 Problems solved so far
 ================================
 
-(None)
+Problem 1,
+Problem 2,
+Problem 6
 
 Programming languages used
 ================================
 
-(None)
+Haskell
 
