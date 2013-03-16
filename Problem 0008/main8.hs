@@ -1,7 +1,7 @@
 import System.IO  
 import Data.Char
 
--- Full crecit goes to OJ's rants
+-- Full credit goes to OJ's rants
 
 main = do
 		pe8str <- readFile "data.txt"
