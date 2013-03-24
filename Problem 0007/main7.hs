@@ -1,4 +1,8 @@
--- Yay! First time implementing my own prime generator!
--- FAILED. Credit goes to CloudiDust for this one
-sieve (x:xs) = x : (sieve (filter (\y -> y `mod` x /= 0) xs))
-main = print $ sieve [2..] !! (10001 - 1) -- To account for the indexing
+-- We use the built in prime number generator as a hack ;D
+import Data.Numbers.Primes
+
+-- Print and write out the answer
+main = do 
+		let ans = primes !! (10001 - 1) -- Done to handle Haskell indexing
+		writeFile "pe7.txt" $ show ans
+		print ans

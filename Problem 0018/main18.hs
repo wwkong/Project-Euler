@@ -14,5 +14,9 @@ findPath tree
 main = do
 	contents <- readFile "data.txt" 
 	let tData = parseTree contents
+<<<<<<< HEAD
 	return $ findPath tData
 	
+=======
+	return $ findPath tData	
+>>>>>>> Modified existing Haskell solutions

@@ -1,7 +1,9 @@
 import Data.Char
 
+-- Print and write out the answer
 main = do 
-		pe16data <- readFile "data.csv"
-		let pe16str = words pe16data
-		let pe16num = map (read::String->Integer) pe16str
-		print $ take 10 $ show $ (sum::[Integer] -> Integer) pe16num 
+		rawContents <- readFile "data.csv"
+		let mContents = map (read :: String -> Integer) $ words rawContents
+		let ans = read $ take 10 $ show $ (sum :: [Integer] -> Integer) mContents :: Int
+		writeFile "pe13.txt" $ show ans
+		print ans

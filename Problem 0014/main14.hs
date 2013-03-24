@@ -1,18 +1,24 @@
+-- Not memoized for laziness! Use >ghc +RTS -N where N is the number of core on your machine
+-- Make sure to compile via GHC using the -O flag and to allocate enough memory in the heap!
+
 import Data.List
-import Data.Bits
-import qualified Data.MemoCombinators as Memo
 
--- FAILED. Full credit goes to Xavier Shay
+-- Define the collatz function which returns the length of a path
+mCollatz n = mCollatz' n 1 where
+	mCollatz' n m
+		| n == 1 = m
+		| even n = mCollatz' (n `div` 2) (m + 1)
+		| odd n = mCollatz' (3*n + 1) (m + 1)
 
-collatz :: Integer -> Integer
-collatz = Memo.arrayRange (1,1000000) collatz'
-  where
-    collatz' 1  = 1
-    collatz' x
-      | even x    = 1 + collatz (x `shiftR` 1)
-      | otherwise = 1 + collatz (3 * x + 1)
-
-maxIndex = snd . foldl1' max . (flip zip [0..])
-main = print $ (1 + (maxIndex $ map collatz [1.. 1000000]))
-	
-
+-- Create a tuple max function
+tupMax a b
+	| max (fst a) (fst b) == fst a = a
+	| max (fst a) (fst b) == fst b = b
+		
+-- Print and write out the answer
+main = do
+		let mColLens = map mCollatz [1..(10^6-1)]
+		let mCols = zip mColLens [1.. (10^6-1)]
+		let ans = foldr1 tupMax mCols
+		writeFile "pe14.txt" $ show ans
+		print ans

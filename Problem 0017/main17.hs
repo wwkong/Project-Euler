@@ -1,9 +1,7 @@
 import Data.Maybe
 import Data.Char
-import Debug.Trace
 
-debug = flip trace
-
+-- Create a dictionary for numbers
 nums = [(0,""),
  (1,"one"),
  (2,"two"),
@@ -34,7 +32,8 @@ nums = [(0,""),
  (90,"ninety"),
  (100,"hundred"),
  (1000,"thousand")] 
- 
+
+-- Create a function to parse a number's length if spelled out in the British English system
 numParser n 
         | n <= 20 = length $ fromJust $ lookup n nums  
         | n <= 99 = numParser(n `mod` 10) + 
@@ -47,5 +46,9 @@ numParser n
         (length $ fromJust $ lookup (quot n 100) nums)
         | n == 1000 = (length $ fromJust $ lookup n nums) +
         (length $ fromJust $ lookup (quot n 1000) nums)
-        
-main = print $ sum $ [numParser ns | ns <- [1.. 1000] :: [Integer]]
+
+-- Print and write out the answer		
+main = do
+		let ans = sum $ [numParser ns | ns <- [1.. 1000]]
+		writeFile "pe17.txt" $ show ans
+		print ans
