@@ -6,6 +6,6 @@ import Data.Set
 -- Print and write out the result
 main = do
 		let perm = (^) <$> [2..100] <*> [2..100]
-		let ans = length $ toList $ fromList perm
+		let ans = size $ fromList perm
 		writeFile "pe29.txt" $ show ans
 		print ans
