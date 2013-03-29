@@ -1,3 +1,5 @@
+-- Took 1.97s to compute.
+
 -- Set up a list [1.. 1000] that filters out multiples of 10 > 10 since these do not affect sum
 mList = [xs | xs <- [1.. 1000], xs `mod` 10 /= 0]
 

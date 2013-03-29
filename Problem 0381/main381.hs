@@ -1,4 +1,5 @@
 -- Use the -O flag here when compiling as single threaded processing is WAY too slow
+-- Took 23.84s to compute.
 
 import Data.List
 import Data.Numbers.Primes

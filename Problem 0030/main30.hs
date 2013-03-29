@@ -1,7 +1,8 @@
--- We first note that the upper limit is 999999 (six digts)
+-- Took 10.03s to compute.
 
 import Data.Char 
 
+-- We first note that the upper limit is 999999 (six digts)
 -- Define a function to return the sum of the fifth powered digits
 fPwr n = sum $ map (^5) $ map digitToInt $ show n 
 

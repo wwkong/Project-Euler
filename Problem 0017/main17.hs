@@ -1,3 +1,5 @@
+-- Took 0.02s to compute.
+
 import Data.Maybe
 import Data.Char
 

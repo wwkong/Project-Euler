@@ -1,3 +1,5 @@
+-- Took 0.02s to compute.
+
 -- Thanks to a tip from Stack Exchange
 import Data.List
 import System.IO
@@ -14,9 +16,4 @@ findPath tree
 main = do
 	contents <- readFile "data.txt" 
 	let tData = parseTree contents
-<<<<<<< HEAD
 	return $ findPath tData
-	
-=======
-	return $ findPath tData	
->>>>>>> Modified existing Haskell solutions

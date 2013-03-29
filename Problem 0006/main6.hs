@@ -1,3 +1,5 @@
+-- Took 0.02s to compute.
+
 -- Print and write out the answer
 main = do 
 		let ans = sum [x*y | x <- [1..100], y <- [1..100], x /= y] 

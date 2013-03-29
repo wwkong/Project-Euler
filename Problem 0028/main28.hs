@@ -9,6 +9,7 @@ largest corner of the (n-1) sized sub-square which can be caclulated as
 
 The elements of the n sized square form an arithmetic sequence with difference 2*(n-1).
 -}
+-- Took 0.70s to compute.
 
 -- Define a function to calculate the sum of the cross diagonal
 crossDiagSum :: Integer -> Integer

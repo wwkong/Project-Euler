@@ -1,3 +1,5 @@
+-- Took 0.03s to compute.
+
 -- Same as Problem 18
 import Data.List
 

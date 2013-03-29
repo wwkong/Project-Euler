@@ -1,5 +1,5 @@
--- Not memoized for laziness! Use >ghc +RTS -N where N is the number of core on your machine
 -- Make sure to compile via GHC using the -O flag and to allocate enough memory in the heap!
+-- Took 7.22s to compute.
 
 import Data.List
 

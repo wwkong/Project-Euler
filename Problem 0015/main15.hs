@@ -1,4 +1,5 @@
 -- This is more of a combinatorics problem than a programming one (20x20 grid has 40 C 20 combinations)
+-- Took 0.02s to compute.
 
 -- Create a nCm function 
 choose n 0 = 1

@@ -1,4 +1,5 @@
 -- First application of functors and the Data.Set package
+-- Took 0.06s to compute.
 
 import Control.Applicative
 import Data.Set
