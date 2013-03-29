@@ -1,25 +1,31 @@
--- Don't forget to compile with the -O flag
+-- Don't forget to compile with the -O flag (took 1503.56s to 1793.38s to compute anyways).
 
-import qualified Data.Set as S
-
--- Import the naive integer sqrt function
+-- Import the naive square root function 
 squareRoot :: Integer -> Integer
 squareRoot = floor . sqrt . (fromIntegral :: Integer -> Double)
 
+-- Create a helper function to deal with perfect squares
+psq n xs
+	| xs ^ 2 == n = xs
+	| otherwise = xs + (n `div` xs)
+
 -- Define an efficient proper divisors sum function
-sumAliquot n = -n + sum [xs + (n `div` xs)| xs <- [1.. squareRoot n], n `mod` xs == 0, n `mod` xs /= xs]
+sumAliquot :: Integer -> Integer
+sumAliquot n = - n + sum [psq n xs | xs <- [1.. (squareRoot n)], n `mod` xs == 0]
 
--- Find all of the abundant numbers under 28123
-abundantNums :: [Integer]
-abundantNums = [xs| xs <- [1.. 28123], (sumAliquot xs) > xs]
+-- Create all abundant numbers
+abNums = [n | n <- [1.. 28123], sumAliquot n > n]
 
--- Find all pairs of abundant numbers using the above list under 28123
-diffLst :: [Integer]
-diffLst = S.toList $ S.fromList $ [xs + ys | xs <- abundantNums, ys <- abundantNums, xs + ys <= 28123]
+-- Define a function to check if a number is abundant pair summable
+pairAbSum n = pairAbSum' n abNums abNums n where
+	pairAbSum' n lst1@(h1:t1) lst2@(h2:t2) limit
+		| h1 + h2 == n = True
+		| h1 > limit = False
+		| h2 > limit || h2 + h1 > limit = pairAbSum' n t1 abNums limit
+		| otherwise = pairAbSum' n lst1 t2 limit
 
 -- Print and write out the answer 
-
 main = do 
-		let ans = (sum [1.. 28123]) - (sum diffLst) 
+		let ans = sum [n | n <- [1..28123], pairAbSum n == False]
 		writeFile "pe23.txt" $ show ans
 		print ans

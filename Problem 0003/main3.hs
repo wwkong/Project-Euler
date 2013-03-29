@@ -1,3 +1,5 @@
+-- Took 0.02s to compute.
+
 import Data.Numbers.Primes
 
 -- Define a function that returns the lowest prime factor

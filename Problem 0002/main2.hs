@@ -1,3 +1,5 @@
+-- Took 0.00s to compute.
+
 -- Define a memoized fib function
 fib' = 0 : 1: zipWith (+) fib' (tail fib') 
 
