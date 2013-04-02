@@ -1,0 +1,23 @@
+main0022 +RTS -sstats0022.hstats -K512M (null) 
+      10,076,276 bytes allocated in the heap
+       1,958,536 bytes copied during GC
+         383,252 bytes maximum residency (2 sample(s))
+          36,680 bytes maximum slop
+               2 MB total memory in use (0 MB lost due to fragmentation)
+
+                                    Tot time (elapsed)  Avg pause  Max pause
+  Gen  0        18 colls,     0 par    0.00s    0.00s     0.0003s    0.0005s
+  Gen  1         2 colls,     0 par    0.00s    0.00s     0.0006s    0.0008s
+
+  INIT    time    0.00s  (  0.00s elapsed)
+  MUT     time    0.02s  (  0.02s elapsed)
+  GC      time    0.00s  (  0.01s elapsed)
+  EXIT    time    0.00s  (  0.00s elapsed)
+  Total   time    0.03s  (  0.02s elapsed)
+
+  %GC     time       0.0%  (23.8% elapsed)
+
+  Alloc rate    322,440,832 bytes per MUT second
+
+  Productivity 100.0% of total user, 126.6% of total elapsed
+
