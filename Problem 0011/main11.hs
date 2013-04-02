@@ -1,5 +1,3 @@
--- Took 0.02s to compute.
-
 import Data.List
 
 -- Copy and paste the grid data

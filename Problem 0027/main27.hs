@@ -1,5 +1,4 @@
 -- Compile with the -O flag for efficiency and make sure to allocate enough space in the heap
--- Took 2.19s to compute.
 
 import Data.Numbers.Primes
 import Data.List

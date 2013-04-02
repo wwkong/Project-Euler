@@ -3,7 +3,6 @@ We start with a few preliminary details.
 Each year has 365 days save leap years. From 1901 to 2000 we have 25 leap years. 
 Since 366 `mod` 7 = 2, then Jan. 1, 1901 is a Tuesday.
 -}
--- Took 0.00s to compute.
 
 -- Set up a dictionary for the number of days in the format ([month #],[# of days]) excluding leap years
 nDays = [(1,31),(2,28),(3,31),(4,30),(5,31),(6,30),

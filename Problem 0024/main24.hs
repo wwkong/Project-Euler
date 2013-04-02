@@ -1,5 +1,3 @@
--- Took 6.75s to compute.
-
 import Data.List
 
 -- We use a little permutation hack here, sort, and return the millionth entry

@@ -1,5 +1,4 @@
 -- Make sure to compile via GHC using the -O flag and to allocate enough memory in the heap!
--- Took 7.22s to compute.
 
 import Data.List
 

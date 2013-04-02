@@ -1,5 +1,3 @@
--- Took 0.02s to compute.
-
 -- We use the built in prime number generator as a hack ;D
 import Data.Numbers.Primes
 

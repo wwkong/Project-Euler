@@ -1,5 +1,4 @@
 -- Compile with the -O flag for efficiency
--- Took 2.42s to compute.
 
 -- import Debug.Trace
 import Data.Numbers.Primes

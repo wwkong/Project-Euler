@@ -1,5 +1,3 @@
--- Took 0.00s to compute.
-
 import Data.List
 import Data.Char
 

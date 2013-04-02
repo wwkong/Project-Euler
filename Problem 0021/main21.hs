@@ -1,5 +1,4 @@
 -- Make sure to compile using the -O flag! Single threaded processing makes this program REALLY slow
--- Took 0.33s to compute.
 
 -- Create a proper divisors generator and sum function
 sumDivs :: Int -> Int

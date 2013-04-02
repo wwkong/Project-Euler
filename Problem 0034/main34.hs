@@ -1,5 +1,4 @@
 -- We first note that the upper bound for this problem is 999999 (six nines)
--- Took 3.02s to compute.
 
 import Data.List
 import Data.Char

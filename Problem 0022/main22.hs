@@ -1,5 +1,3 @@
--- Took 0.06s to compute.
-
 import Data.List.Split
 import Data.List
 import Data.Maybe

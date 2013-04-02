@@ -1,5 +1,3 @@
--- Took 2.67s to compute.
-
 import Numeric
 import Data.Char
 

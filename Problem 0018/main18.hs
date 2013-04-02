@@ -1,5 +1,3 @@
--- Took 0.02s to compute.
-
 -- Thanks to a tip from Stack Exchange
 import Data.List
 import System.IO

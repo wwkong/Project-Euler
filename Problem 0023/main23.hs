@@ -2,7 +2,6 @@
 -- Inspired by http://en.wikipedia.org/wiki/Divisor_function and most of the credit is by
 -- http://d.hatena.ne.jp/D_Rascal/20111230/1325253134
 -- Don't forget to compile with the -O flag
--- Took 4.89s to compute.
 
 import Data.List
 import Data.Array

@@ -1,5 +1,3 @@
--- Took 10.03s to compute.
-
 import Data.Char 
 
 -- We first note that the upper limit is 999999 (six digts)

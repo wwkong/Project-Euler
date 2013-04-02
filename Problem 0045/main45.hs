@@ -5,8 +5,6 @@ square and (sqrt(1+8*N) + 1) `mod` 4 == 0. We also know from a previous problem 
 1+8*N is a perfect square and (sqrt(1+8*N) + 1) `mod` 2 == 0.
 -}
 
--- Took 0.00s to compute.
-
 import Data.List
 		
 -- Import the naive square root function

@@ -1,0 +1,23 @@
+main381 +RTS -sstats381.hstats -K512M (null) 
+  13,795,364,492 bytes allocated in the heap
+   1,153,047,484 bytes copied during GC
+         229,704 bytes maximum residency (636 sample(s))
+          36,248 bytes maximum slop
+               2 MB total memory in use (0 MB lost due to fragmentation)
+
+                                    Tot time (elapsed)  Avg pause  Max pause
+  Gen  0     25932 colls,     0 par    2.58s    3.01s     0.0001s    0.0040s
+  Gen  1       636 colls,     0 par    0.39s    0.29s     0.0005s    0.0010s
+
+  INIT    time    0.00s  (  0.00s elapsed)
+  MUT     time   19.86s  ( 19.67s elapsed)
+  GC      time    2.97s  (  3.30s elapsed)
+  EXIT    time    0.00s  (  0.00s elapsed)
+  Total   time   22.83s  ( 22.97s elapsed)
+
+  %GC     time      13.0%  (14.4% elapsed)
+
+  Alloc rate    694,652,499 bytes per MUT second
+
+  Productivity  87.0% of total user, 86.4% of total elapsed
+

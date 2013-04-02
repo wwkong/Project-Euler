@@ -1,6 +1,5 @@
 -- Inspired by this article: https://subjoin.net/misc/m496pres1.nb.pdf
 -- Don't forget to compile with the -O flag!
--- Took 0.44s to compute.
 
 import Data.MemoCombinators as Memo
 import Data.Maybe

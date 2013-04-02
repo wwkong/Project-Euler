@@ -1,5 +1,3 @@
--- Took 1.02s to compute.
-
 import Data.Numbers.Primes
 import Data.List
 

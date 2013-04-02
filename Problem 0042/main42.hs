@@ -2,8 +2,6 @@
 -- 1+8*S is a perfect square and sqrt(1+8*S) is odd, through the 
 -- quadratic equation
 
--- Took 0.03s to compute.
-
 import Data.Char
 import Data.List
 import Data.List.Split
