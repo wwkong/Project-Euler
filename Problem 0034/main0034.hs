@@ -19,5 +19,5 @@ isCurious n = (== n) $ sum $ map factrl $ map digitToInt $ show n
 -- Print and write out the answer
 main = do
 		let ans = sum $ filter isCurious [3..limit]
-		writeFile "pe24.txt" $ show ans
+		writeFile "pe34.txt" $ show ans
 		print ans

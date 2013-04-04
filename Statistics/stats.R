@@ -39,4 +39,4 @@ rm(p)
 ggsave("peComparisons.pdf", width=12, height=8, dpi=100)
 
 # Export data to csv
-write.csv(peData,"peData.csv")
+write.csv(peData,"peData.csv",row.names=FALSE)

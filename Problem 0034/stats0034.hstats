@@ -7,17 +7,17 @@ main0034 +RTS -sstats0034.hstats -K512M (null)
 
                                     Tot time (elapsed)  Avg pause  Max pause
   Gen  0      1095 colls,     0 par    0.00s    0.00s     0.0000s    0.0000s
-  Gen  1         1 colls,     0 par    0.00s    0.00s     0.0001s    0.0001s
+  Gen  1         1 colls,     0 par    0.00s    0.00s     0.0002s    0.0002s
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    0.50s  (  0.50s elapsed)
+  MUT     time    0.50s  (  0.51s elapsed)
   GC      time    0.00s  (  0.00s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    0.50s  (  0.50s elapsed)
+  Total   time    0.50s  (  0.51s elapsed)
 
   %GC     time       0.0%  (0.9% elapsed)
 
   Alloc rate    1,139,728,032 bytes per MUT second
 
-  Productivity 100.0% of total user, 99.0% of total elapsed
+  Productivity 100.0% of total user, 97.7% of total elapsed
 
