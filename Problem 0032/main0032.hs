@@ -12,15 +12,15 @@ import Data.Char
 import qualified Data.Set as S
 
 -- Create a function to generate the ordered powerset of a list of elementh size 4 or 5
-permNums n = ((S.toList . S.fromList) $ map (take n) $ permutations "123456789")
-mmNums = (permNums 4) ++ (permNums 5)
+mmNums = let permNums n = ((S.toList . S.fromList) $ map (take n) $ permutations "123456789") in 
+		(permNums 4) ++ (permNums 5)
 
 -- Check if a concatenated multiplicand and multiplier pair can produce a pandigital expression
 -- and produce the product
 getPanProd :: String -> Integer
 getPanProd nStr = getPanProd' nStr 1 where
 	getPanProd' nStr posn
-		| posn == len = 1
+		| posn == len = 0
 		| sort (nStr ++ mProd) == "123456789" = read mProd :: Integer
 		| otherwise = getPanProd' nStr (posn + 1)
 		where 
@@ -36,4 +36,3 @@ main = do
 		let ans = sum ansProds
 		writeFile "pe32.txt" $ show ans
 		print ans
-
