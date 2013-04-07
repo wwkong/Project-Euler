@@ -1,3 +1,5 @@
+-- How up-right routes are there through a 20x20 grid?
+
 -- This is more of a combinatorics problem than a programming one (20x20 grid has 40 C 20 combinations)
 
 -- Create a nCm function 

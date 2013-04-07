@@ -1,3 +1,5 @@
+-- Find the maximum total from top to bottom of the triangle in data.txt.
+
 -- Thanks to a tip from Stack Exchange
 import Data.List
 import System.IO

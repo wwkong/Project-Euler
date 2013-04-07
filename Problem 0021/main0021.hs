@@ -1,3 +1,5 @@
+-- Evaluate the sum of all the amicable numbers under 10000.
+
 -- Make sure to compile using the -O flag! Single threaded processing makes this program REALLY slow
 
 -- Create a proper divisors generator and sum function

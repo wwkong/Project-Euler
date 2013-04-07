@@ -1,3 +1,6 @@
+-- Find the greatest product of five consecutive digits in the 1000-digit number.
+-- (Number is in data.txt)
+
 import Data.List
 import Data.Char
 

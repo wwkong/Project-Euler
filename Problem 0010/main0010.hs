@@ -1,3 +1,5 @@
+-- Find the sum of all the primes below two million.
+
 -- More prime number hacks! ;D
 import Data.Numbers.Primes
 

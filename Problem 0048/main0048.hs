@@ -1,3 +1,5 @@
+-- Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
+
 -- Set up a list [1.. 1000] that filters out multiples of 10 > 10 since these do not affect sum
 mList = [xs | xs <- [1.. 1000], xs `mod` 10 /= 0]
 

@@ -1,3 +1,5 @@
+-- Find the next (from the first) triangle number that is also pentagonal and hexagonal.
+
 {-
 It can be shown with some arithmetic and manipulation of the quadratic equation, that a number N is Pentagonal
 if 1+24*N is a perfect square and (sqrt(1+24*N) + 1) `mod` 6 == 0. Similarly, N is Hexagonal if 1+8*N is a perfect 

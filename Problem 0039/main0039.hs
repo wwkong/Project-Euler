@@ -1,4 +1,8 @@
--- We are given that p=120 has 3 solutions
+{-
+If p is the perimeter of a right angle triangle with integral length sides, {a,b,c}, 
+there are exactly three solutions for p = 120.
+For which value of p  1000, is the number of solutions maximised?
+-}
 
 import Data.Set
 import Data.List

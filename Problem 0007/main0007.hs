@@ -1,3 +1,5 @@
+-- What is the 10 001st prime number?
+
 -- We use the built in prime number generator as a hack ;D
 import Data.Numbers.Primes
 

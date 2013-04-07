@@ -1,3 +1,6 @@
+-- Find the sum of all the positive integers which cannot be written as the
+-- sum of two abundant numbers.
+
 -- More optimized version
 -- Inspired by http://en.wikipedia.org/wiki/Divisor_function and most of the credit is by
 -- http://d.hatena.ne.jp/D_Rascal/20111230/1325253134

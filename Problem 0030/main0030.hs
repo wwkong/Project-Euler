@@ -1,3 +1,6 @@
+-- Find the sum of all the numbers that can be written as the sum 
+-- of fifth powers of their digits.
+
 import Data.Char 
 
 -- We first note that the upper limit is 999999 (six digts)

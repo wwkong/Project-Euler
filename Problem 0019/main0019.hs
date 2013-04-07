@@ -1,3 +1,6 @@
+-- How many Sundays fell on the first of the month during the twentieth 
+-- century (1 Jan 1901 to 31 Dec 2000)?
+
 {-
 We start with a few preliminary details.
 Each year has 365 days save leap years. From 1901 to 2000 we have 25 leap years. 

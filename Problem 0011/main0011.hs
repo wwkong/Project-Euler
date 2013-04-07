@@ -1,3 +1,6 @@
+-- What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally)
+-- in the 2020 grid?
+
 import Data.List
 
 -- Copy and paste the grid data

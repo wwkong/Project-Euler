@@ -1,6 +1,7 @@
-{-
-From the question, we are already given that 3797 is a truncatable prime
--}
+-- Find the sum of the only eleven primes that are both truncatable from
+-- left to right and right to left.
+
+-- From the question, we are already given that 3797 is a truncatable prime.
 
 import Data.Numbers.Primes
 import Data.Char

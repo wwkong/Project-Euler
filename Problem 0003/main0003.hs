@@ -1,3 +1,5 @@
+-- What is the largest prime factor of the number 600851475143 ?
+
 import Data.Numbers.Primes
 
 -- Define a function that returns the lowest prime factor

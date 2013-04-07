@@ -1,3 +1,5 @@
+-- What is the largest n-digit pandigital prime that exists?
+
 {- 
 First note that an n digit pandigital prime (assuming 1<=n<=9) is at most 7 
 digits since the sum of the digits for n=8 and n=9 is divisible by 3.

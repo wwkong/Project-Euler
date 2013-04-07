@@ -1,3 +1,6 @@
+-- What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed 
+-- in the same way?
+
 {-
 It can be shown that given a side length n of the sqaure, the corners of the square will
 have sum: 4*cn + (1+2+3)*(n-1) = 4*cn + 6*(n-1) where cn is the maximum valued corner of the

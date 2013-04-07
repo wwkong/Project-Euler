@@ -1,6 +1,7 @@
+-- Find the value of d<1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
+
 -- This is my first attempt at cutting back on the amount
 -- of static functions in my solutions
--- Took 1.50s to compute.
 
 import Data.List
 

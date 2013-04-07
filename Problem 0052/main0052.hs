@@ -1,4 +1,6 @@
 -- We are given that 125874 and 2*125874 are permutations of each other
+-- Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x,
+-- contain the same digits.
 
 import Data.Set
 -- Define a function to check if n, 2n, 3n, 4n, 5n, and 6n are

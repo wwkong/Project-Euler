@@ -1,3 +1,6 @@
+-- Find the sum of all numbers which are equal to the sum of the factorial 
+-- of their digits.
+
 -- We first note that the upper bound for this problem is 999999 (six nines)
 
 import Data.List
