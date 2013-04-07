@@ -1,0 +1,12 @@
+{-
+Which prime, below one-million, can be written as the sum of the most consecutive primes?
+-}
+
+import Data.Numbers.Primes
+
+-- Create a list of consecutive primes whose sum is less than n
+mGetPrimes :: Integer -> [Integer]
+mGetPrimes n = mGetPrimes' primes 0 where
+	mGetPrimes' lst k
+		| (k + (head lst)) > n = []
+		| otherwise = [head lst] ++ (mGetPrimes' (tail lst) (k + (head lst)))
