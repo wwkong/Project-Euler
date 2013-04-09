@@ -14,3 +14,6 @@ Haskell Packages Used
 Data.MemoCombinators
 Data.Numbers.Primes
 
+Problems to be re-visited
+================================
+Problem 0044
