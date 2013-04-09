@@ -1,14 +1,14 @@
 {-
-Find the pair of pentagonal numbers, Pj and Pk, for which their sum and difference are pentagonal and 
-D = |Pk  Pj| is minimised; what is the value of D?
+Find the pair of pentagonal numbers, P(j) and P(k), for which their sum and difference are pentagonal and 
+D = |Pk - Pj| is minimised; what is the value of D?
 -}
 
 {- 
 Thanks goes out to a tip from xkcd. 
 
-We first note that any two consecutive pentagonal numbers P(m-1), Pm will have a difference of 3m-2 using some 
-basic arithmetic. In general, then, the difference between P(m-k) and Pm will be D(k,m) = k(3m-2) - (3(k-1)(k) `div` 2).
-We also have the sum S(k,m) = (m(3*m-1) + (m-l)(3(m-k)-1)) `div` 2. 
+We first note that any two consecutive pentagonal numbers P(m-1), P(m) will have a difference of 3m-2 using some 
+basic arithmetic. In general, then, the difference between P(m-k) and P(m) will be D(k,m) = k(3m-2) - (3(k-1)(k) `div` 2).
+We also have the sum S(k,m) = (m(3*m-1) + (m-l)(3(m-k)-1)) / 2. 
 
 Thus, the first instance where D(k,m) and S(k,m) are pentagonal numbers will be our upper bound.
 This is because O(m) < D(k,m) < O(m^3).
