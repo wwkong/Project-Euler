@@ -1,23 +1,34 @@
-main0027 +RTS -sstats0027.hstats -K512M (null) 
-   1,224,865,536 bytes allocated in the heap
-     444,927,676 bytes copied during GC
-     128,615,264 bytes maximum residency (10 sample(s))
-         245,644 bytes maximum slop
+main0027 +RTS -K512M -sstats0027.hstats (null) 
+   1,224,868,404 bytes allocated in the heap
+     444,939,104 bytes copied during GC
+     128,616,304 bytes maximum residency (10 sample(s))
+         228,220 bytes maximum slop
              264 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0      2185 colls,     0 par    0.84s    0.86s     0.0004s    0.0016s
-  Gen  1        10 colls,     0 par    0.53s    0.55s     0.0552s    0.2166s
+  Gen  0      2185 colls,     0 par    0.86s    0.84s     0.0004s    0.0019s
+  Gen  1        10 colls,     0 par    0.50s    0.56s     0.0563s    0.2217s
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  2.32s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.91s    (  0.92s)       1.36s    (  1.40s)
+
+  SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    0.83s  (  0.85s elapsed)
-  GC      time    1.38s  (  1.42s elapsed)
+  MUT     time    0.91s  (  0.92s elapsed)
+  GC      time    1.36s  (  1.40s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    2.20s  (  2.27s elapsed)
+  Total   time    2.28s  (  2.32s elapsed)
 
-  %GC     time      62.4%  (62.3% elapsed)
+  Alloc rate    1,328,670,811 bytes per MUT second
 
-  Alloc rate    1,479,082,911 bytes per MUT second
+  Productivity  40.4% of total user, 39.7% of total elapsed
 
-  Productivity  37.6% of total user, 36.5% of total elapsed
-
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].sync: 0
+gen[1].sync: 0

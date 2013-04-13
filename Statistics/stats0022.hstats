@@ -1,23 +1,34 @@
-main0022 +RTS -sstats0022.hstats -K512M (null) 
-      10,076,276 bytes allocated in the heap
-       1,958,536 bytes copied during GC
-         383,252 bytes maximum residency (2 sample(s))
-          36,680 bytes maximum slop
-               2 MB total memory in use (0 MB lost due to fragmentation)
+main0022 +RTS -K512M -sstats0022.hstats (null) 
+      10,082,924 bytes allocated in the heap
+       1,959,348 bytes copied during GC
+         384,292 bytes maximum residency (2 sample(s))
+          36,752 bytes maximum slop
+               3 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0        18 colls,     0 par    0.00s    0.00s     0.0003s    0.0005s
-  Gen  1         2 colls,     0 par    0.00s    0.00s     0.0006s    0.0008s
+  Gen  0        18 colls,     0 par    0.00s    0.01s     0.0003s    0.0008s
+  Gen  1         2 colls,     0 par    0.00s    0.00s     0.0007s    0.0011s
+
+  Parallel GC work balance: nan (0 / 0, ideal 1)
+
+                        MUT time (elapsed)       GC time  (elapsed)
+  Task  0 (worker) :    0.00s    (  0.03s)       0.00s    (  0.00s)
+  Task  1 (worker) :    0.00s    (  0.03s)       0.00s    (  0.00s)
+  Task  2 (bound)  :    0.03s    (  0.02s)       0.00s    (  0.01s)
+
+  SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    0.02s  (  0.02s elapsed)
+  MUT     time    0.03s  (  0.02s elapsed)
   GC      time    0.00s  (  0.01s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    0.03s  (  0.02s elapsed)
+  Total   time    0.03s  (  0.03s elapsed)
 
-  %GC     time       0.0%  (23.8% elapsed)
+  Alloc rate    322,653,568 bytes per MUT second
 
-  Alloc rate    322,440,832 bytes per MUT second
+  Productivity 100.0% of total user, 107.4% of total elapsed
 
-  Productivity 100.0% of total user, 126.6% of total elapsed
-
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].sync: 0
+gen[1].sync: 0
