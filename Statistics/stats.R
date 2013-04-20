@@ -58,7 +58,7 @@ peDataMelted = melt(peData, id.vars=c("pNum"), measure.vars=c("INIT","MUT","GC",
 
 # Plot
 p <-  ggplot(peDataMelted, aes(x=pNum, y=time)) + 
-  geom_bar(aes(fill=timeType),data=peDataMelted) +
+  geom_bar(aes(fill=timeType),data=peDataMelted, stat='identity') +
   xlab(label = 'Project Euler Problem Number') +
   ylab(label = 'Total Run Time (seconds)') +
   ggtitle(label = 'Project Euler Run Time Comparisons') +
@@ -76,5 +76,8 @@ Sys.sleep(1)
 # Export plot to pdf
 ggsave(paste("peComparisons",Sys.Date(),".pdf") , width=12, height=8, dpi=100)
 
+# Patch the data with today's date
+peData$Date = Sys.Date()
+
 # Export data to csv
-write.csv(peData,"peData.csv",row.names=FALSE)
+write.table(peData,"peData.csv",sep=",",row.names=FALSE,append=TRUE)
