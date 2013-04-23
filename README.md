@@ -13,6 +13,7 @@ Haskell Packages Used
 
 Data.MemoCombinators
 Data.Numbers.Primes
+Math.Sieve.Phi
 
 Statistics
 ================================
@@ -23,3 +24,4 @@ Note: INIT = Intialization time, MUT = Mutator time (time spent running the prog
 Problems to be re-visited
 ================================
 Problem 0044
+Problem 0092

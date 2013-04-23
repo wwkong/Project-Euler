@@ -17,7 +17,7 @@ isEightyNine n
 	| otherwise = isEightyNine next
 	where 
 		next = (sum . (map (^2)) . (map digitToInt) . show) n
-		
+
 -- Print and write out the answer		
 main = do
 		let ans = length [n | n <- [1..(10^7-1)], (Memo.integral isEightyNine) n]
