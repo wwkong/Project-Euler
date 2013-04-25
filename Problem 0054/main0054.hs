@@ -82,7 +82,7 @@ winningHand player1 player2
 	| (handRank player1) > (handRank player2) = 1
 	| (handRank player1) < (handRank player2) = 2
 	| (handValDeadlock player1) > (handValDeadlock player2) = 1
-	| (handValDeadlock player1) < (handValDeadlock player2) = 1
+	| (handValDeadlock player1) < (handValDeadlock player2) = 2
 
 -- Here are some test hands
 hand1A = [('5','C'),('5','C'),('6','S'),('7','S'),('K','D')]	-- P2 wins
