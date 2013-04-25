@@ -3,7 +3,7 @@ require(ggplot2)
 require(reshape2)
 
 # Define the upper bound on our total time (in seconds)
-upperBound = 60
+upperBound = 600
 
 # Initialize the hooks and lists
 statsFiles <- list.files(pattern=".(.hstats)")
