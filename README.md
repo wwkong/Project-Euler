@@ -14,6 +14,7 @@ Haskell Packages Used
 Data.MemoCombinators
 Data.Numbers.Primes
 Math.Sieve.Phi
+Math.NumberTheory.Powers.Cubes
 
 Statistics
 ================================
