@@ -1,0 +1,26 @@
+{-
+It can be seen that there are 3 fractions between 1/3 and 1/2.
+
+How many fractions lie between 1/3 and 1/2 in the sorted set of reduced 
+proper fractions for d <= 12,000?
+-}
+
+import Data.List
+import Data.Ratio
+
+-- This is very similar to Problem #71 except we iterate until we reach a bound
+
+-- Find the list of numbers next to k = a % b, with our bound being [(d * a) `div` b - 1, (d * a) `div` b] for n
+-- Also bound it below by 1 % 3
+beside k = [n % d |	d <- [1..12000], let a = numerator k, let b = denominator k,
+					n <- [(d*a) `div` b - 1, (d*a) `div` b], n % d < a % b]
+					
+-- Define a function to find the number left of k = a % b for d <= 12,000 if >1/3
+-- and 0 otherwise
+leftOf k = if beside k == [] then 0 else (maximum . beside) k 
+
+-- Print and write out the answer
+main = do
+		let ans = 	(length $ takeWhile (> (1 % 3)) $
+					iterate (\k -> ((numerator k - 1) % (denominator k - 2)))  (5999 % 11999))
+		print ans		
