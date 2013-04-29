@@ -1,0 +1,62 @@
+{-
+The ordered set of three 4-digit numbers: 8128, 2882, 8281, has three interesting properties.
+
+The set is cyclic, in that the last two digits of each number is the first two digits of the 
+next number (including the last number with the first).
+
+Each polygonal type: triangle (P[3,127]=8128), square (P[4,91]=8281), and pentagonal 
+(P[5,44]=2882), is represented by a different number in the set.
+
+This is the only set of 4-digit numbers with this property.
+
+Find the sum of the only ordered set of six cyclic 4-digit numbers for which each polygonal 
+type: triangle, square, pentagonal, hexagonal, heptagonal, and octagonal, is represented by 
+a different number in the set.
+-}
+
+import Data.List
+import Data.Maybe
+import Control.Applicative
+
+-- Import the naive square root function
+squareRoot :: Integer -> Integer
+squareRoot = floor . sqrt . (fromIntegral :: Integer -> Double)
+
+-- Using the concepts in Problem #45, we import a couple is[Figurate] functions
+isTriangular n = let d = 1+8*n in isSquare d && (squareRoot d + 1) `mod` 2 == 0
+isSquare n = (squareRoot n) ^ 2 == n
+isPentagonal n = let d = 1+24*n in isSquare d && (squareRoot d + 1) `mod` 6 == 0
+isHexagonal n = let d = 1+8*n in isSquare d && (squareRoot d + 1) `mod` 4 == 0
+
+-- Using the same logic we get the conditions for the Heptagonal and Octagonal numbers below
+isHeptagonal n = let d = 9+40*n in isSquare d && (squareRoot d + 3) `mod` 10 == 0
+isOctagonal n = let d = 4+12*n in isSquare d && (squareRoot d + 2) `mod` 6 == 0
+
+-- Build up our candidate numbers based on the octagonal numbers since they're the 
+-- least dense
+octNums = [n | n <- [1000..9999], isOctagonal n]
+
+-- Build up our inventory of functions, excluding the isOctagonal function
+fnInvInit = [isTriangular, isSquare, isPentagonal, isHexagonal, isHeptagonal, isOctagonal]
+
+-- Given a function inventory and a number, return a new inventory with the first function 
+-- application that returns True removed
+nextInv n inv 
+	| indTrue == Nothing = inv
+	| otherwise = let (a,b) = splitAt (fromJust indTrue) inv in a ++ (tail b)
+	where 
+		boolInv = inv <*> [n]
+		indTrue = findIndex (==True) boolInv
+		
+-- For debuggine purposes only
+testCase1 = (nextInv 65 fnInvInit) <*> [55]
+
+-- Given an initial 4-digit number and fn inventory, return the list of numbers that are possible
+-- candidates for the next term in the cycle
+possibleNums n inv = [ k | k <- completeNumLst, length (nextInv k inv) < invLen]
+	where 
+		invLen = length inv
+		nStr = show n
+		completeStrLst = [ [nStr !! 2] ++ [nStr !! 3] ++ show t1 ++ show t2 | t1 <- [0..9], t2 <- [0..9]]  
+		completeNumLst = map (read :: String -> Integer) completeStrLst
+
