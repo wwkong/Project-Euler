@@ -49,12 +49,12 @@ genCycle k n lst = genCycle' k n lst 0 where
 	genCycle' k' n' lst' indx
 		-- | trace ("genCycle " ++ show k' ++  " " ++ show n' ++ " " ++  show indx ++ " " ++ show filLst) False = undefined
 		| k' == 1 = [n'] 
+		-- Cycle of length 1
 		| indx == length lst' = [] 
 		-- We reached the end of the candidate list, return empty
 		| null curSubLst = 
 			genCycle' k' n' lst' (indx+1) 
 		-- Our first try didn't work, keep going in the main list
-		-- Cycle of length 1
 		| k' == 2 && tailCond curElem n =
 			[n'] ++ (genCycle' (k'-1) curElem  nextMainLst 0) 
 		-- Special terminating case
