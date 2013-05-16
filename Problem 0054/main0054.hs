@@ -68,13 +68,13 @@ handRank hand
 		(S.fromList ['T','J','Q','K','A']) `S.isSubsetOf` handVals 	= 10 -- Royal Flush
 	| sameSuit hand && consecElems hand 					= 9 -- Straight Flush
 	| 4 `elem` (pokerGroups hand) 						= 8 -- Four of a Kind 
-	| pokerGroups hand == [2,3] 						= 7 -- Full House
-	| sameSuit hand 							= 6 -- Flush
-	| consecElems hand 							= 5 -- Straight
+	| pokerGroups hand == [2,3] 							= 7 -- Full House
+	| sameSuit hand 									= 6 -- Flush
+	| consecElems hand 								= 5 -- Straight
 	| 3 `elem` (pokerGroups hand) 						= 4 -- Three of a kind
 	| pokerGroups hand == [1,2,2] 						= 3 -- Two pair
-	| 2 `elem` (pokerGroups hand)						= 2 -- One pair
-	| otherwise								= 1 -- High card
+	| 2 `elem` (pokerGroups hand)							= 2 -- One pair
+	| otherwise										= 1 -- High card
 	where handVals = S.fromList $ map fst hand
 
 -- Define a function that takes two poker hands and returns 1 if the first hand wins and 2 otherwise
