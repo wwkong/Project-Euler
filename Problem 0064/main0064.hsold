@@ -1,0 +1,54 @@
+{-
+Exactly four continued fractions, for N ≤ 13, have an odd period.
+How many continued fractions for N ≤ 10000 have an odd period?
+-}
+
+import Data.Ratio
+import Debug.Trace
+
+-- Define a function which takes n,a0,b0 and returns a,b,c in a list with the input form a0/(sqrt(n)-b0) 
+-- and output form a + (sqrt(n)-b)/c
+iterNext :: Int -> Int -> Int -> [Int]
+iterNext n a0 b0
+	|(n - b0^2) == 0 = []
+	| otherwise = [a,b,c] 
+	where 
+		a = (head [m | m <- [1..n],  m*c - b0 > fsN]) - 1
+		b = -(b0 - a*c)
+		c = denominator $ a0 % (n - b0^2)
+		fsN = floor $ sqrt $ fromIntegral n
+		
+-- Create a function that takes a list and returns the length of the largest cycle if it exists and 1 otherwise
+-- Here, we use Floyd's cycle-finding algorithm
+lenCycle :: [Int] -> Int
+lenCycle lst = lenCycle' 0 1
+	where	
+		n = length lst
+		lenCycle' t h 
+			| h > (n-1) || n < 2 = 0
+			| (lst !! t) == (lst !! h) = t+1
+			| otherwise = lenCycle' (t+1) (h+2)
+		
+-- Define a function that takes in a number n and computes the cycle of the fraction representation of sqrt(n)
+fCycle n = fCycle' 1 b0 [] 
+	where
+		b0 =  floor $ sqrt $ fromIntegral n
+		fCycle' a b ws
+			| n == 2 = 1 -- Special case
+			| null next = 0
+			| lenCycle ws > 0 = lenCycle ws
+			-- | trace (show nextA ++ " " ++ show nextB ++ " " ++ show nextC ++ " lst=" ++ show ws) False = undefined
+			| otherwise = fCycle' nextC nextB (ws ++ [nextA]) 
+				where 
+					next = iterNext n a b
+					nextA = next !! 0
+					nextB = next !! 1
+					nextC = next !! 2					
+
+-- Print and write out the answer
+{-
+main = do
+		let ans = length [a^n | a <- [1..9], n <- [1..43], isPowerful a n]
+		writeFile "pe64.txt" $ show ans
+		print ans
+-}
