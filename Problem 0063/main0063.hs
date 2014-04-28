@@ -15,6 +15,6 @@ isPowerful a n = (length . show) (a ^ n) == n
 
 -- Print and write out the answer
 main = do
-		let ans = length [a^n | a <- [1..9], n <- [1..43], isPowerful a n]
-		writeFile "pe63.txt" $ show ans
-		print ans
+        let ans = length [a^n | a <- [1..9], n <- [1..43], isPowerful a n]
+        writeFile "pe63.txt" $ show ans
+        print ans

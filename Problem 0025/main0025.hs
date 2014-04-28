@@ -7,7 +7,7 @@ fib' = 0:1:zipWith (+) fib' (tail fib')
 limit = 10^999
 
 -- Print and write out the answer
-main = do 
-		let ans = length w where w = takeWhile (< limit) fib'
-		writeFile "pe25.txt" $ show ans
-		print ans		
+main = do
+        let ans = length w where w = takeWhile (< limit) fib'
+        writeFile "pe25.txt" $ show ans
+        print ans

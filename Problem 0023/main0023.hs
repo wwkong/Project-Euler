@@ -6,17 +6,17 @@
 -- http://d.hatena.ne.jp/D_Rascal/20111230/1325253134
 -- Don't forget to compile with the -O flag
 
-import Data.List
-import Data.Array
-import Data.Numbers.Primes
+import           Data.Array
+import           Data.List
+import           Data.Numbers.Primes
 
 -- Create a function to find the non distinct prime factors of n
 mFactors :: Integer -> [Integer]
 mFactors n = mFactors' n primes where
-	mFactors' n ps@(ph:pt)
-		| ph > n = []
-		| n `mod` ph == 0 = ph : (mFactors' (n `div` ph) ps)
-		| otherwise = mFactors' n pt
+    mFactors' n ps@(ph:pt)
+        | ph > n = []
+        | n `mod` ph == 0 = ph : (mFactors' (n `div` ph) ps)
+        | otherwise = mFactors' n pt
 
 -- Define an efficient proper divisors sum function (using the divisor function in Wiki)
 sumAliquot :: Integer -> Integer
@@ -30,8 +30,8 @@ canBeWritten :: Integer -> Bool
 canBeWritten n = or $ [1..n `div` 2] >>= \x -> [abInds ! x && abInds ! (n - x)]
     where abInds = array (1, 28123) [(x, sumAliquot x > x) | x <- [1..28123]]
 
--- Print and write out the answer 
-main = do 
-		let ans = sum $ filter (not . canBeWritten) [1..28122]
-		writeFile "pe23.txt" $ show ans
-		print ans
+-- Print and write out the answer
+main = do
+        let ans = sum $ filter (not . canBeWritten) [1..28122]
+        writeFile "pe23.txt" $ show ans
+        print ans

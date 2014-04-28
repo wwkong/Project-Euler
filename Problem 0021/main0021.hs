@@ -8,6 +8,6 @@ sumDivs n = sum [xs| xs <- [1..  div n 2], n `mod` xs == 0]
 
 -- Print and write out the answer
 main = do
-		let ans = sum [xs | xs <- [1..9999], xs == (sumDivs . sumDivs) xs, sumDivs xs /= xs]
-		writeFile "pe21.txt" $ show ans
-		print ans
+        let ans = sum [xs | xs <- [1..9999], xs == (sumDivs . sumDivs) xs, sumDivs xs /= xs]
+        writeFile "pe21.txt" $ show ans
+        print ans

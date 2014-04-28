@@ -1,23 +1,23 @@
 {-
 The ordered set of three 4-digit numbers: 8128, 2882, 8281, has three interesting properties.
 
-The set is cyclic, in that the last two digits of each number is the first two digits of the 
+The set is cyclic, in that the last two digits of each number is the first two digits of the
 next number (including the last number with the first).
 
-Each polygonal type: triangle (P[3,127]=8128), square (P[4,91]=8281), and pentagonal 
+Each polygonal type: triangle (P[3,127]=8128), square (P[4,91]=8281), and pentagonal
 (P[5,44]=2882), is represented by a different number in the set.
 
 This is the only set of 4-digit numbers with this property.
 
-Find the sum of the only ordered set of six cyclic 4-digit numbers for which each polygonal 
-type: triangle, square, pentagonal, hexagonal, heptagonal, and octagonal, is represented by 
+Find the sum of the only ordered set of six cyclic 4-digit numbers for which each polygonal
+type: triangle, square, pentagonal, hexagonal, heptagonal, and octagonal, is represented by
 a different number in the set.
 -}
 
-import Data.List
-import Data.Maybe
-import Control.Applicative
-import Debug.Trace
+import           Control.Applicative
+import           Data.List
+import           Data.Maybe
+import           Debug.Trace
 
 -- Import the naive square root function
 squareRoot :: Integer -> Integer
@@ -43,39 +43,39 @@ figNumLst = [lst | lst <- [figNums n | n <- [0..4]]] -- Octagonal numbers will b
 -- Build a lst drop function by index
 dropLst lst n = take n lst ++ drop (n+1) lst
 
--- Generate a unique cycle of length k with starting number n, and candidate list of lists, lst, 
+-- Generate a unique cycle of length k with starting number n, and candidate list of lists, lst,
 -- and an initial index, indx
 genCycle k n lst = genCycle' k n lst 0 where
-	genCycle' k' n' lst' indx
-		-- | trace ("genCycle " ++ show k' ++  " " ++ show n' ++ " " ++  show indx ++ " " ++ show filLst) False = undefined
-		| k' == 1 = [n'] 
-		-- Cycle of length 1
-		| indx == length lst' = [] 
-		-- We reached the end of the candidate list, return empty
-		| null curSubLst = 
-			genCycle' k' n' lst' (indx+1) 
-		-- Our first try didn't work, keep going in the main list
-		| k' == 2 && tailCond curElem n =
-			[n'] ++ (genCycle' (k'-1) curElem  nextMainLst 0) 
-		-- Special terminating case
-		| k' == 2 && not (tailCond curElem  n) = 
-			genCycle' k' n' nextSubLst indx 
-		-- Special case to achieve termination		
-		| k' > (1 + length (genCycle' (k'-1) curElem nextMainLst 0)) =
-			genCycle' k' n' nextSubLst indx
-		-- Chain length check
-		| otherwise =
-			[n'] ++ genCycle' (k'-1) curElem nextMainLst 0
-		-- Found a candidate; destroy sublist and advance
-		where 
-			tailCond a b = drop 2 (show a) == take 2 (show b)
-			filLst = map (\nums -> (filter (\m -> tailCond n' m) nums)) lst'
-			curSubLst = filLst !! indx
-			curElem = head curSubLst
-			nextSubLst = take indx lst' ++ [(lst' !! indx) \\ [curElem]] ++ drop (indx+1) lst'
-			nextMainLst = dropLst lst' indx
-		
+    genCycle' k' n' lst' indx
+        -- | trace ("genCycle " ++ show k' ++  " " ++ show n' ++ " " ++  show indx ++ " " ++ show filLst) False = undefined
+        | k' == 1 = [n']
+        -- Cycle of length 1
+        | indx == length lst' = []
+        -- We reached the end of the candidate list, return empty
+        | null curSubLst =
+            genCycle' k' n' lst' (indx+1)
+        -- Our first try didn't work, keep going in the main list
+        | k' == 2 && tailCond curElem n =
+            [n'] ++ (genCycle' (k'-1) curElem  nextMainLst 0)
+        -- Special terminating case
+        | k' == 2 && not (tailCond curElem  n) =
+            genCycle' k' n' nextSubLst indx
+        -- Special case to achieve termination
+        | k' > (1 + length (genCycle' (k'-1) curElem nextMainLst 0)) =
+            genCycle' k' n' nextSubLst indx
+        -- Chain length check
+        | otherwise =
+            [n'] ++ genCycle' (k'-1) curElem nextMainLst 0
+        -- Found a candidate; destroy sublist and advance
+        where
+            tailCond a b = drop 2 (show a) == take 2 (show b)
+            filLst = map (\nums -> (filter (\m -> tailCond n' m) nums)) lst'
+            curSubLst = filLst !! indx
+            curElem = head curSubLst
+            nextSubLst = take indx lst' ++ [(lst' !! indx) \\ [curElem]] ++ drop (indx+1) lst'
+            nextMainLst = dropLst lst' indx
+
 main = do
-		let ans = sum $ head [cycles | cycles <- [genCycle 6 n figNumLst | n <- figNums 5], not (null cycles)]
-		writeFile "pe61.txt" $ show ans
-		print ans
+        let ans = sum $ head [cycles | cycles <- [genCycle 6 n figNumLst | n <- figNums 5], not (null cycles)]
+        writeFile "pe61.txt" $ show ans
+        print ans

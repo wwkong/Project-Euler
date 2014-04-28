@@ -1,8 +1,8 @@
 {-
-By counting carefully it can be seen that a rectangular grid measuring 
+By counting carefully it can be seen that a rectangular grid measuring
 3 by 2 contains eighteen rectangles.
 
-Although there exists no rectangular grid that contains exactly two million 
+Although there exists no rectangular grid that contains exactly two million
 rectangles, find the area of the grid with the nearest solution.
 -}
 
@@ -16,23 +16,23 @@ U(n) is an upper bound for the number of subrectangles in an a by b sized rectan
 a <= n, b <= n.
 
 It is also to see graphically that U(n) = sum [k * j | k <- [1..n], j <- [1..n]] simply
-by considering all possible bottom right corners that a subrectangle can take. This is further 
+by considering all possible bottom right corners that a subrectangle can take. This is further
 simplified to (sum [k | k <- [1..n]) ^ 2 = (n(n+1)/2) ^ 2 using double summation rules
 
-Similarly, a single row of length k would be the shape to generate a lower bound of 
-number of subrectangles for given largest side k. Using similar logic as above, the 
+Similarly, a single row of length k would be the shape to generate a lower bound of
+number of subrectangles for given largest side k. Using similar logic as above, the
 lower bound is L(n) = n(n+1)/2
 
-This means that our starting dimension is n_L ~= 53 and upper bound is 
+This means that our starting dimension is n_L ~= 53 and upper bound is
 n_U ~= 2000 where U(n_L) ~= 2*10^6 ~= L(n_U)
 -}
 
-import Data.List
+import           Data.List
 
 -- Define a preset tolerance level (subject to change)
 tol = 1000
 
--- First define a function to compute the number of subrectangles in 
+-- First define a function to compute the number of subrectangles in
 -- an a by b sized rectangle
 subRects a b = (a*(a+1) `div` 2) * (b*(b+1) `div` 2)
 
@@ -46,8 +46,8 @@ subCounts n = [(k*n,count) | k <- [1..n], let count = subRects k n, count > 2*10
 
 -- Print and write out the answer
 main = do
-		let allCounts = concat [subCounts n | n <- [53..2000]]
-		let ans = fst $ minimumBy 	(\(a,b) (c,d) -> (compare b d)) 
-									[(area, abs (2*10^6-c)) | t <- allCounts, let c = snd t, let area = fst t]
-		writeFile "pe85.txt" $ show ans
-		print ans
+        let allCounts = concat [subCounts n | n <- [53..2000]]
+        let ans = fst $ minimumBy   (\(a,b) (c,d) -> (compare b d))
+                                    [(area, abs (2*10^6-c)) | t <- allCounts, let c = snd t, let area = fst t]
+        writeFile "pe85.txt" $ show ans
+        print ans

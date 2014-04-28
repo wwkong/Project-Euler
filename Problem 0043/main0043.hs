@@ -15,26 +15,26 @@ d8d9d10=289 is divisible by 17
 Find the sum of all 0 to 9 pandigital numbers with this property.
 -}
 
-import Data.List
+import           Data.List
 
 -- Get all pandigital numbers as strings
 panNums = permutations "0123456789"
 
 -- Check the divisibility condition for a panNum string
 isPanDiv :: String -> Bool
-isPanDiv nStr 
-	| (takeThree 2) `mod` 2 /= 0 = False
-	| (takeThree 3) `mod` 3 /= 0 = False
-	| (takeThree 4) `mod` 5 /= 0 = False
-	| (takeThree 5) `mod` 7 /= 0 = False
-	| (takeThree 6) `mod` 11 /= 0 = False
-	| (takeThree 7) `mod` 13 /= 0 = False
-	| (takeThree 8) `mod` 17 /= 0 = False
-	| otherwise = True
-	where takeThree n = (read :: String -> Integer) $ take 3 $ snd $ splitAt (n-1) nStr
-	
+isPanDiv nStr
+    | (takeThree 2) `mod` 2 /= 0 = False
+    | (takeThree 3) `mod` 3 /= 0 = False
+    | (takeThree 4) `mod` 5 /= 0 = False
+    | (takeThree 5) `mod` 7 /= 0 = False
+    | (takeThree 6) `mod` 11 /= 0 = False
+    | (takeThree 7) `mod` 13 /= 0 = False
+    | (takeThree 8) `mod` 17 /= 0 = False
+    | otherwise = True
+    where takeThree n = (read :: String -> Integer) $ take 3 $ snd $ splitAt (n-1) nStr
+
 -- Print and write out the answer
-main = do 
-		let ans = sum [read pNums :: Integer | pNums <- panNums , isPanDiv pNums]
-		writeFile "pe46.txt" $ show ans
-		print ans
+main = do
+        let ans = sum [read pNums :: Integer | pNums <- panNums , isPanDiv pNums]
+        writeFile "pe46.txt" $ show ans
+        print ans

@@ -13,9 +13,9 @@ The sum of digits in the numerator of the 10th convergent is 1+4+5+7=17.
 Find the sum of digits in the numerator of the 100th convergent of the continued fraction for e.
 -}
 
-import Data.List
-import Data.Ratio
-import Data.Char
+import           Data.Char
+import           Data.List
+import           Data.Ratio
 
 -- Generate the tail sequence for the continued fraction representation of e
 tailESeq :: [Ratio Integer]
@@ -25,14 +25,14 @@ tailESeq = 1 : (concat $ map (\n -> [n,1,1]) [2*1,2*2..])
 
 -- Define a function to find the n-th fractional expansion of e
 sqrtEExp n = 2 + sqrtEExp' 1 where
-	sqrtEExp' :: Int -> Ratio Integer
-	sqrtEExp' k
-		| n == 1 = 0
-		| (n-1) == k = 1 / (tailESeq !! (k-1))
-		| otherwise = 1 / (tailESeq !! (k-1) + sqrtEExp' (k+1))
-		
+    sqrtEExp' :: Int -> Ratio Integer
+    sqrtEExp' k
+        | n == 1 = 0
+        | (n-1) == k = 1 / (tailESeq !! (k-1))
+        | otherwise = 1 / (tailESeq !! (k-1) + sqrtEExp' (k+1))
+
 -- Print and write out the answer
 main = do
-		let ans = (sum . (map digitToInt) . show) (numerator $ sqrtEExp 100)
-		writeFile "pe65.txt" $ show ans
-		print ans
+        let ans = (sum . (map digitToInt) . show) (numerator $ sqrtEExp 100)
+        writeFile "pe65.txt" $ show ans
+        print ans

@@ -2,17 +2,17 @@
 Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits)
 with the same digit, is part of an eight prime value family.
 
-For example, by replacing the 1st digit of *3, it turns out that six of the nine possible 
+For example, by replacing the 1st digit of *3, it turns out that six of the nine possible
 values: 13, 23, 43, 53, 73, and 83, are all prime.
 
-Also, by replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit number 
+Also, by replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit number
 is the first example having seven primes among the ten generated numbers, yielding the family:
 56003, 56113, 56333, 56443, 56663, 56773, and 56993.
 -}
 
-import Data.Numbers.Primes
-import Data.List
-import Data.Char
+import           Data.Char
+import           Data.List
+import           Data.Numbers.Primes
 
 -- Note that the number of repeated decimals must be equal to 3, since all other number of repeats
 -- have a count of >2 in how many occurences of 0, 1, and 2 modulo 3 in their digit sum (of the repeated
@@ -34,20 +34,20 @@ zipMask digit mask num = read (zipWith (\m n -> if m then intToDigit digit else 
 -- Define a function, that when given a prime and a mask, determines how many prime values are in its family
 -- and the first generated number
 pValCount p m
-	| not (isReplPrime 0 || isReplPrime 1 || isReplPrime 2) = (0,0)
-	| otherwise = (head nums, length nums)
-	where
-		len = (length . show) p
-		replP d = zipMask d m p
-		isReplPrime d = (isPrime . replP) d
-		nums = [replP d | d <- [0..9], (length . show) (replP d) == len, isReplPrime d]
-		
+    | not (isReplPrime 0 || isReplPrime 1 || isReplPrime 2) = (0,0)
+    | otherwise = (head nums, length nums)
+    where
+        len = (length . show) p
+        replP d = zipMask d m p
+        isReplPrime d = (isPrime . replP) d
+        nums = [replP d | d <- [0..9], (length . show) (replP d) == len, isReplPrime d]
+
 -- Given a digit length n, create the list of primes that has a family length of at least m
-pVals n m = [fst (pValCount ps ms) | ps <- primesOfLen n, ms <- binMask n, snd (pValCount ps ms) >= m] 
-		
+pVals n m = [fst (pValCount ps ms) | ps <- primesOfLen n, ms <- binMask n, snd (pValCount ps ms) >= m]
+
 -- -- We now implement the solution and make an educated guess that the number of digits is at least 6
 
 main = do
-		let ans = (head . head) [pVals n 8 | n <- [6..]] 
-		writeFile "pe51.txt" $ show ans
-		print ans
+        let ans = (head . head) [pVals n 8 | n <- [6..]]
+        writeFile "pe51.txt" $ show ans
+        print ans
