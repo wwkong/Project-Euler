@@ -8,13 +8,14 @@ minPFactor n = head [xs | xs <- primes, n `mod` xs == 0]
 
 -- Define the max prime factor function
 maxPFactor :: Integer -> Integer
-maxPFactor n = maxPFactor' n 2 where
+maxPFactor k = maxPFactor' k 2 where
     maxPFactor' n p
         | n == 1 = p
         | otherwise = maxPFactor' (n `div` m) (max m p) where
             m = minPFactor n
 
 -- Print and write the answer
+main :: IO()
 main = do
         let ans = maxPFactor 600851475143
         writeFile "pe3.txt" $ show ans

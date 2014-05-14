@@ -4,7 +4,8 @@
 import           Data.Numbers.Primes
 
 -- Print and write out the answer
+main :: IO()
 main = do
-        let ans = sum $ takeWhile (< 2000000) primes
+        let ans = sum $ takeWhile (< 2000000) primes :: Integer
         writeFile "pe10.txt" $ show ans
         print ans

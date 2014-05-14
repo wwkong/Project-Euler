@@ -2,9 +2,8 @@
 -- following one-hundred 50-digit numbers.
 -- (Number is in data.csv)
 
-import           Data.Char
-
 -- Print and write out the answer
+main :: IO()
 main = do
         rawContents <- readFile "data.csv"
         let mContents = map (read :: String -> Integer) $ words rawContents

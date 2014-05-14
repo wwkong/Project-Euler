@@ -2,12 +2,11 @@
 -- (Number is in data.txt)
 
 import           Data.Char
-import           Data.List
 
 -- Define a function that computes an array to calculate the product of
 -- 5 consecutive numbers of elements in an array
 mConsecFive :: [Int] -> [Int]
-mConsecFive ns = mConsecFive' ns ns 5 where
+mConsecFive ks = mConsecFive' ks ks 5 where
     mConsecFive' :: [Int] -> [Int] -> Int -> [Int]
     mConsecFive' ns nss c
         | c == 1 = ns
@@ -15,6 +14,7 @@ mConsecFive ns = mConsecFive' ns ns 5 where
             where ms = zipWith (*) (init ns) (tail nss)
 
 -- Print and write out the answer
+main :: IO()
 main = do
         rawContents <- readFile "data.txt"
         let mContents = map digitToInt rawContents

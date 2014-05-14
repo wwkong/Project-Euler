@@ -3,7 +3,8 @@
 
 
 -- Print and write out the answer
+main :: IO()
 main = do
-        let ans = sum [x*y | x <- [1..100], y <- [1..100], x /= y]
+        let ans = sum [x*y | x <- [1..100] :: [Integer], y <- [1..100], x /= y]
         writeFile "pe6.txt" $ show ans
         print ans
