@@ -7,8 +7,6 @@ The decription method used is an XOR cipher with a 3 letter lowercase key and th
 
 import           Data.Bits
 import           Data.Char
-import           Data.Function
-import           Data.List
 import           Data.List.Split
 
 {-
@@ -48,6 +46,7 @@ decrypt msg key =
     in map chr $ zipWith xor parsedKey parsedMsg
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let parseMsg = (map chr) . (map (read :: String -> Int)) . (splitOn ",") . head . words
         encryptedMsg <- fmap parseMsg $ readFile "cipher1.txt"

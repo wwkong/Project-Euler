@@ -1,0 +1,52 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0102 +RTS -K512M -sstats0102.hstats -p -RTS
+
+	total time  =        0.11 secs   (111 ticks @ 1000 us, 1 processor)
+	total alloc =  33,973,728 bytes  (excludes profiling overheads)
+
+COST CENTRE   MODULE  %time %alloc
+
+main.contents Main     84.7   92.2
+main          Main     10.8    6.6
+hasZero.rest  Main      1.8    0.1
+triangleType  Main      1.8    0.7
+
+
+                                                                           individual     inherited
+COST CENTRE           MODULE                             no.     entries  %time %alloc   %time %alloc
+
+MAIN                  MAIN                                46           0    0.0    0.0   100.0  100.0
+ main                 Main                                93           0   10.8    6.6   100.0   99.9
+  main.ans            Main                                95           1    0.0    0.0     4.5    1.1
+   hasZero.ps         Main                               102         749    0.0    0.0     0.0    0.0
+   toTri              Main                                97        1000    0.0    0.0     0.0    0.0
+   hasZero            Main                                96        1000    0.0    0.2     4.5    1.0
+    hasZero.parity    Main                               114         749    0.0    0.0     0.0    0.0
+    hasZero.inter1    Main                               113         749    0.0    0.0     0.0    0.0
+    xIntercept        Main                               112        1498    0.0    0.0     0.0    0.0
+    hasZero.inter2    Main                               111         749    0.9    0.0     0.9    0.0
+    hasZero.rest      Main                               109         749    1.8    0.1     1.8    0.1
+     ==               Main                               110        1236    0.0    0.0     0.0    0.0
+    hasZero.pivot     Main                               103         749    0.0    0.1     0.9    0.4
+     hasZero.pivot.\  Main                               117         766    0.0    0.0     0.0    0.0
+      coordY          Main                               118         766    0.0    0.0     0.0    0.0
+     hasZero.pivot.\  Main                               107         716    0.0    0.0     0.0    0.0
+      coordY          Main                               108         716    0.0    0.0     0.0    0.0
+     triangleType     Main                               104        1133    0.9    0.4     0.9    0.4
+      triangleType.ys Main                               105        1133    0.0    0.0     0.0    0.0
+    triangleType      Main                                98        1000    0.9    0.3     0.9    0.3
+     triangleType.ys  Main                                99        1000    0.0    0.0     0.0    0.0
+  main.contents       Main                                94           1   84.7   92.2    84.7   92.2
+ CAF                  GHC.Integer.Logarithms.Internals    91           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.FD                           76           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding.CodePage            72           0    0.0    0.0     0.0    0.0
+ CAF                  Text.Read.Lex                       67           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding                     65           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.Conc.Windows                    62           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Handle.FD                    56           0    0.0    0.1     0.0    0.1
+ CAF                  Main                                53           0    0.0    0.0     0.0    0.0
+  hasZero             Main                               101           0    0.0    0.0     0.0    0.0
+   hasZero.pivot      Main                               106           0    0.0    0.0     0.0    0.0
+  triangleType        Main                               100           0    0.0    0.0     0.0    0.0
+  main                Main                                92           1    0.0    0.0     0.0    0.0

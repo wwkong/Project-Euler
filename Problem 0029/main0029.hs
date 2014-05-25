@@ -7,8 +7,9 @@ import           Control.Applicative
 import           Data.Set
 
 -- Print and write out the result
+main :: IO()
 main = do
-        let perm = (^) <$> [2..100] <*> [2..100]
+        let perm = (^) <$> ([2..100] :: [Int]) <*> ([2..100] :: [Int])
         let ans = size $ fromList perm
         writeFile "pe29.txt" $ show ans
         print ans

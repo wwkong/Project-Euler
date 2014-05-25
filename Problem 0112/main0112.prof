@@ -1,0 +1,35 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0112 +RTS -K512M -sstats0112.hstats -p -RTS
+
+	total time  =        3.66 secs   (3659 ticks @ 1000 us, 1 processor)
+	total alloc = 1,968,934,224 bytes  (excludes profiling overheads)
+
+COST CENTRE            MODULE  %time %alloc
+
+getNumType.smallN      Main     56.0   67.9
+iterBouncy.iterBouncy' Main     21.9    5.8
+getNumType             Main     16.2   20.3
+getNumType.bigN        Main      5.4    6.1
+
+
+                                                                                individual     inherited
+COST CENTRE                        MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                               MAIN                        37           0    0.0    0.0   100.0  100.0
+ main                              Main                        75           0    0.1    0.0     0.1    0.0
+ CAF                               GHC.IO.FD                   62           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Encoding.CodePage    59           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Encoding             53           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.Conc.Windows            51           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Handle.FD            47           0    0.0    0.0     0.0    0.0
+ CAF                               Main                        44           0    0.0    0.0    99.9  100.0
+  main                             Main                        74           1    0.0    0.0    99.9  100.0
+   main.ans                        Main                        76           1    0.0    0.0    99.9  100.0
+    iterBouncy                     Main                        77           1    0.0    0.0    99.9  100.0
+     iterBouncy.iterBouncy'        Main                        78     1587001   21.9    5.8    99.9  100.0
+      iterBouncy.iterBouncy'.nType Main                        80     1586999    0.4    0.0    78.0   94.2
+       getNumType                  Main                        81     1586999   16.2   20.3    77.6   94.2
+        getNumType.bigN            Main                        83     1579083    5.4    6.1     5.4    6.1
+        getNumType.smallN          Main                        82     1586999   56.0   67.9    56.0   67.9
+      ==                           Main                        79     1586999    0.0    0.0     0.0    0.0

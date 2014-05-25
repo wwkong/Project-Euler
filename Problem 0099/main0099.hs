@@ -15,9 +15,10 @@ parse = read . ('(' :) . (++ ")")
 
 -- Define a fuction to transform a base/exp pair into its ln value
 lnVal :: (Integer,Integer) -> Float
-lnVal p@(base,exp) = (fromIntegral exp) * log (fromIntegral base)
+lnVal (base,expn) = (fromIntegral expn) * log (fromIntegral base)
 
 -- Print and write out the answer
+main :: IO()
 main = do
         pairs <- fmap ((map parse) . lines) $ readFile "base_exp.txt" :: IO [(Integer, Integer)]
         let lnNums = [lnVal ps | ps <- pairs]

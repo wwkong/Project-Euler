@@ -1,0 +1,33 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0058 +RTS -K512M -sstats0058.hstats -p -RTS
+
+	total time  =        1.09 secs   (1087 ticks @ 1000 us, 1 processor)
+	total alloc = 336,396,696 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE  %time %alloc
+
+primeUlams  Main     98.5   98.3
+
+
+                                                                                  individual     inherited
+COST CENTRE                          MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                 MAIN                        39           0    0.0    0.0   100.0  100.0
+ main                                Main                        79           0    0.5    0.0     0.5    0.0
+ CAF                                 GHC.IO.FD                   66           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.Encoding.CodePage    62           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.Conc.Windows            56           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.Handle.FD            50           0    0.0    0.0     0.0    0.0
+ CAF                                 Data.Numbers.Primes         47           0    0.3    0.6     0.3    0.6
+ CAF                                 Main                        46           0    0.0    0.0    99.3   99.4
+  primeUlams                         Main                        83           1   98.5   98.3    98.9   99.3
+   ulams                             Main                        84           1    0.0    0.3     0.4    1.0
+    ulamCorners                      Main                        85       13120    0.3    0.7     0.4    0.7
+     ulamCorners.an                  Main                        86       13120    0.1    0.0     0.1    0.0
+  main                               Main                        78           1    0.0    0.0     0.4    0.1
+   main.ans                          Main                        80           1    0.0    0.0     0.4    0.1
+    findUlamLim                      Main                        81           1    0.0    0.0     0.4    0.1
+     findUlamLim.findUlamLim'        Main                        82       13121    0.1    0.0     0.4    0.1
+      findUlamLim.findUlamLim'.ratio Main                        87       13120    0.3    0.1     0.3    0.1

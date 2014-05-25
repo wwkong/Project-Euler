@@ -1,0 +1,41 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0059 +RTS -K512M -sstats0059.hstats -p -RTS
+
+	total time  =        0.02 secs   (19 ticks @ 1000 us, 1 processor)
+	total alloc =   3,864,392 bytes  (excludes profiling overheads)
+
+COST CENTRE       MODULE  %time %alloc
+
+main              Main     94.7   79.2
+main.parseMsg     Main      5.3   12.1
+main.ans          Main      0.0    1.6
+decrypt           Main      0.0    1.9
+decrypt.parsedKey Main      0.0    2.6
+decrypt.parsedMsg Main      0.0    1.6
+
+
+                                                                    individual     inherited
+COST CENTRE            MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                   MAIN                        41           0    0.0    0.0   100.0  100.0
+ main                  Main                        83           0   94.7   79.1   100.0   96.4
+  main.ans             Main                        94           1    0.0    1.6     0.0    1.6
+  main.parseMsg        Main                        93           0    5.3   12.1     5.3   12.1
+  main.msg             Main                        84           1    0.0    0.0     0.0    3.5
+   decrypt             Main                        85           1    0.0    1.9     0.0    3.5
+    decrypt.parsedMsg  Main                        90           1    0.0    1.6     0.0    1.6
+    decrypt.parsedKey  Main                        86           1    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.FD                   68           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding.CodePage    67           0    0.0    0.0     0.0    0.0
+ CAF                   Text.Read.Lex               61           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding             58           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.Conc.Windows            57           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Handle.FD            51           0    0.0    0.9     0.0    0.9
+ CAF                   Main                        48           0    0.0    0.0     0.0    2.7
+  main.parseMsg        Main                        91           1    0.0    0.0     0.0    0.0
+  main                 Main                        82           1    0.0    0.0     0.0    2.6
+   main.parseMsg       Main                        92           0    0.0    0.0     0.0    0.0
+   main.msg            Main                        87           0    0.0    0.0     0.0    2.6
+    decrypt            Main                        88           0    0.0    0.0     0.0    2.6
+     decrypt.parsedKey Main                        89           0    0.0    2.6     0.0    2.6

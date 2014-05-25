@@ -1,0 +1,47 @@
+	Sun May 25 18:35 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0024.exe +RTS -K512M -sstats0024.hstats -p -RTS
+
+	total time  =        1.53 secs   (1530 ticks @ 1000 us, 1 processor)
+	total alloc = 927,025,564 bytes  (excludes profiling overheads)
+
+COST CENTRE           MODULE  %time %alloc
+
+nextPermutation       Main     28.2   37.2
+nextPermutation.sufx1 Main     13.9   12.7
+nextPermutation.sufx2 Main     11.9   12.7
+nextPermutation.rp    Main     10.5   12.9
+nextPermutation.sufx  Main      7.6    7.6
+nDecSeq               Main      7.3    3.2
+nextPermutation.sufx0 Main      6.1    9.0
+nextPermutation.pvt   Main      5.0    0.0
+nextPermutation.rest  Main      4.8    0.0
+main.ansLst           Main      2.8    4.7
+nextPermutation.nd    Main      1.9    0.0
+
+
+                                                                        individual     inherited
+COST CENTRE                MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                       MAIN                        41           0    0.0    0.0   100.0  100.0
+ main                      Main                        83           0    0.1    0.0     0.1    0.0
+ CAF                       GHC.Show                    72           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.IO.FD                   70           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.IO.Encoding.CodePage    65           0    0.0    0.0     0.0    0.0
+ CAF                       Text.Read.Lex               63           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.IO.Encoding             58           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.IO.Handle.FD            51           0    0.0    0.0     0.0    0.0
+ CAF                       Main                        48           0    0.0    0.0    99.9  100.0
+  main                     Main                        82           1    0.0    0.0    99.9  100.0
+   main.ansLst             Main                        85           1    2.8    4.7    99.9  100.0
+    nextPermutation        Main                        86      999999   28.2   37.2    97.1   95.2
+     nextPermutation.rest  Main                        95      999999    4.8    0.0     4.8    0.0
+     nextPermutation.sufx2 Main                        94      999999   11.9   12.7    11.9   12.7
+     nextPermutation.pvt   Main                        93      999999    5.0    0.0     5.0    0.0
+     nextPermutation.rp    Main                        92      999999   10.5   12.9    10.5   12.9
+     nextPermutation.nd    Main                        90      999999    1.9    0.0     9.2    3.2
+      nDecSeq              Main                        91     1718275    7.3    3.2     7.3    3.2
+     nextPermutation.sufx1 Main                        89      999999   13.9   12.7    13.9   12.7
+     nextPermutation.sufx  Main                        88      999999    7.6    7.6     7.6    7.6
+     nextPermutation.sufx0 Main                        87      999999    6.1    9.0     6.1    9.0
+   main.ans                Main                        84           1    0.0    0.0     0.0    0.0

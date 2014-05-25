@@ -1,0 +1,35 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0065 +RTS -K512M -sstats0065.hstats -p -RTS
+
+	total time  =        0.00 secs   (3 ticks @ 1000 us, 1 processor)
+	total alloc =     164,936 bytes  (excludes profiling overheads)
+
+COST CENTRE        MODULE           %time %alloc
+
+main               Main              66.7   22.2
+main.ans           Main              33.3    3.1
+MAIN               MAIN               0.0    6.6
+sqrtEExp.sqrtEExp' Main               0.0   40.7
+tailESeq           Main               0.0    6.2
+CAF                GHC.IO.Handle.FD   0.0   20.4
+
+
+                                                                     individual     inherited
+COST CENTRE             MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                    MAIN                        38           0    0.0    6.6   100.0  100.0
+ main                   Main                        77           0   66.7   21.9    66.7   21.9
+ CAF                    GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                    GHC.IO.Encoding.CodePage    61           0    0.0    0.1     0.0    0.1
+ CAF                    GHC.Show                    58           0    0.0    0.1     0.0    0.1
+ CAF                    GHC.IO.Encoding             55           0    0.0    0.0     0.0    0.0
+ CAF                    GHC.Conc.Windows            54           0    0.0    0.1     0.0    0.1
+ CAF                    GHC.IO.Handle.FD            48           0    0.0   20.4     0.0   20.4
+ CAF                    Main                        45           0    0.0    0.1    33.3   50.7
+  tailESeq              Main                        81           1    0.0    6.2     0.0    6.2
+   tailESeq.\           Main                        82          33    0.0    0.0     0.0    0.0
+  main                  Main                        76           1    0.0    0.2    33.3   44.4
+   main.ans             Main                        78           1   33.3    3.1    33.3   44.2
+    sqrtEExp            Main                        79           1    0.0    0.3     0.0   41.0
+     sqrtEExp.sqrtEExp' Main                        80          99    0.0   40.7     0.0   40.7

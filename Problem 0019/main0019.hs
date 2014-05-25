@@ -8,10 +8,12 @@ Since 366 `mod` 7 = 2, then Jan. 1, 1901 is a Tuesday.
 -}
 
 -- Set up a dictionary for the number of days in the format ([month #],[# of days]) excluding leap years
+nDays :: [(Integer,Integer)]
 nDays = [(1,31),(2,28),(3,31),(4,30),(5,31),(6,30),
          (7,31),(8,31),(9,30),(10,31),(11,30),(12,31)]
 
 -- Define the Sunday counter for starting at Jan. 1 for 1901 to 2000
+numSundays :: Integer -> Integer -> Integer ->  Integer
 numSundays sDay yearStart yearEnd = numSundays' 0 1 0 yearStart where
     numSundays' dayCount month sCount year
         | year > yearEnd = sCount
@@ -31,6 +33,7 @@ numSundays sDay yearStart yearEnd = numSundays' 0 1 0 yearStart where
 
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = numSundays 2 1901 2000
         writeFile "pe19.txt" $ show ans

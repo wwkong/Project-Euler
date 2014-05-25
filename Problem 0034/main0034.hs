@@ -4,9 +4,9 @@
 -- We first note that the upper bound for this problem is 999999 (six nines)
 
 import           Data.Char
-import           Data.List
 
 -- Define our limit
+limit :: Integer
 limit = 999999
 
 -- Memoization here is key; we first define an efficient factorial function
@@ -20,6 +20,7 @@ isCurious :: Integer -> Bool
 isCurious n = (== n) $ sum $ map factrl $ map digitToInt $ show n
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = sum $ filter isCurious [3..limit]
         writeFile "pe34.txt" $ show ans

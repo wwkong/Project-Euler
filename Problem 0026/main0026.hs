@@ -3,11 +3,10 @@
 -- This is my first attempt at cutting back on the amount
 -- of static functions in my solutions
 
-import           Data.List
-
 -- Create a function that converts a fraction of the
 -- form 1/b to its decimal expansion in list form
-toDecLst b = tail $ toDecLst' 1 b where
+toDecLst :: Int -> [Int]
+toDecLst c = tail $ toDecLst' 1 c where
     toDecLst' a b
         | a == b = [1] ++ (repeat 0)
         | a < b = 0 : toDecLst' (a*10) b
@@ -29,14 +28,17 @@ lCycle n = lCycle' 1 (toDecLst n) where
         where ptrDec = iterate tail nDec !! ptr
 
 -- Create a tuple max function
+tupMax :: (Int,Int) -> (Int,Int) -> (Int,Int)
 tupMax a b
     | max (fst a) (fst b) == fst a = a
     | max (fst a) (fst b) == fst b = b
 
 -- Exclude all multiples of 2 and 5 for efficiency (they aren't co-prime to 10)
+cNums :: [Int]
 cNums = [n | n <- [1..1000], n `mod` 5/= 0, not (even n)]
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = foldl1 tupMax [(lCycle n, n) | n <- cNums]
         writeFile "pe26.txt" $ show ans

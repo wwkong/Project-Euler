@@ -1,0 +1,34 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0026 +RTS -K512M -sstats0026.hstats -p -RTS
+
+	total time  =        0.56 secs   (558 ticks @ 1000 us, 1 processor)
+	total alloc = 632,184,836 bytes  (excludes profiling overheads)
+
+COST CENTRE           MODULE  %time %alloc
+
+lCycle.lCycle'.ptrDec Main     90.9   95.3
+lCycle.lCycle'        Main      4.7    2.7
+toDecLst.toDecLst'    Main      3.4    2.0
+
+
+                                                                         individual     inherited
+COST CENTRE                 MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                        MAIN                        39           0    0.0    0.0   100.0  100.0
+ main                       Main                        79           0    0.9    0.0     0.9    0.0
+ CAF                        GHC.IO.FD                   66           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding.CodePage    63           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.Conc.Windows            56           0    0.2    0.0     0.2    0.0
+ CAF                        GHC.IO.Handle.FD            50           0    0.0    0.0     0.0    0.0
+ CAF                        Main                        46           0    0.0    0.0    98.9  100.0
+  main                      Main                        78           1    0.0    0.0    98.9  100.0
+   main.ans                 Main                        80           1    0.0    0.0    98.9  100.0
+    lCycle                  Main                        83         400    0.0    0.0    98.9  100.0
+     toDecLst               Main                        86         399    0.0    0.0     3.4    2.0
+      toDecLst.toDecLst'    Main                        87      265269    3.4    2.0     3.4    2.0
+     lCycle.lCycle'         Main                        84       65270    4.7    2.7    95.5   97.9
+      lCycle.lCycle'.ptrDec Main                        85       65270   90.9   95.3    90.9   95.3
+    tupMax                  Main                        82         399    0.0    0.0     0.0    0.0
+    cNums                   Main                        81           1    0.0    0.0     0.0    0.0

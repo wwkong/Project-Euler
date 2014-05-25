@@ -1,0 +1,31 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0031 +RTS -K512M -sstats0031.hstats -p -RTS
+
+	total time  =        0.30 secs   (301 ticks @ 1000 us, 1 processor)
+	total alloc =  46,309,604 bytes  (excludes profiling overheads)
+
+COST CENTRE         MODULE  %time %alloc
+
+numWays.numWays'    Main     72.1   49.9
+numWays.numWays'.ak Main     26.9   49.9
+
+
+                                                                       individual     inherited
+COST CENTRE               MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                      MAIN                        41           0    0.0    0.1   100.0  100.0
+ main                     Main                        83           0    1.0    0.1     1.0    0.1
+ CAF                      GHC.IO.FD                   70           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.IO.Encoding.CodePage    66           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.IO.Encoding             60           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.Conc.Windows            59           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.IO.Handle.FD            53           0    0.0    0.1     0.0    0.1
+ CAF                      Data.MemoCombinators        49           0    0.0    0.0     0.0    0.0
+ CAF                      Main                        48           0    0.0    0.0    99.0   99.8
+  cTypeVal                Main                        88           1    0.0    0.0     0.0    0.0
+  main                    Main                        82           1    0.0    0.0    99.0   99.8
+   main.ans               Main                        84           1    0.0    0.0    99.0   99.8
+    numWays               Main                        85           1    0.0    0.0    99.0   99.8
+     numWays.numWays'     Main                        86     5776439   72.1   49.9    99.0   99.8
+      numWays.numWays'.ak Main                        87     2888219   26.9   49.9    26.9   49.9

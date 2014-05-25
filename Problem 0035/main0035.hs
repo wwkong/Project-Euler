@@ -9,12 +9,12 @@ How many circular primes are there below one million?
 -- Compile with the -O flag for efficiency
 
 -- import Debug.Trace
-import           Data.Array
 import qualified Data.MemoCombinators as Memo
 import           Data.Numbers.Primes
 
 -- Define a function to check if a prime is circular
-isCircular n = Memo.integral isCircular' n n True where
+isCircular :: Integer -> Bool
+isCircular k = Memo.integral isCircular' k k True where
     isCircular' n cur bool
         -- | trace ("Called with " ++ show n ++ " " ++ show cur ++ " " ++ show bool) False = undefined
         | bool == False = False
@@ -26,6 +26,7 @@ isCircular n = Memo.integral isCircular' n n True where
             curStr = show cur
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = length [n | n <- takeWhile (<10^6) primes, isCircular n]
         writeFile "pe35.txt" $ show ans

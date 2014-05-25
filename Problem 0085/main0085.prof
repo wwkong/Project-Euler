@@ -1,0 +1,40 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0085 +RTS -K512M -sstats0085.hstats -p -RTS
+
+	total time  =        0.13 secs   (127 ticks @ 1000 us, 1 processor)
+	total alloc =     238,720 bytes  (excludes profiling overheads)
+
+COST CENTRE     MODULE           %time %alloc
+
+subCounts       Main              57.5   10.1
+subCounts.count Main              22.8    0.0
+subRects        Main              16.5    6.5
+main            Main               2.4   15.3
+main.allCounts  Main               0.8   52.3
+MAIN            MAIN               0.0    1.1
+CAF             GHC.IO.Handle.FD   0.0   14.1
+
+
+                                                                  individual     inherited
+COST CENTRE          MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                 MAIN                        38           0    0.0    1.1   100.0  100.0
+ main                Main                        77           0    2.4   15.2     2.4   15.2
+ CAF                 GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                 GHC.IO.Encoding.CodePage    59           0    0.0    0.0     0.0    0.0
+ CAF                 GHC.IO.Encoding             54           0    0.0    0.0     0.0    0.0
+ CAF                 GHC.Conc.Windows            53           0    0.0    0.1     0.0    0.1
+ CAF                 GHC.IO.Handle.FD            48           0    0.0   14.1     0.0   14.1
+ CAF                 Main                        45           0    0.0    0.1    97.6   69.5
+  tol                Main                        84           1    0.0    0.0     0.0    0.0
+  main               Main                        76           1    0.0    0.2    97.6   69.4
+   main.allCounts    Main                        79           1    0.8   52.3    97.6   68.9
+    subCounts        Main                        80        1948   57.5   10.1    96.9   16.6
+     subCounts.count Main                        82     1999622   22.8    0.0    39.4    6.5
+      subRects       Main                        83           0   16.5    6.5    16.5    6.5
+     subRects        Main                        81     1999622    0.0    0.0     0.0    0.0
+   main.ans          Main                        78           1    0.0    0.3     0.0    0.3
+    main.ans.area    Main                        87           1    0.0    0.0     0.0    0.0
+    main.ans.c       Main                        86           9    0.0    0.0     0.0    0.0
+    main.ans.\       Main                        85           8    0.0    0.0     0.0    0.0

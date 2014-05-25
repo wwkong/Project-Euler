@@ -30,24 +30,33 @@ n_U ~= 2000 where U(n_L) ~= 2*10^6 ~= L(n_U)
 import           Data.List
 
 -- Define a preset tolerance level (subject to change)
+tol :: Int
 tol = 1000
 
 -- First define a function to compute the number of subrectangles in
 -- an a by b sized rectangle
+subRects :: Int -> Int -> Int
 subRects a b = (a*(a+1) `div` 2) * (b*(b+1) `div` 2)
 
 -- Find all subrectangle counts within the tolerance level above from 2*10^6 for
 -- a given maximum side length along with the area of the corresponding rectangle
 -- (Note that we only recurse on one side due to symmetry)
-subCounts n = [(k*n,count) | k <- [1..n], let count = subRects k n, count > 2*10^6 - tol, count < 2*10^6 + tol]
+subCounts :: Int -> [(Int,Int)]
+subCounts n = [(k*n,count) | k <- [1..n], 
+							 let count = subRects k n, 
+							 count > 2*10^6 - tol, 
+							 count < 2*10^6 + tol]
 
 -- Here I just realized that the maximumBy and minimumBy function do exactly
 -- what my tupMax and tupMin functions do OTZ
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let allCounts = concat [subCounts n | n <- [53..2000]]
         let ans = fst $ minimumBy   (\(a,b) (c,d) -> (compare b d))
-                                    [(area, abs (2*10^6-c)) | t <- allCounts, let c = snd t, let area = fst t]
+                                    [(area, abs (2*10^6-c)) | t <- allCounts, 
+                                    							   let c = snd t, 
+                                    							   let area = fst t]
         writeFile "pe85.txt" $ show ans
         print ans

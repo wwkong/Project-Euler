@@ -1,0 +1,31 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0030 +RTS -K512M -sstats0030.hstats -p -RTS
+
+	total time  =        0.43 secs   (435 ticks @ 1000 us, 1 processor)
+	total alloc = 424,072,116 bytes  (excludes profiling overheads)
+
+COST CENTRE           MODULE  %time %alloc
+
+fPwr                  Main     89.2  100.0
+sumFPwr.sumFPwr'      Main      8.5    0.0
+sumFPwr.sumFPwr'.sumF Main      1.6    0.0
+
+
+                                                                         individual     inherited
+COST CENTRE                 MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                        MAIN                        38           0    0.0    0.0   100.0  100.0
+ main                       Main                        77           0    0.7    0.0     0.7    0.0
+ CAF                        GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding.CodePage    59           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding             53           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.Conc.Windows            52           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Handle.FD            48           0    0.0    0.0     0.0    0.0
+ CAF                        Main                        45           0    0.0    0.0    99.3  100.0
+  main                      Main                        76           1    0.0    0.0    99.3  100.0
+   main.ans                 Main                        78           1    0.0    0.0    99.3  100.0
+    sumFPwr                 Main                        79           1    0.0    0.0    99.3  100.0
+     sumFPwr.sumFPwr'       Main                        80      999999    8.5    0.0    99.3  100.0
+      sumFPwr.sumFPwr'.sumF Main                        81      999998    1.6    0.0    90.8  100.0
+       fPwr                 Main                        82      999998   89.2  100.0    89.2  100.0

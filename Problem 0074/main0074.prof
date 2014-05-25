@@ -1,0 +1,46 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0074 +RTS -K512M -sstats0074.hstats -p -RTS
+
+	total time  =        1.14 secs   (1136 ticks @ 1000 us, 1 processor)
+	total alloc = 381,720,892 bytes  (excludes profiling overheads)
+
+COST CENTRE      MODULE  %time %alloc
+
+sumFact          Main     64.1   53.3
+main.ans         Main     10.7   33.5
+memoize.arrayGet Main      9.8    6.8
+lenChain'        Main      7.0    3.6
+sumFact.\        Main      5.8    0.0
+memoize.arr      Main      1.5    2.8
+lenChain'.n'     Main      1.1    0.0
+
+
+                                                                    individual     inherited
+COST CENTRE            MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                   MAIN                        40           0    0.1    0.0   100.0  100.0
+ main                  Main                        81           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.FD                   69           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding.CodePage    64           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.Conc.Windows            56           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Handle.FD            51           0    0.0    0.0     0.0    0.0
+ CAF                   Main                        47           0    0.0    0.0    99.9  100.0
+  facts                Main                        92           1    0.0    0.0     0.0    0.0
+  chainDict            Main                        88           1    0.0    0.0     0.0    0.0
+  lenChain             Main                        83           1    0.0    0.0     9.2    7.9
+   memoize             Main                        84           1    0.0    0.0     9.2    7.9
+    memoize.arr        Main                        86           1    1.5    2.8     9.2    7.9
+     lenChain'         Main                        87      160515    1.4    0.3     7.7    5.1
+      memoize.arrayGet Main                        93      160496    0.5    0.3     0.5    0.3
+      lenChain'.n'     Main                        89      160500    0.1    0.0     5.7    4.5
+       sumFact         Main                        90      160500    5.4    4.5     5.6    4.5
+        sumFact.\      Main                        91      852764    0.3    0.0     0.3    0.0
+  main                 Main                        80           1    0.0    0.0    90.8   92.1
+   main.ans            Main                        82           1   10.7   33.5    90.8   92.1
+    memoize.arrayGet   Main                        85     2550264    9.2    6.5    80.0   58.6
+     lenChain'         Main                        94     1550266    5.5    3.2    70.8   52.1
+      lenChain'.n'     Main                        95     1550265    1.0    0.0    65.2   48.8
+       sumFact         Main                        96     1550265   58.7   48.8    64.3   48.8
+        sumFact.\      Main                        97     9316584    5.5    0.0     5.5    0.0

@@ -1,0 +1,30 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0057 +RTS -K512M -sstats0057.hstats -p -RTS
+
+	total time  =        1.07 secs   (1069 ticks @ 1000 us, 1 processor)
+	total alloc = 688,611,676 bytes  (excludes profiling overheads)
+
+COST CENTRE            MODULE  %time %alloc
+
+sqrtTwoExp.sqrtTwoExp' Main     99.7   99.8
+
+
+                                                                         individual     inherited
+COST CENTRE                 MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                        MAIN                        37           0    0.0    0.0   100.0  100.0
+ main                       Main                        75           0    0.2    0.0     0.2    0.0
+ CAF                        GHC.IO.FD                   62           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding.CodePage    59           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding             53           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.Conc.Windows            52           0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Handle.FD            48           0    0.0    0.0     0.0    0.0
+ CAF                        Main                        44           0    0.0    0.0    99.8  100.0
+  sqrtTwoExp                Main                        80           0    0.0    0.0     0.0    0.0
+   sqrtTwoExp.sqrtTwoExp'   Main                        81           0    0.0    0.0     0.0    0.0
+  main                      Main                        74           1    0.0    0.0    99.8  100.0
+   main.ans                 Main                        76           1    0.0    0.0    99.8  100.0
+    sqrtTwoExp              Main                        78        1000    0.1    0.1    99.8   99.9
+     sqrtTwoExp.sqrtTwoExp' Main                        79      500500   99.7   99.8    99.7   99.8
+    bigNumerator            Main                        77        1000    0.0    0.1     0.0    0.1

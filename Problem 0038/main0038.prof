@@ -1,0 +1,39 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0038 +RTS -K512M -sstats0038.hstats -p -RTS
+
+	total time  =        0.16 secs   (161 ticks @ 1000 us, 1 processor)
+	total alloc = 109,064,364 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE  %time %alloc
+
+panGen      Main     98.1   99.5
+main        Main      1.2    0.0
+
+
+                                                                              individual     inherited
+COST CENTRE                      MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                             MAIN                        43           0    0.0    0.0   100.0  100.0
+ main                            Main                        87           0    1.2    0.0     1.2    0.0
+ CAF                             GHC.IO.FD                   75           0    0.0    0.0     0.0    0.0
+ CAF                             GHC.IO.Encoding.CodePage    70           0    0.0    0.0     0.0    0.0
+ CAF                             Text.Read.Lex               67           0    0.0    0.0     0.0    0.0
+ CAF                             GHC.IO.Encoding             62           0    0.0    0.0     0.0    0.0
+ CAF                             GHC.Conc.Windows            61           0    0.0    0.0     0.0    0.0
+ CAF                             GHC.IO.Handle.FD            54           0    0.0    0.0     0.0    0.0
+ CAF                             Main                        50           0    0.0    0.0    98.8   99.9
+  panNums                        Main                        99           0    0.0    0.0    49.1   21.0
+   panGen                        Main                       100           2   49.1   21.0    49.1   21.0
+  panCProd.panCProd'             Main                        98           0    0.0    0.0     0.0    0.0
+  panCProd                       Main                        96           0    0.0    0.0     0.0    0.0
+   panCProd.panCProd'            Main                        97           0    0.0    0.0     0.0    0.0
+  panGen                         Main                        91           0   41.6   72.9    41.6   72.9
+  main                           Main                        86           1    0.0    0.0     8.1    6.1
+   main.ans                      Main                        88           1    0.6    0.0     8.1    6.1
+    panCProd                     Main                        92         401    0.0    0.0     0.0    0.4
+     panCProd.panCProd'          Main                        93         877    0.0    0.3     0.0    0.4
+      panCProd.panCProd'.nextStr Main                        95         476    0.0    0.0     0.0    0.0
+      panCProd.panCProd'.totLen  Main                        94         877    0.0    0.0     0.0    0.0
+    panNums                      Main                        89           1    0.0    0.0     7.5    5.7
+     panGen                      Main                        90           1    7.5    5.7     7.5    5.7

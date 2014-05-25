@@ -1,0 +1,36 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0023 +RTS -K512M -sstats0023.hstats -p -RTS
+
+	total time  =        3.35 secs   (3352 ticks @ 1000 us, 1 processor)
+	total alloc = 1,716,454,104 bytes  (excludes profiling overheads)
+
+COST CENTRE        MODULE  %time %alloc
+
+canBeWritten       Main     41.4   81.9
+canBeWritten.\     Main     40.4   11.6
+mFactors.mFactors' Main     16.3    4.5
+
+
+                                                                      individual     inherited
+COST CENTRE              MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                     MAIN                        41           0    0.0    0.0   100.0  100.0
+ main                    Main                        83           0    0.1    0.0     0.1    0.0
+ CAF                     GHC.IO.FD                   70           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Encoding.CodePage    67           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Encoding             61           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.Conc.Windows            60           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Handle.FD            53           0    0.0    0.0     0.0    0.0
+ CAF                     Data.Numbers.Primes         49           0    0.1    0.1     0.1    0.1
+ CAF                     Main                        48           0    0.0    0.0    99.8   99.9
+  abNums                 Main                        87           1    0.2    0.2    17.9    6.3
+   sumDivs               Main                        88       28110    0.4    0.2    17.7    6.1
+    sumDivs.f            Main                        92       71448    0.3    0.6     0.3    0.6
+    sumDivs.ps           Main                        89       28110    0.7    0.8    17.0    5.3
+     mFactors            Main                        90       28110    0.0    0.0    16.3    4.5
+      mFactors.mFactors' Main                        91     9231886   16.3    4.5    16.3    4.5
+  main                   Main                        82           1    0.0    0.0    81.9   93.6
+   main.ans              Main                        84           1    0.1    0.1    81.9   93.6
+    canBeWritten         Main                        85       28122   41.4   81.9    81.8   93.5
+     canBeWritten.\      Main                        86    16731249   40.4   11.6    40.4   11.6

@@ -1,0 +1,53 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0051 +RTS -K512M -sstats0051.hstats -p -RTS
+
+	total time  =        2.22 secs   (2220 ticks @ 1000 us, 1 processor)
+	total alloc = 861,398,096 bytes  (excludes profiling overheads)
+
+COST CENTRE           MODULE    %time %alloc
+
+zipMask               Main       90.7   95.9
+pValCount.isReplPrime Main        4.5    0.9
+zipMask.\             Main        1.8    0.2
+pValCount.nums        Main        1.2    1.5
+
+
+                                                                          individual     inherited
+COST CENTRE                  MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                         MAIN                        43           0    0.0    0.0   100.0  100.0
+ main                        Main                        87           0    0.1    0.0     0.1    0.0
+ CAF                         GHC.IO.FD                   74           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.IO.Encoding.CodePage    70           0    0.0    0.0     0.0    0.0
+ CAF                         Text.Read.Lex               65           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.IO.Encoding             63           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.Conc.Windows            62           0    0.0    0.0     0.0    0.0
+ CAF                         GHC.IO.Handle.FD            54           0    0.0    0.0     0.0    0.0
+ CAF                         Data.Numbers.Primes         51           0    0.8    1.0     0.8    1.0
+ CAF                         Main                        50           0    0.0    0.0    99.1   99.0
+  pValCount                  Main                        96           0    0.0    0.0     0.0    0.0
+   pValCount.nums            Main                       103           0    0.0    0.0     0.0    0.0
+   pValCount.replP           Main                        97           0    0.0    0.0     0.0    0.0
+    zipMask                  Main                        98           0    0.0    0.0     0.0    0.0
+  main                       Main                        86           1    0.0    0.0    99.1   99.0
+   main.ans                  Main                        88           1    0.0    0.0    99.1   99.0
+    pVals                    Main                        89           1    0.1    0.0    99.1   99.0
+     pValCount               Main                        92       17397    0.4    0.1    98.9   98.8
+      pValCount.len          Main                       107        9574    0.0    0.1     0.0    0.1
+      pValCount.nums         Main                       102        9574    1.2    1.5    46.9   65.5
+       pValCount.isReplPrime Main                       108       90219    3.5    0.6    24.3   31.4
+        pValCount.replP      Main                       109       90219    0.1    0.0    20.8   30.8
+         zipMask             Main                       110       90219   20.1   30.7    20.7   30.8
+          zipMask.\          Main                       111      541314    0.6    0.1     0.6    0.1
+       pValCount.replP       Main                       104       95740    0.1    0.0    21.4   32.6
+        zipMask              Main                       105       95740   20.5   32.5    21.3   32.6
+         zipMask.\           Main                       106      574440    0.8    0.1     0.8    0.1
+      pValCount.replP        Main                        99           0    0.0    0.0    41.4   19.3
+       zipMask               Main                       100           0   41.4   19.3    41.4   19.3
+      pValCount.isReplPrime  Main                        93       39458    1.0    0.3    10.2   13.7
+       pValCount.replP       Main                        94       39458    0.0    0.0     9.2   13.4
+        zipMask              Main                        95       39458    8.8   13.4     9.1   13.4
+         zipMask.\           Main                       101      236748    0.4    0.0     0.4    0.0
+     binMask                 Main                        91        1740    0.0    0.0     0.0    0.0
+     primesOfLen             Main                        90           1    0.1    0.2     0.1    0.2

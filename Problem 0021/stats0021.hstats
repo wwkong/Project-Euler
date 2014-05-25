@@ -1,32 +1,29 @@
-main0021 +RTS -K512M -sstats0021.hstats (null) 
-       7,236,680 bytes allocated in the heap
-           7,204 bytes copied during GC
-          27,388 bytes maximum residency (1 sample(s))
-          28,928 bytes maximum slop
+main0021 +RTS -K512M -sstats0021.hstats -p 
+      12,133,444 bytes allocated in the heap
+          12,724 bytes copied during GC
+          52,288 bytes maximum residency (2 sample(s))
+          25,536 bytes maximum slop
                1 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0        13 colls,     0 par    0.00s    0.00s     0.0000s    0.0000s
-  Gen  1         1 colls,     0 par    0.00s    0.00s     0.0002s    0.0002s
+  Gen  0        22 colls,     0 par    0.00s    0.00s     0.0000s    0.0000s
+  Gen  1         2 colls,     0 par    0.00s    0.00s     0.0002s    0.0003s
 
-  Parallel GC work balance: nan (0 / 0, ideal 1)
-
-                        MUT time (elapsed)       GC time  (elapsed)
-  Task  0 (worker) :    0.00s    (  0.40s)       0.00s    (  0.00s)
-  Task  1 (worker) :    0.00s    (  0.40s)       0.00s    (  0.00s)
-  Task  2 (bound)  :    0.41s    (  0.40s)       0.00s    (  0.00s)
+  TASKS: 3 (1 bound, 2 peak workers (2 total), using -N1)
 
   SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    0.41s  (  0.40s elapsed)
+  MUT     time    0.47s  (  0.47s elapsed)
   GC      time    0.00s  (  0.00s elapsed)
+  RP      time    0.00s  (  0.00s elapsed)
+  PROF    time    0.00s  (  0.00s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    0.41s  (  0.41s elapsed)
+  Total   time    0.47s  (  0.47s elapsed)
 
-  Alloc rate    17,813,366 bytes per MUT second
+  Alloc rate    25,884,680 bytes per MUT second
 
-  Productivity 100.0% of total user, 100.2% of total elapsed
+  Productivity 100.0% of total user, 98.9% of total elapsed
 
 gc_alloc_block_sync: 0
 whitehole_spin: 0

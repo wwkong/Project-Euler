@@ -4,7 +4,6 @@ How many continued fractions for N ≤ 10000 have an odd period?
 -}
 
 import           Data.Ratio
-import           Debug.Trace
 
 -- Define a function which takes n,a0,b0 and returns a,b,c in a list with the input form a0/(sqrt(n)-b0)
 -- and output form a + (sqrt(n)-b)/c
@@ -21,13 +20,14 @@ iterNext n a0 b0
 -- Define a function that takes in a number n and computes the cycle of the fraction representation of sqrt(n)
 -- We implement the method in Corollary 3.3. of this paper:
 --  http://web.math.princeton.edu/mathlab/jr02fall/Periodicity/alexajp.pdf
+fCycle :: Int -> Int
 fCycle n = fCycle' 1 b0 0 0
     where
         b0 =  floor $ sqrt $ fromIntegral n
-        fCycle' a b tail iter
+        fCycle' a b rest iter
             | null next = 0
             | n == 2 = 1 -- Special case
-            | 2*b0 == tail = iter
+            | 2*b0 == rest = iter
             -- | trace (show nextA ++ " " ++ show nextB ++ " " ++ show nextC ++ " lst=" ++ show ws) False = undefined
             | otherwise = fCycle' nextC nextB nextA (iter+1)
                 where
@@ -37,6 +37,7 @@ fCycle n = fCycle' 1 b0 0 0
                     nextC = next !! 2
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = length [xs | xs <- [1..10000], odd $ fCycle xs]
         writeFile "pe64.txt" $ show ans

@@ -1,0 +1,80 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0061 +RTS -K512M -sstats0061.hstats -p -RTS
+
+	total time  =        0.01 secs   (13 ticks @ 1000 us, 1 processor)
+	total alloc =   6,803,040 bytes  (excludes profiling overheads)
+
+COST CENTRE                   MODULE  %time %alloc
+
+squareRoot                    Main     23.1   24.2
+genCycle.genCycle'.tailCond   Main     23.1   52.6
+main                          Main     15.4    0.5
+isSquare                      Main     15.4    5.3
+figNums                       Main      7.7    5.4
+isTriangular.d                Main      7.7    2.1
+genCycle.genCycle'.filLst.\   Main      7.7    0.1
+isHeptagonal.d                Main      0.0    2.1
+isHexagonal.d                 Main      0.0    2.1
+isPentagonal.d                Main      0.0    2.1
+genCycle.genCycle'.nextSubLst Main      0.0    2.0
+
+
+                                                                                   individual     inherited
+COST CENTRE                           MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                  MAIN                        38           0    0.0    0.0   100.0  100.0
+ main                                 Main                        77           0   15.4    0.5    15.4    0.5
+ CAF                                  GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                                  GHC.IO.Encoding.CodePage    60           0    0.0    0.0     0.0    0.0
+ CAF                                  GHC.IO.Encoding             54           0    0.0    0.0     0.0    0.0
+ CAF                                  GHC.Conc.Windows            53           0    0.0    0.0     0.0    0.0
+ CAF                                  GHC.IO.Handle.FD            48           0    0.0    0.5     0.0    0.5
+ CAF                                  Main                        45           0    0.0    0.0    84.6   98.9
+  figNumLst                           Main                        90           1    0.0    0.0    53.8   38.0
+   figNums                            Main                        94           5    7.7    0.1    53.8   38.0
+    isHeptagonal                      Main                       117        9000    0.0    0.0    15.4    8.0
+     squareRoot                       Main                       121           0    0.0    0.0     0.0    0.0
+     isSquare                         Main                       119        9000    7.7    1.1    15.4    5.8
+      squareRoot                      Main                       120           0    7.7    4.8     7.7    4.8
+     isHeptagonal.d                   Main                       118        9000    0.0    2.1     0.0    2.1
+    isHexagonal                       Main                       112        9000    0.0    0.0     7.7    8.0
+     squareRoot                       Main                       116           0    0.0    0.1     0.0    0.1
+     isSquare                         Main                       114        9000    0.0    1.1     7.7    5.8
+      squareRoot                      Main                       115           0    7.7    4.8     7.7    4.8
+     isHexagonal.d                    Main                       113        9000    0.0    2.1     0.0    2.1
+    isPentagonal                      Main                       107        9000    0.0    0.0     0.0    8.0
+     squareRoot                       Main                       111           0    0.0    0.1     0.0    0.1
+     isSquare                         Main                       109        9000    0.0    1.1     0.0    5.8
+      squareRoot                      Main                       110           0    0.0    4.8     0.0    4.8
+     isPentagonal.d                   Main                       108        9000    0.0    2.1     0.0    2.1
+    isSquare                          Main                       104        9000    0.0    1.1     7.7    5.8
+     squareRoot                       Main                       105           0    7.7    4.8     7.7    4.8
+    isTriangular                      Main                        95        9000    0.0    0.0    15.4    8.0
+     squareRoot                       Main                        99           0    0.0    0.1     0.0    0.1
+     isSquare                         Main                        97        9000    7.7    1.1     7.7    5.8
+      squareRoot                      Main                        98           0    0.0    4.8     0.0    4.8
+     isTriangular.d                   Main                        96        9000    7.7    2.1     7.7    2.1
+  squareRoot                          Main                        85           1    0.0    0.0     0.0    0.0
+  fnLst                               Main                        81           1    0.0    0.0     0.0    0.0
+  figNums                             Main                        80           0    0.0    5.3     0.0    5.3
+  main                                Main                        76           1    0.0    0.0    30.8   55.6
+   main.ans                           Main                        78           1    0.0    0.0    30.8   55.6
+    genCycle                          Main                        88           3    0.0    0.0    30.8   55.4
+     genCycle.genCycle'               Main                        89         501    0.0    0.2    30.8   55.4
+      genCycle.genCycle'.tailCond     Main                       123          58    0.0    0.2     0.0    0.2
+      genCycle.genCycle'.nextSubLst   Main                       122         127    0.0    2.0     0.0    2.0
+      genCycle.genCycle'.curElem      Main                       106         158    0.0    0.0     0.0    0.0
+      genCycle.genCycle'.nextMainLst  Main                       102         121    0.0    0.0     0.0    0.1
+       dropLst                        Main                       103         121    0.0    0.1     0.0    0.1
+      genCycle.genCycle'.filLst       Main                        92         377    0.0    0.4    30.8   53.0
+       genCycle.genCycle'.filLst.\    Main                        93         377    7.7    0.1    30.8   52.5
+        genCycle.genCycle'.filLst.\.\ Main                       100       17595    0.0    0.0    23.1   52.5
+         genCycle.genCycle'.tailCond  Main                       101       17595   23.1   52.5    23.1   52.5
+      genCycle.genCycle'.curSubLst    Main                        91         377    0.0    0.0     0.0    0.0
+    figNums                           Main                        79           1    0.0    0.0     0.0    0.3
+     isOctagonal                      Main                        82         282    0.0    0.0     0.0    0.3
+      squareRoot                      Main                        87           0    0.0    0.0     0.0    0.0
+      isSquare                        Main                        84         282    0.0    0.0     0.0    0.2
+       squareRoot                     Main                        86           0    0.0    0.1     0.0    0.1
+      isOctagonal.d                   Main                        83         282    0.0    0.1     0.0    0.1

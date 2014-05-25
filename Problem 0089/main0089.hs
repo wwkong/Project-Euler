@@ -7,15 +7,15 @@ Find the number of characters saved by writing each of these in their minimal fo
 -}
 
 import           Data.List   (sortBy, unfoldr)
-import           Data.Maybe  (fromJust)
-import           Debug.Trace (trace)
 
 -- Create a dictionary of roman numerals
+romDict :: [(String,Int)]
 romDict = sortBy (\(a,b) (c,d) -> compare d b)
-    [("I",1),("V",5),("X",10),("L",50),("C",100),("D",500),("M",1000),
-     ("IV",4),("IX",9),("XL",40),("XC",90),("CD",400),("CM",900)]
+    [("I",1) , ("V",5) , ("X",10) , ("L",50) , ("C",100) , ("D",500) , ("M",1000),
+     ("IV",4), ("IX",9), ("XL",40), ("XC",90), ("CD",400), ("CM",900)]
 
 -- Create a reverse dictionary/list of roman numerals
+revRomDict :: [(Int,String)]
 revRomDict = map (\(a,b) -> (b,a)) romDict
 
 -- Define a function to convert a roman numeral string to an integer
@@ -50,9 +50,11 @@ numToRom n = concat $ unfoldr romSeeder (n,revRomDict)
 
 -- Define a function to calculate the characters saved from transforming
 -- an inefficient roman numeral to an efficient one
+savedChars :: String -> Int
 savedChars rm = (length rm) - ((length . numToRom . romToNum) rm)
 
 -- Print and write out the answer
+main :: IO()
 main = do
         contents <- fmap lines $ readFile "roman.txt"
         let ans = sum $ map savedChars contents

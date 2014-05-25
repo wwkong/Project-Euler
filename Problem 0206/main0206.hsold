@@ -1,0 +1,39 @@
+{-
+Find the unique positive integer whose square has the form 1_2_3_4_5_6_7_8_9_0,
+where each “_” is a single digit.
+-}
+
+import qualified Data.List.Stream as S
+
+-- Define our upper and lower bounds
+minB :: Integer
+maxB :: Integer
+minB = 10 * (floor $ sqrt 1020304050607080900 / 10)
+maxB = 10 * (floor $ sqrt 1929394959697989990 / 10)
+
+-- Get the significant digits of a number string (every even index) as a string
+sigDigits :: String -> String
+sigDigits nStr = [nStr !! k | k <- [0,2..16]]
+
+-- Use the above to produce the number checking function
+isAns :: Integer -> Bool
+isAns n = sigDigits (show (n^2)) == "123456789"
+
+-- Get the filtering condition
+isCandidate :: Integer -> Bool
+isCandidate n
+	| n `mod` 100  == 30   = isAns n
+	| n `mod` 100  == 70   = isAns n
+	| n `mod` 2500 == 2070 = isAns n
+	| n `mod` 2500 == 1970 = isAns n
+	| n `mod` 2500 == 1670 = isAns n
+	| n `mod` 2500 == 830  = isAns n
+	| n `mod` 2500 == 530  = isAns n
+	| otherwise            = False
+
+-- Print and write out the ans
+main :: IO()
+main = do
+		let ans = S.head $ S.filter isCandidate [minB, minB + 10 .. maxB]
+		writeFile "pe206.txt" $ show ans
+		print ans

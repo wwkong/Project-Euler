@@ -17,6 +17,7 @@ isPerm n
     where originalNum = fromList $ show n
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = head [n | n <- [125874..], isPerm n]
         writeFile "pe52.txt" $ show ans

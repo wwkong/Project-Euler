@@ -15,26 +15,37 @@ d8d9d10=289 is divisible by 17
 Find the sum of all 0 to 9 pandigital numbers with this property.
 -}
 
+import           Data.Char
 import           Data.List
+import qualified Data.List.Stream    as S
 
--- Get all pandigital numbers as strings
-panNums = permutations "0123456789"
+-- Taken from:
+-- http://stackoverflow.com/questions/18124303/haskell-create-unique-n-tuples-from-a-list-of-x-elements
+choose :: Int -> String -> [String]
+choose n list = concatMap permutations $ choose' list [] where
+  choose' []     r = if length r == n then [r] else []
+  choose' (x:xs) r | length r == n = [r]
+                   | otherwise     = choose' xs (x:r) ++ choose' xs r
 
--- Check the divisibility condition for a panNum string
-isPanDiv :: String -> Bool
-isPanDiv nStr
-    | (takeThree 2) `mod` 2 /= 0 = False
-    | (takeThree 3) `mod` 3 /= 0 = False
-    | (takeThree 4) `mod` 5 /= 0 = False
-    | (takeThree 5) `mod` 7 /= 0 = False
-    | (takeThree 6) `mod` 11 /= 0 = False
-    | (takeThree 7) `mod` 13 /= 0 = False
-    | (takeThree 8) `mod` 17 /= 0 = False
-    | otherwise = True
-    where takeThree n = (read :: String -> Integer) $ take 3 $ snd $ splitAt (n-1) nStr
+-- Create a function to iterative build up the combinations
+nextPanNums :: Int -> [String] -> [String]
+nextPanNums p nums = [0..9] >>= nextPanFn nums
+    where   nextPanFn sLst n =
+                S.map (\s -> show n ++ s) $
+                S.filter    (\num -> 
+                                (read (show n ++ take 2 num) :: Int) `mod` p == 0 &&
+                                 not (intToDigit n `elem` num)) sLst
+
+-- Iterate over the first 7 primes in reverse
+panNums :: String -> [String]
+panNums nums = getNums subPanNums
+    where   getNums = ( nextPanNums 1 . nextPanNums 2  . nextPanNums 3  . nextPanNums 5 . 
+                        nextPanNums 7 . nextPanNums 11 . nextPanNums 13 )
+            subPanNums = filter (\x -> (read x :: Integer) `mod` 17 == 0) $ choose 3 nums
 
 -- Print and write out the answer
+main :: IO()
 main = do
-        let ans = sum [read pNums :: Integer | pNums <- panNums , isPanDiv pNums]
+        let ans = sum $  map (read :: String -> Integer) $ panNums "0123456789"
         writeFile "pe46.txt" $ show ans
         print ans

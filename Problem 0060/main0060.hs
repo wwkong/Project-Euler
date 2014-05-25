@@ -8,43 +8,38 @@ Find the lowest sum for a set of five primes for which any two primes concatenat
 to produce another prime.
 -}
 
-import           Control.Applicative
-import           Data.List
-import           Data.Numbers.Primes
-import           Debug.Trace
+-- This is a modfied version of the code on p.1 of the PE60 forum
 
--- Define an upper bound (subject to change)
-upBound = 10000
+import Data.Numbers.Primes
 
--- Create a function to determine is two primes can be concatenated in any order
--- to produce another prime
-concatPrime :: Integer -> Integer -> Bool
-concatPrime n m = let rStr = read :: String -> Integer in
-    (isPrime . rStr) (show n ++ show m) && (isPrime . rStr) (show m ++ show n)
+-- Take some list of primes
+pLst :: [Int]
+pLst = takeWhile (<10000) primes
 
--- Given a list, find a list of primes that produce the next group of
--- concatenable primes using the max of the list as a lower bound and
--- upBound as the upper bound
-nextCPrimes :: [Integer] -> [Integer]
-nextCPrimes cLst = let biggest = maximum cLst in
-    [next | next <- filter (> biggest) (takeWhile (<upBound) primes), all (==True) ([concatPrime next] <*> cLst)]
+-- Given an initial prime x and a list, return all elements of the list which
+-- can be concatenated with x to produce another prime 
+concatPrime :: Int -> [Int] -> [Int]
+concatPrime x lst = filter (\y -> isPrime (read (shows x (show y)) :: Int)
+                               && isPrime (read (shows y (show x)) :: Int)) lst
 
--- Define a function that takes in a generating number and group length and
--- returns all groups that are composed of concatenable primes
-genCPrimes n len = filter (/=[]) [genCPrimes' n len [k] [n] | k <- nextCPrimes [n]] where
-    genCPrimes' n' len' lst' ret'-- lst' is a list of candidates
-        -- | trace ("\ngenCPrimes' " ++ show n' ++ " " ++ show len' ++ " ") False = undefined
-        | len' == 1 = [n']
-        | null lst' = []
-        | len' > 1 + (length nextIter) = genCPrimes' n' len' (tail lst') ret'
-        -- | trace ("\ngenCPrimes' otherwise COND") False = undefined
-        | otherwise = [n'] ++ nextIter
-        where
-            nextLst = nextCPrimes ([head lst'] ++ ret')
-            nextElem = head lst'
-            nextIter = genCPrimes' nextElem (len'-1) nextLst (ret' ++ [nextElem])
+-- Generate the list of candidate quintuples
+solve :: [[Int]]
+solve = do
+     a <- pLst
+     let m = concatPrime a $ dropWhile (<= a) pLst
+     b <- m
+     let n = concatPrime b $ dropWhile (<= b) m
+     c <- n
+     let o = concatPrime c $ dropWhile (<= c) n
+     d <- o
+     let p = concatPrime d $ dropWhile (<= d) o
+     e <- p
+     return [a,b,c,d,e]
+  
 
-main = do
-        let ans = minimum $ ((map sum) . concat) [genCPrimes n 5 | n <- takeWhile (<100) primes] -- Just some guessing
+-- Print and write out the answer
+main :: IO()
+main = do -- We guess that it is the first entry
+        let ans = (sum . head) solve
         writeFile "pe60.txt" $ show ans
         print ans

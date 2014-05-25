@@ -17,9 +17,7 @@ If this process is continued, what is the side length of the square spiral for w
 both diagonals first falls below 10%?
 -}
 
-import           Data.MemoCombinators as Memo
 import           Data.Numbers.Primes
-import           Debug.Trace
 
 -- We create a function to return a list of the four diagonals for a given length n
 ulamCorners :: Integer -> [Integer]
@@ -27,19 +25,24 @@ ulamCorners n = [an, an - n + 1, an - 2*n + 2, an - 3*n + 3] where
     an = n ^ 2
 
 -- Generate all spiral numbers and the number of primes for a block of size 2*n-1
+ulams :: [[Integer]]
+primeUlams :: [Int]
 ulams = [ulamCorners n | n <- [3,3+2..]]
 primeUlams = map (length . (filter isPrime)) ulams
 
 -- Accumulate until a limit is reached
+findUlamLim :: Float -> [Int] -> Integer
 findUlamLim limit lst =  findUlamLim' 1 0 limit lst where
-    findUlamLim' ctr acc limit lst
+    findUlamLim' ctr acc lim l
         -- | trace ("ratio=" ++ show ratio) False = undefined
-        | ctr == 1 = findUlamLim' (ctr + 2) (acc + (head lst)) limit (tail lst) -- Special case
-        | ratio < limit = ctr
-        | otherwise = findUlamLim' (ctr + 2) (acc + (head lst)) limit (tail lst)
-        where ratio = (fromIntegral acc) / (fromIntegral ((ctr-1) * 2) + 1)
+        | ctr == 1    = findUlamLim' (ctr + 2) (acc + (head l)) lim (tail l) -- Special case
+        | ratio < lim = ctr
+        | otherwise   = findUlamLim' (ctr + 2) (acc + (head l)) lim (tail l)
+        where 
+        	ratio = (fromIntegral acc) / (fromIntegral ((ctr-1) * 2) + 1)
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = findUlamLim 0.1 primeUlams
         writeFile "pe58.txt" $ show ans

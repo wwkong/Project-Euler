@@ -1,0 +1,59 @@
+{-
+The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes
+and concatenating them in any order the result will always be prime. For example,
+taking 7 and 109, both 7109 and 1097 are prime. The sum of these four primes, 792,
+represents the lowest sum for a set of four primes with this property.
+
+Find the lowest sum for a set of five primes for which any two primes concatenate
+to produce another prime.
+-}
+
+import           Data.List
+import           Data.Numbers.Primes
+import qualified Data.MemoCombinators as Memo
+
+-- Define an upper bound (subject to change)
+upBound :: Integer
+upBound = 8500
+
+-- Taken from:
+-- http://stackoverflow.com/questions/18124303/haskell-create-unique-n-tuples-from-a-list-of-x-elements
+choose :: Integer -> [Integer] -> [[Integer]]
+choose n list = concatMap permutations $ choose' list [] where
+  choose' []     r = if length r == fromIntegral n then [r] else []
+  choose' (x:xs) r | length r == fromIntegral n = [r]
+                   | otherwise     = choose' xs (x:r) ++ choose' xs r
+
+-- Create a function to determine is two primes can be concatenated in any order
+-- to produce another prime (added memoization)
+concatPrime :: Integer -> Integer -> Bool
+concatPrime = Memo.memo2 Memo.integral Memo.integral cp 
+                where 
+                    cp m n = 
+                        (isPrime . rStr) (show n ++ show m) && 
+                        (isPrime . rStr) (show m ++ show n)
+                        where
+                            rStr = read :: String -> Integer
+
+-- Takes an input list of primes and checks whether or not each number is pairwise 
+-- concatenably prime
+gConcatPrime :: [Integer] -> Bool
+gConcatPrime lst = all (==True) [concatPrime a b | a <- lst, b <- lst, a < b] 
+
+-- Given a list and n, find the list of primes that produce a group of n
+-- concatenable primes using the max of the input list as a lower bound and
+-- upBound as the upper bound
+nextCPrimes :: [Integer] -> Integer -> [Integer]
+nextCPrimes cLst n =  (nub . concat) concatLst
+                      where 
+                        concatLst = [cs | cs <- candLst, gConcatPrime cs]
+                        candLst   = choose n pList
+                        pList     = cLst ++ (takeWhile (< upBound) $ dropWhile (< maximum cLst) primes)
+
+-- Print and write out the answer
+main :: IO()
+main = do
+        let pInit = takeWhile (< upBound) primes
+        let ans = nextCPrimes pInit 5
+        writeFile "pe60.txt" $ show ans
+        print ans

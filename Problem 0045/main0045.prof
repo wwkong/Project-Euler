@@ -1,0 +1,38 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0045 +RTS -K512M -sstats0045.hstats -p -RTS
+
+	total time  =        0.05 secs   (52 ticks @ 1000 us, 1 processor)
+	total alloc =  20,866,748 bytes  (excludes profiling overheads)
+
+COST CENTRE       MODULE  %time %alloc
+
+isTPHNum          Main     44.2   45.3
+isTPHNum.discrim2 Main     21.2   17.7
+isTPHNum.discrim1 Main     11.5   14.4
+squareRoot        Main      9.6    9.5
+main              Main      7.7    0.2
+newHNums          Main      5.8   12.7
+
+
+                                                                    individual     inherited
+COST CENTRE            MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                   MAIN                        38           0    0.0    0.0   100.0  100.0
+ main                  Main                        77           0    7.7    0.2     7.7    0.2
+ CAF                   GHC.Show                    65           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.FD                   63           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding.CodePage    59           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding             54           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.Conc.Windows            53           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Handle.FD            48           0    0.0    0.2     0.0    0.2
+ CAF                   Main                        45           0    0.0    0.0    92.3   99.7
+  squareRoot           Main                        82           1    0.0    0.0     0.0    0.0
+  newHNums             Main                        79           1    5.8   12.7     5.8   12.7
+  main                 Main                        76           1    0.0    0.0    86.5   87.0
+   main.ans            Main                        78           1    0.0    0.0    86.5   87.0
+    isTPHNum           Main                        80       27550   44.2   45.3    86.5   87.0
+     isTPHNum.discrim2 Main                        84       27550   21.2   17.7    30.8   22.5
+      squareRoot       Main                        85           0    9.6    4.8     9.6    4.8
+     isTPHNum.discrim1 Main                        81       27550   11.5   14.4    11.5   19.2
+      squareRoot       Main                        83           0    0.0    4.8     0.0    4.8

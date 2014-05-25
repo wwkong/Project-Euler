@@ -1,0 +1,61 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0054 +RTS -K512M -sstats0054.hstats -p -RTS
+
+	total time  =        0.10 secs   (96 ticks @ 1000 us, 1 processor)
+	total alloc =  38,201,316 bytes  (excludes profiling overheads)
+
+COST CENTRE        MODULE           %time %alloc
+
+pokerGroups        Main              50.0   65.3
+main               Main              17.7    1.7
+handValRanks       Main               6.2    7.6
+parse              Main               6.2   10.1
+handRank           Main               3.1    0.2
+sameSuit           Main               3.1    5.5
+valRank            Main               3.1    0.4
+parsePokerLine     Main               3.1    2.7
+consecElems        Main               2.1    0.9
+consecElems.values Main               2.1    2.3
+main.ans           Main               1.0    0.0
+handValDeadlock.\  Main               1.0    0.0
+CAF                GHC.IO.Handle.FD   1.0    0.1
+handValDeadlock    Main               0.0    1.8
+
+
+                                                                       individual     inherited
+COST CENTRE               MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                      MAIN                        39           0    0.0    0.0   100.0  100.0
+ main                     Main                        79           0   17.7    1.7    99.0   99.9
+  parse                   Main                        82           0    6.2   10.1     9.4   12.8
+   parsePokerLine         Main                        84           0    3.1    2.7     3.1    2.7
+    parsePokerLine.\      Main                        88       10000    0.0    0.0     0.0    0.0
+  main.ans                Main                        80           1    1.0    0.0    71.9   85.4
+   winningHand            Main                        85        1000    0.0    0.3    70.8   85.4
+    handValDeadlock       Main                        96         734    0.0    1.8     7.3    4.4
+     handValDeadlock.\    Main                       101        2855    0.0    0.0     0.0    0.0
+     handValDeadlock.\    Main                       100        2630    1.0    0.0     1.0    0.0
+     handValDeadlock.vals Main                        97         734    0.0    0.9     6.2    2.6
+      handValRanks        Main                        98         734    4.2    1.6     6.2    1.7
+       valRank            Main                        99        3670    2.1    0.1     2.1    0.1
+    handRank              Main                        86        2765    3.1    0.2    63.5   80.6
+     handRank.handVals    Main                       102           2    0.0    0.0     0.0    0.0
+     consecElems          Main                        90        2763    2.1    0.9     7.3    9.6
+      consecElems.minV    Main                        95        2763    0.0    0.0     0.0    0.0
+      consecElems.\       Main                        94        6729    0.0    0.1     0.0    0.1
+      consecElems.values  Main                        91        2763    2.1    2.3     5.2    8.6
+       handValRanks       Main                        92        2763    2.1    6.0     3.1    6.3
+        valRank           Main                        93       13815    1.0    0.3     1.0    0.3
+     pokerGroups          Main                        89       13599   50.0   65.3    50.0   65.3
+     sameSuit             Main                        87        8293    3.1    5.5     3.1    5.5
+ CAF                      GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.IO.Encoding.CodePage    63           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.Conc.Windows            56           0    0.0    0.0     0.0    0.0
+ CAF                      GHC.IO.Handle.FD            50           0    1.0    0.1     1.0    0.1
+ CAF                      Main                        46           0    0.0    0.0     0.0    0.0
+  handRank                Main                       103           0    0.0    0.0     0.0    0.0
+  parsePokerLine          Main                        83           1    0.0    0.0     0.0    0.0
+  parse                   Main                        81           1    0.0    0.0     0.0    0.0
+  main                    Main                        78           1    0.0    0.0     0.0    0.0

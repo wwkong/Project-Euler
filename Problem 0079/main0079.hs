@@ -8,9 +8,9 @@
 import           Data.Char
 import           Data.List
 import qualified Data.Set    as S
-import           Debug.Trace
 
 -- Given a set of numbers as strings, create a function to find the set of unique digits
+uniqueDigits :: [String] -> [Int]
 uniqueDigits lst = (S.toList . S.fromList) $ map digitToInt $ concat lst
 
 -- Create a function that takes in a list of numbers, as strings, and a list of digits
@@ -21,8 +21,8 @@ uniqueHeadDigits digits numLst =    [n | n <- digits,
                                     (not $ n `elem` (uniqueDigits $ map tail numLst))]
 
 -- Create a function that solves our problem through wrapping the above function
+findPass :: [Int] -> [String] -> [Int]
 findPass digits numLst
-    -- | trace ("findPass " ++ show digits ++ " " ++ show numLst) False = undefined
     | digits == [] = []
     | curDigit == [] = findPass digits (map tail numLst)
     | otherwise = curDigit ++ (findPass (digits \\ curDigit) modLst)
@@ -30,6 +30,8 @@ findPass digits numLst
         curDigit = uniqueHeadDigits digits numLst
         modLst = map (\nStr -> if length nStr == 1 then nStr else nStr \\ (show curDigit)) numLst
 
+-- Print and write out the answer
+main :: IO()
 main = do
         rawData <- readFile "keylog.txt"
         let contents = (S.toList . S.fromList . lines) rawData -- Remove duplicates

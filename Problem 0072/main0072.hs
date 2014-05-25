@@ -8,6 +8,7 @@ proper fractions for d<=1,000,000?
 import           Math.Sieve.Phi
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let lim = 10^6
         let mySieve = sieve lim

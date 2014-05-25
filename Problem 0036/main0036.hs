@@ -13,6 +13,7 @@ isPalin n = reverse nDec == nDec &&
             nBin = showIntAtBase 2 intToDigit n ""
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = sum [xs | xs <- [1.. (10^6-1)], isPalin xs == True]
         writeFile "pe36.txt" $ show ans

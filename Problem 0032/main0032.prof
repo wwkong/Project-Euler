@@ -1,0 +1,43 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0032 +RTS -K512M -sstats0032.hstats -p -RTS
+
+	total time  =        2.60 secs   (2595 ticks @ 1000 us, 1 processor)
+	total alloc = 804,948,104 bytes  (excludes profiling overheads)
+
+COST CENTRE                   MODULE    %time %alloc
+
+mmNums.permNums               Main       53.3   47.3
+getPanProd.getPanProd'.mProd  Main       38.7   42.5
+getPanProd.getPanProd'        Main        6.4    8.4
+getPanProd.getPanProd'.mSplit Main        0.8    1.4
+
+
+                                                                                individual     inherited
+COST CENTRE                        MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                               MAIN                        41           0    0.0    0.0   100.0  100.0
+ main                              Main                        83           0    0.2    0.0     0.2    0.0
+ CAF                               GHC.IO.FD                   71           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Encoding.CodePage    66           0    0.0    0.0     0.0    0.0
+ CAF                               Text.Read.Lex               63           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Encoding             58           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.Conc.Windows            57           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Handle.FD            52           0    0.0    0.0     0.0    0.0
+ CAF                               Main                        48           0    0.0    0.0    99.8  100.0
+  getPanProd                       Main                        97           0    0.0    0.0     0.0    0.0
+   getPanProd.getPanProd'          Main                        98           0    0.0    0.0     0.0    0.0
+  getPanProd.getPanProd'           Main                        94           0    0.0    0.0     0.0    0.0
+   getPanProd.getPanProd'.mProd    Main                        95           0    0.0    0.0     0.0    0.0
+  mmNums                           Main                        88           0    0.0    0.0    32.4   30.4
+   mmNums.permNums                 Main                        89           1   32.4   30.4    32.4   30.4
+  ansProds                         Main                        85           1    0.4    0.2    67.5   69.6
+   getPanProd                      Main                        90       18144    0.0    0.0    46.2   52.4
+    getPanProd.getPanProd'         Main                        91       87651    6.4    8.4    46.2   52.4
+     getPanProd.getPanProd'.mSplit Main                        96       69525    0.8    1.4     0.8    1.4
+     getPanProd.getPanProd'.mProd  Main                        93       69525   38.7   42.5    38.7   42.5
+     getPanProd.getPanProd'.len    Main                        92       87651    0.2    0.1     0.2    0.1
+   mmNums                          Main                        86           1    0.0    0.0    20.9   16.9
+    mmNums.permNums                Main                        87           1   20.9   16.9    20.9   16.9
+  main                             Main                        82           1    0.0    0.0     0.0    0.0
+   main.ans                        Main                        84           1    0.0    0.0     0.0    0.0

@@ -1,32 +1,29 @@
-main0041 +RTS -K512M -sstats0041.hstats (null) 
-      25,656,900 bytes allocated in the heap
-       1,279,116 bytes copied during GC
-          51,380 bytes maximum residency (2 sample(s))
-          25,616 bytes maximum slop
+main0041 +RTS -K512M -sstats0041.hstats -p 
+      35,723,644 bytes allocated in the heap
+       1,816,988 bytes copied during GC
+         251,604 bytes maximum residency (3 sample(s))
+          31,956 bytes maximum slop
                2 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0        47 colls,     0 par    0.00s    0.00s     0.0001s    0.0005s
-  Gen  1         2 colls,     0 par    0.00s    0.00s     0.0002s    0.0002s
+  Gen  0        66 colls,     0 par    0.00s    0.00s     0.0001s    0.0003s
+  Gen  1         3 colls,     0 par    0.00s    0.00s     0.0003s    0.0004s
 
-  Parallel GC work balance: nan (0 / 0, ideal 1)
-
-                        MUT time (elapsed)       GC time  (elapsed)
-  Task  0 (worker) :    0.00s    (  0.03s)       0.00s    (  0.00s)
-  Task  1 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
-  Task  2 (bound)  :    0.03s    (  0.03s)       0.00s    (  0.00s)
+  TASKS: 3 (1 bound, 2 peak workers (2 total), using -N1)
 
   SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    0.03s  (  0.03s elapsed)
+  MUT     time    0.05s  (  0.05s elapsed)
   GC      time    0.00s  (  0.00s elapsed)
+  RP      time    0.00s  (  0.00s elapsed)
+  PROF    time    0.00s  (  0.00s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    0.03s  (  0.03s elapsed)
+  Total   time    0.06s  (  0.06s elapsed)
 
-  Alloc rate    821,020,800 bytes per MUT second
+  Alloc rate    762,104,405 bytes per MUT second
 
-  Productivity 100.0% of total user, 92.0% of total elapsed
+  Productivity 100.0% of total user, 106.4% of total elapsed
 
 gc_alloc_block_sync: 0
 whitehole_spin: 0

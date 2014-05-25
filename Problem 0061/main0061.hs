@@ -14,40 +14,49 @@ type: triangle, square, pentagonal, hexagonal, heptagonal, and octagonal, is rep
 a different number in the set.
 -}
 
-import           Control.Applicative
 import           Data.List
-import           Data.Maybe
-import           Debug.Trace
 
 -- Import the naive square root function
 squareRoot :: Integer -> Integer
 squareRoot = floor . sqrt . (fromIntegral :: Integer -> Double)
 
 -- Using the concepts in Problem #45, we import a couple is[Figurate] functions
+isTriangular :: Integer -> Bool
+isSquare     :: Integer -> Bool
+isPentagonal :: Integer -> Bool
+isHexagonal  :: Integer -> Bool
 isTriangular n = let d = 1+8*n in isSquare d && (squareRoot d + 1) `mod` 2 == 0
 isSquare n = (squareRoot n) ^ 2 == n
 isPentagonal n = let d = 1+24*n in isSquare d && (squareRoot d + 1) `mod` 6 == 0
 isHexagonal n = let d = 1+8*n in isSquare d && (squareRoot d + 1) `mod` 4 == 0
 
 -- Using the same logic we get the conditions for the Heptagonal and Octagonal numbers below
+isHeptagonal :: Integer -> Bool
+isOctagonal  :: Integer -> Bool
 isHeptagonal n = let d = 9+40*n in isSquare d && (squareRoot d + 3) `mod` 10 == 0
 isOctagonal n = let d = 4+12*n in isSquare d && (squareRoot d + 2) `mod` 6 == 0
 
 -- Wrap our fig type functions in a list
+fnLst :: [Integer -> Bool]
 fnLst = [isTriangular, isSquare, isPentagonal, isHexagonal, isHeptagonal, isOctagonal]
 
 -- Build up our figurate numbers
+figNums :: Int -> [Integer]
+figNumLst :: [[Integer]]
 figNums n = [k | k <- [1000..9999], (fnLst !! n) k]
 figNumLst = [lst | lst <- [figNums n | n <- [0..4]]] -- Octagonal numbers will be left out
 
 -- Build a lst drop function by index
+dropLst :: [[Integer]] -> Int -> [[Integer]]
 dropLst lst n = take n lst ++ drop (n+1) lst
 
 -- Generate a unique cycle of length k with starting number n, and candidate list of lists, lst,
 -- and an initial index, indx
+genCycle :: Int -> Integer -> [[Integer]] -> [Integer]
 genCycle k n lst = genCycle' k n lst 0 where
     genCycle' k' n' lst' indx
-        -- | trace ("genCycle " ++ show k' ++  " " ++ show n' ++ " " ++  show indx ++ " " ++ show filLst) False = undefined
+        -- | trace ("genCycle " ++ show k' ++  " " ++ show n' ++ 
+        -- " " ++  show indx ++ " " ++ show filLst) False = undefined
         | k' == 1 = [n']
         -- Cycle of length 1
         | indx == length lst' = []
@@ -75,7 +84,10 @@ genCycle k n lst = genCycle' k n lst 0 where
             nextSubLst = take indx lst' ++ [(lst' !! indx) \\ [curElem]] ++ drop (indx+1) lst'
             nextMainLst = dropLst lst' indx
 
+-- Print and write out the answer
+main :: IO()
 main = do
-        let ans = sum $ head [cycles | cycles <- [genCycle 6 n figNumLst | n <- figNums 5], not (null cycles)]
+        let ans = sum $ head [cycles | cycles <- [genCycle 6 n figNumLst | n <- figNums 5], 
+                                       not (null cycles)]
         writeFile "pe61.txt" $ show ans
         print ans

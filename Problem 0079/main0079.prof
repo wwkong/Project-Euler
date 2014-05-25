@@ -1,0 +1,42 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0079 +RTS -K512M -sstats0079.hstats -p -RTS
+
+	total time  =        0.01 secs   (8 ticks @ 1000 us, 1 processor)
+	total alloc =     226,252 bytes  (excludes profiling overheads)
+
+COST CENTRE       MODULE           %time %alloc
+
+main              Main              87.5   26.5
+uniqueDigits      Main              12.5   17.1
+main.ans          Main               0.0    2.4
+main.contents     Main               0.0    8.4
+findPass.modLst   Main               0.0    4.5
+findPass.modLst.\ Main               0.0   15.6
+uniqueHeadDigits  Main               0.0    8.5
+CAF               GHC.IO.Handle.FD   0.0   14.9
+
+
+                                                                    individual     inherited
+COST CENTRE            MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                   MAIN                        42           0    0.0    0.8   100.0  100.0
+ main                  Main                        85           0   87.5   26.2   100.0   82.8
+  main.contents        Main                        89           1    0.0    8.4     0.0    8.4
+  main.ans             Main                        86           1    0.0    1.9    12.5   48.2
+   findPass            Main                        90           9    0.0    0.6    12.5   41.3
+    findPass.modLst    Main                        94           7    0.0    4.5     0.0   20.1
+     findPass.modLst.\ Main                        95         231    0.0   15.6     0.0   15.6
+    findPass.curDigit  Main                        91           8    0.0    0.0    12.5   20.7
+     uniqueHeadDigits  Main                        92           8    0.0    8.5    12.5   20.7
+      uniqueDigits     Main                        93           8   12.5   12.2    12.5   12.2
+   uniqueDigits        Main                        88           1    0.0    4.9     0.0    4.9
+ CAF                   GHC.IO.FD                   71           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding.CodePage    70           0    0.0    0.0     0.0    0.0
+ CAF                   Text.Read.Lex               67           0    0.0    0.5     0.0    0.5
+ CAF                   GHC.IO.Encoding             60           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.Conc.Windows            59           0    0.0    0.1     0.0    0.1
+ CAF                   GHC.IO.Handle.FD            53           0    0.0   14.9     0.0   14.9
+ CAF                   Main                        49           0    0.0    0.1     0.0    0.9
+  main                 Main                        84           1    0.0    0.3     0.0    0.8
+   main.ans            Main                        87           0    0.0    0.5     0.0    0.5

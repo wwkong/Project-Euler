@@ -3,7 +3,8 @@
 import           Data.Char
 
 -- Print and write out the answer
+main :: IO()
 main = do
-        let ans = sum $ map digitToInt $ show $ product [1..100]
+        let ans = sum $ map digitToInt $ show $ product ([1..100] :: [Integer])
         writeFile "pe20.txt" $ show ans
         print ans

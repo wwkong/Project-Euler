@@ -1,12 +1,12 @@
-main0009.exe +RTS -K512M -sstats0009.hstats 
-       3,313,464 bytes allocated in the heap
-          21,124 bytes copied during GC
-          51,368 bytes maximum residency (2 sample(s))
-          22,360 bytes maximum slop
+main0009 +RTS -K512M -sstats0009.hstats -p 
+       6,531,852 bytes allocated in the heap
+          30,300 bytes copied during GC
+          52,268 bytes maximum residency (2 sample(s))
+          21,460 bytes maximum slop
                1 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0         5 colls,     0 par    0.00s    0.00s     0.0000s    0.0000s
+  Gen  0        11 colls,     0 par    0.00s    0.00s     0.0000s    0.0000s
   Gen  1         2 colls,     0 par    0.00s    0.00s     0.0001s    0.0002s
 
   TASKS: 3 (1 bound, 2 peak workers (2 total), using -N1)
@@ -14,14 +14,16 @@ main0009.exe +RTS -K512M -sstats0009.hstats
   SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    0.00s  (  0.01s elapsed)
+  MUT     time    0.02s  (  0.01s elapsed)
   GC      time    0.00s  (  0.00s elapsed)
+  RP      time    0.00s  (  0.00s elapsed)
+  PROF    time    0.00s  (  0.00s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    0.00s  (  0.01s elapsed)
+  Total   time    0.02s  (  0.01s elapsed)
 
-  Alloc rate    0 bytes per MUT second
+  Alloc rate    418,038,528 bytes per MUT second
 
-  Productivity 100.0% of total user, 0.0% of total elapsed
+  Productivity 100.0% of total user, 104.9% of total elapsed
 
 gc_alloc_block_sync: 0
 whitehole_spin: 0

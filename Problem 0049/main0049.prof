@@ -1,0 +1,37 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0049 +RTS -K512M -sstats0049.hstats -p -RTS
+
+	total time  =        0.77 secs   (770 ticks @ 1000 us, 1 processor)
+	total alloc = 321,342,892 bytes  (excludes profiling overheads)
+
+COST CENTRE   MODULE  %time %alloc
+
+threeDistinct Main     66.2   73.2
+pPerms        Main     31.6   26.4
+
+
+                                                                   individual     inherited
+COST CENTRE           MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                  MAIN                        43           0    0.1    0.0   100.0  100.0
+ main                 Main                        87           0    0.4    0.0     0.4    0.0
+ CAF                  GHC.IO.FD                   74           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding.CodePage    70           0    0.0    0.0     0.0    0.0
+ CAF                  Text.Read.Lex               68           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding             63           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.Conc.Windows            62           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Handle.FD            55           0    0.0    0.0     0.0    0.0
+ CAF                  Data.Numbers.Primes         51           0    0.5    0.2     0.5    0.2
+ CAF                  Main                        50           0    0.0    0.0    99.0   99.8
+  tLst                Main                        89           1    0.1    0.0    99.0   99.8
+   tLst.\             Main                        97          30    0.1    0.0     0.1    0.0
+   subArith           Main                        92        1061    0.0    0.0    66.9   73.3
+    subArith.elemLst  Main                        95        1061    0.1    0.0     0.6    0.1
+     isArith          Main                        96       28536    0.5    0.1     0.5    0.1
+    subArith.threeLst Main                        93        1061    0.0    0.0    66.2   73.2
+     threeDistinct    Main                        94        1061   66.2   73.2    66.2   73.2
+   pPerms             Main                        90        1061   31.6   26.4    31.8   26.4
+    pPerms.nStr       Main                        91        1061    0.3    0.0     0.3    0.0
+  main                Main                        86           1    0.0    0.0     0.0    0.0
+   main.ans           Main                        88           1    0.0    0.0     0.0    0.0

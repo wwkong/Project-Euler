@@ -1,0 +1,43 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0060 +RTS -K512M -sstats0060.hstats -p -RTS
+
+	total time  =        0.41 secs   (405 ticks @ 1000 us, 1 processor)
+	total alloc = 136,889,248 bytes  (excludes profiling overheads)
+
+COST CENTRE   MODULE    %time %alloc
+
+concatPrime.\ Main       98.0   99.3
+
+
+                                                                individual     inherited
+COST CENTRE        MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN               MAIN                        42           0    0.0    0.0   100.0  100.0
+ main              Main                        85           0    1.0    0.0     1.0    0.0
+ CAF               GHC.IO.FD                   72           0    0.0    0.0     0.0    0.0
+ CAF               GHC.IO.Encoding.CodePage    68           0    0.0    0.0     0.0    0.0
+ CAF               Text.Read.Lex               63           0    0.0    0.0     0.0    0.0
+ CAF               GHC.IO.Encoding             61           0    0.0    0.0     0.0    0.0
+ CAF               GHC.Conc.Windows            60           0    0.0    0.0     0.0    0.0
+ CAF               GHC.IO.Handle.FD            53           0    0.0    0.0     0.0    0.0
+ CAF               Data.Numbers.Primes         50           0    0.2    0.5     0.2    0.5
+ CAF               Main                        49           0    0.0    0.0    98.8   99.4
+  concatPrime      Main                        92           0    0.0    0.0     0.0    0.0
+   concatPrime.\   Main                        93           0    0.0    0.0     0.0    0.0
+  pLst             Main                        88           1    0.0    0.0     0.0    0.0
+  solve            Main                        87           1    0.0    0.0    98.8   99.4
+   solve.p         Main                       100          78    0.0    0.0     0.0    0.0
+    concatPrime    Main                       101          78    0.0    0.0     0.0    0.0
+     concatPrime.\ Main                       102          11    0.0    0.0     0.0    0.0
+   solve.o         Main                        97         823    0.0    0.0     6.4    5.7
+    concatPrime    Main                        98         823    0.0    0.0     6.4    5.7
+     concatPrime.\ Main                        99        1635    6.4    5.7     6.4    5.7
+   solve.n         Main                        94         376    0.2    0.0    72.8   72.4
+    concatPrime    Main                        95         376    0.2    0.0    72.6   72.4
+     concatPrime.\ Main                        96       21845   72.3   72.4    72.3   72.4
+   solve.m         Main                        89           6    0.0    0.0    19.5   21.2
+    concatPrime    Main                        90           6    0.2    0.0    19.5   21.2
+     concatPrime.\ Main                        91        7353   19.3   21.2    19.3   21.2
+  main             Main                        84           1    0.0    0.0     0.0    0.0
+   main.ans        Main                        86           1    0.0    0.0     0.0    0.0

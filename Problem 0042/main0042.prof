@@ -1,0 +1,40 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0042 +RTS -K512M -sstats0042.hstats -p -RTS
+
+	total time  =        0.01 secs   (11 ticks @ 1000 us, 1 processor)
+	total alloc =   2,799,032 bytes  (excludes profiling overheads)
+
+COST CENTRE     MODULE           %time %alloc
+
+main            Main              63.6   13.8
+main.wordData   Main              27.3   56.0
+isTWord.sNum    Main               9.1   19.9
+isTWord         Main               0.0    1.6
+isTWord.discrim Main               0.0    1.8
+squareRoot      Main               0.0    2.3
+fromLetter      Main               0.0    3.1
+CAF             GHC.IO.Handle.FD   0.0    1.2
+
+
+                                                                 individual     inherited
+COST CENTRE         MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                MAIN                        39           0    0.0    0.1   100.0  100.0
+ main               Main                        79           0   63.6   13.8   100.0   98.7
+  main.ans          Main                        82           1    0.0    0.1     9.1   28.8
+   isTWord          Main                        83        1786    0.0    1.6     9.1   28.7
+    isTWord.discrim Main                        86        1786    0.0    1.8     0.0    4.1
+     squareRoot     Main                        88           0    0.0    2.3     0.0    2.3
+    isTWord.sNum    Main                        84        1786    9.1   19.9     9.1   23.0
+     fromLetter     Main                        85       10988    0.0    3.1     0.0    3.1
+  main.wordData     Main                        80           1   27.3   56.0    27.3   56.0
+ CAF                GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Encoding.CodePage    63           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Encoding             55           0    0.0    0.0     0.0    0.0
+ CAF                GHC.Conc.Windows            54           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Handle.FD            49           0    0.0    1.2     0.0    1.2
+ CAF                Main                        46           0    0.0    0.0     0.0    0.0
+  squareRoot        Main                        87           1    0.0    0.0     0.0    0.0
+  main              Main                        78           1    0.0    0.0     0.0    0.0
+   main.wordData    Main                        81           0    0.0    0.0     0.0    0.0

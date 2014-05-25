@@ -1,0 +1,35 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0022 +RTS -K512M -sstats0022.hstats -p -RTS
+
+	total time  =        0.04 secs   (41 ticks @ 1000 us, 1 processor)
+	total alloc =  10,125,248 bytes  (excludes profiling overheads)
+
+COST CENTRE    MODULE  %time %alloc
+
+main           Main     34.1    9.9
+mConvert.\     Main     34.1    6.1
+main.mContents Main     26.8   63.2
+main.ans       Main      2.4    6.5
+mConvert       Main      2.4   13.9
+
+
+                                                               individual     inherited
+COST CENTRE       MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN              MAIN                        37           0    0.0    0.1   100.0  100.0
+ main             Main                        75           0   34.1    9.8   100.0   99.6
+  main.len        Main                        79           1    0.0    0.0     0.0    0.0
+  main.ans        Main                        78           1    2.4    6.5    39.0   26.5
+   mConvert       Main                        80        5163    2.4   13.9    36.6   20.0
+    mConvert.\    Main                        81       30959   34.1    6.1    34.1    6.1
+  main.mContents  Main                        76           1   26.8   63.2    26.8   63.2
+ CAF              GHC.IO.FD                   60           0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.Encoding.CodePage    59           0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.Encoding             53           0    0.0    0.0     0.0    0.0
+ CAF              GHC.Conc.Windows            52           0    0.0    0.0     0.0    0.0
+ CAF              GHC.IO.Handle.FD            47           0    0.0    0.3     0.0    0.3
+ CAF              Main                        44           0    0.0    0.0     0.0    0.0
+  mAlpha          Main                        82           1    0.0    0.0     0.0    0.0
+  main            Main                        74           1    0.0    0.0     0.0    0.0
+   main.mContents Main                        77           0    0.0    0.0     0.0    0.0

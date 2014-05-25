@@ -12,12 +12,16 @@ import qualified Data.Set  as S
 -- given example with a limit of 9876
 
 -- We create a list of these possible numbers
-panGen n = map (read :: String -> Integer) $ (S.toList . S.fromList) [take n s | s <- permutations "123456789", head s == '9']
+panGen :: Int -> [Integer]
+panGen n = map (read :: String -> Integer) $ (S.toList . S.fromList) 
+                                             [take n s | s <- permutations "123456789", head s == '9']
+panNums :: [Integer]
 panNums = [9] ++ (panGen 2) ++ (panGen 3) ++ (panGen 4)
 
 -- For a given number define a function to return 0 if there exists no n to
 -- create a pandigital concatenated product and the pandigital number otherwise
-panCProd n = panCProd' n 1 (show n) where
+panCProd :: Integer -> Integer
+panCProd k = panCProd' k 1 (show k) where
     panCProd' n curPosn panStr
         | totLen > 9 = 0
         | totLen == 9 =
@@ -28,6 +32,7 @@ panCProd n = panCProd' n 1 (show n) where
             nextStr = show $ n * (curPosn + 1)
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = maximum $ map panCProd panNums
         writeFile "pe38.txt" $ show ans

@@ -7,6 +7,7 @@ sumDivs :: Int -> Int
 sumDivs n = sum [xs| xs <- [1..  div n 2], n `mod` xs == 0]
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = sum [xs | xs <- [1..9999], xs == (sumDivs . sumDivs) xs, sumDivs xs /= xs]
         writeFile "pe21.txt" $ show ans

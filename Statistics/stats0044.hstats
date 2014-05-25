@@ -1,32 +1,29 @@
-main0044 +RTS -K512M -sstats0044.hstats (null) 
-     375,976,292 bytes allocated in the heap
-          86,264 bytes copied during GC
-          34,200 bytes maximum residency (1 sample(s))
-          30,432 bytes maximum slop
+main0044 +RTS -K512M -sstats0044.hstats -p 
+     657,945,776 bytes allocated in the heap
+         268,392 bytes copied during GC
+          60,036 bytes maximum residency (2 sample(s))
+          21,440 bytes maximum slop
                1 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0       717 colls,     0 par    0.02s    0.00s     0.0000s    0.0000s
-  Gen  1         1 colls,     0 par    0.00s    0.00s     0.0004s    0.0004s
+  Gen  0      1256 colls,     0 par    0.00s    0.01s     0.0000s    0.0000s
+  Gen  1         2 colls,     0 par    0.00s    0.00s     0.0001s    0.0002s
 
-  Parallel GC work balance: nan (0 / 0, ideal 1)
-
-                        MUT time (elapsed)       GC time  (elapsed)
-  Task  0 (worker) :    0.00s    (  0.47s)       0.00s    (  0.00s)
-  Task  1 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
-  Task  2 (bound)  :    0.45s    (  0.47s)       0.02s    (  0.00s)
+  TASKS: 3 (1 bound, 2 peak workers (2 total), using -N1)
 
   SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    0.45s  (  0.47s elapsed)
-  GC      time    0.02s  (  0.00s elapsed)
-  EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    0.47s  (  0.47s elapsed)
+  MUT     time    0.98s  (  0.99s elapsed)
+  GC      time    0.00s  (  0.01s elapsed)
+  RP      time    0.00s  (  0.00s elapsed)
+  PROF    time    0.00s  (  0.00s elapsed)
+  EXIT    time    0.02s  (  0.00s elapsed)
+  Total   time    1.02s  (  1.00s elapsed)
 
-  Alloc rate    829,740,782 bytes per MUT second
+  Alloc rate    668,389,359 bytes per MUT second
 
-  Productivity  96.7% of total user, 96.3% of total elapsed
+  Productivity 100.0% of total user, 101.9% of total elapsed
 
 gc_alloc_block_sync: 0
 whitehole_spin: 0

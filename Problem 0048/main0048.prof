@@ -1,0 +1,33 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0048 +RTS -K512M -sstats0048.hstats -p -RTS
+
+	total time  =        0.03 secs   (25 ticks @ 1000 us, 1 processor)
+	total alloc =  10,977,840 bytes  (excludes profiling overheads)
+
+COST CENTRE    MODULE                   %time %alloc
+
+mTimes.mTimes' Main                      84.0   98.2
+main           Main                      12.0    0.3
+CAF            GHC.IO.Encoding.CodePage   4.0    0.0
+
+
+                                                                 individual     inherited
+COST CENTRE         MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                MAIN                        38           0    0.0    0.0   100.0  100.0
+ main               Main                        77           0   12.0    0.3    12.0    0.3
+ CAF                GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Encoding.CodePage    61           0    4.0    0.0     4.0    0.0
+ CAF                GHC.IO.Encoding             55           0    0.0    0.0     0.0    0.0
+ CAF                GHC.Conc.Windows            54           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Handle.FD            49           0    0.0    0.3     0.0    0.3
+ CAF                Main                        45           0    0.0    0.0    84.0   99.3
+  mTimes            Main                        83           0    0.0    0.0     0.0    0.0
+   mTimes.mTimes'   Main                        84           0    0.0    0.0     0.0    0.0
+  main              Main                        76           1    0.0    0.0    84.0   99.3
+   main.ans         Main                        78           1    0.0    0.6    84.0   99.3
+    mTimes          Main                        81         900    0.0    0.0    84.0   98.2
+     mTimes.mTimes' Main                        82      450000   84.0   98.2    84.0   98.2
+    main.ans.\      Main                        80         899    0.0    0.0     0.0    0.0
+    mList           Main                        79           1    0.0    0.6     0.0    0.6

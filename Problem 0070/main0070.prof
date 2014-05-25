@@ -1,0 +1,48 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0070 +RTS -K512M -sstats0070.hstats -p -RTS
+
+	total time  =        0.24 secs   (240 ticks @ 1000 us, 1 processor)
+	total alloc = 112,411,732 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE  %time %alloc
+
+perm        Main     77.9   85.3
+prodLst     Main      5.4    3.2
+cLst        Main      5.0    5.2
+phi         Main      3.3    1.3
+phiLst      Main      2.5    2.4
+main        Main      1.7    0.0
+main.ans    Main      1.7    0.0
+main.zipLst Main      1.2    2.2
+
+
+                                                            individual     inherited
+COST CENTRE    MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN           MAIN                        41           0    0.0    0.0   100.0  100.0
+ main          Main                        83           0    1.7    0.0     1.7    0.0
+ CAF           GHC.IO.FD                   71           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Encoding.CodePage    67           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Encoding             61           0    0.0    0.0     0.0    0.0
+ CAF           GHC.Conc.Windows            60           0    0.0    0.0     0.0    0.0
+ CAF           GHC.IO.Handle.FD            52           0    0.0    0.0     0.0    0.0
+ CAF           Data.Numbers.Primes         49           0    0.0    0.0     0.0    0.0
+ CAF           Main                        48           0    0.0    0.0    98.3   99.9
+  intSqrt      Main                        91           1    0.0    0.0     0.0    0.0
+  range        Main                        90           1    0.8    0.3     0.8    0.3
+   intSqrt     Main                        92           0    0.0    0.0     0.0    0.0
+  cLst         Main                        89           1    5.0    5.2     5.4    5.2
+   cLst.\      Main                        93       61009    0.4    0.0     0.4    0.0
+  minPhiN      Main                        85           1    0.0    0.0     0.0    0.0
+  main         Main                        82           1    0.0    0.0    92.1   94.4
+   main.zipLst Main                        87           1    1.2    2.2    12.5    9.1
+    prodLst    Main                        94           1    5.4    3.2     5.4    3.2
+    phiLst     Main                        88           1    2.5    2.4     5.8    3.7
+     phi       Main                        97       60762    3.3    1.3     3.3    1.3
+   main.ans    Main                        84           1    1.7    0.0    79.6   85.3
+    main.ans.\ Main                        98          26    0.0    0.0     0.0    0.0
+    main.ans.\ Main                        95       60762    0.0    0.0    77.9   85.3
+     perm      Main                        96       60762   77.9   85.3    77.9   85.3
+    minPhiN    Main                        86           0    0.0    0.0     0.0    0.0
+     minPhiN.\ Main                        99          13    0.0    0.0     0.0    0.0

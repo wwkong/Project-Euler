@@ -1,0 +1,35 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0055 +RTS -K512M -sstats0055.hstats -p -RTS
+
+	total time  =        0.46 secs   (457 ticks @ 1000 us, 1 processor)
+	total alloc = 198,725,988 bytes  (excludes profiling overheads)
+
+COST CENTRE               MODULE    %time %alloc
+
+isLychrel.isLychrel'.nRev Main       90.6   91.0
+isLychrel.isLychrel'.nStr Main        5.0    5.4
+isLychrel.isLychrel'      Main        3.9    3.4
+
+
+                                                                             individual     inherited
+COST CENTRE                     MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                            MAIN                        40           0    0.0    0.0   100.0  100.0
+ main                           Main                        81           0    0.2    0.0     0.2    0.0
+ CAF                            GHC.Show                    70           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.FD                   68           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Encoding.CodePage    63           0    0.0    0.0     0.0    0.0
+ CAF                            Text.Read.Lex               61           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Encoding             56           0    0.2    0.0     0.2    0.0
+ CAF                            GHC.Conc.Windows            55           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Handle.FD            50           0    0.0    0.0     0.0    0.0
+ CAF                            Main                        47           0    0.0    0.0    99.6  100.0
+  isLychrel.isLychrel'          Main                        87           0    0.0    0.0     0.0    0.0
+   isLychrel.isLychrel'.nRev    Main                        88           0    0.0    0.0     0.0    0.0
+  main                          Main                        80           1    0.0    0.0    99.6  100.0
+   main.ans                     Main                        82           1    0.0    0.2    99.6  100.0
+    isLychrel                   Main                        83        9999    0.0    0.0    99.6   99.8
+     isLychrel.isLychrel'       Main                        84       54271    3.9    3.4    99.6   99.8
+      isLychrel.isLychrel'.nRev Main                        86       44023   90.6   91.0    90.6   91.0
+      isLychrel.isLychrel'.nStr Main                        85       54022    5.0    5.4     5.0    5.4

@@ -20,7 +20,6 @@ Find the least number for which the proportion of bouncy numbers is exactly 99%.
 
 import           Data.List
 import           Data.Ratio
-import           Debug.Trace
 
 -- First time using custom data types!
 data NumType = Increasing | Decreasing | Bouncy deriving (Eq)
@@ -36,12 +35,14 @@ getNumType n
         bigN = reverse smallN
 
 -- For debugging purposes only
+showNumType :: NumType -> String
 showNumType nType = case nType of
     Increasing -> "Increasing"
     Decreasing -> "Decreasing"
     Bouncy -> "Bouncy"
 
 -- Iterate until we pass a threshold
+iterBouncy :: Ratio Integer -> Integer
 iterBouncy limit = iterBouncy' 0 0 1 where
     iterBouncy' a b n
         -- | trace ("a / b = " ++ show a ++ " " ++ show b) False = undefined
@@ -53,6 +54,7 @@ iterBouncy limit = iterBouncy' 0 0 1 where
             nType = getNumType n
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = iterBouncy (99 % 100)
         writeFile "pe112.txt" $ show ans

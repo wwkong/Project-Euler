@@ -1,0 +1,36 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0044 +RTS -K512M -sstats0044.hstats -p -RTS
+
+	total time  =        0.98 secs   (982 ticks @ 1000 us, 1 processor)
+	total alloc = 357,191,532 bytes  (excludes profiling overheads)
+
+COST CENTRE      MODULE  %time %alloc
+
+dPent            Main     36.7   42.0
+squareRoot       Main     20.8   23.7
+upBound          Main     20.1   18.4
+isPentagonal     Main     15.7    5.3
+isPentagonal.det Main      6.5   10.5
+
+
+                                                                  individual     inherited
+COST CENTRE          MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                 MAIN                        38           0    0.0    0.0   100.0  100.0
+ main                Main                        77           0    0.3    0.0     0.3    0.0
+ CAF                 GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                 GHC.IO.Encoding.CodePage    60           0    0.0    0.0     0.0    0.0
+ CAF                 GHC.IO.Encoding             54           0    0.0    0.0     0.0    0.0
+ CAF                 GHC.Conc.Windows            53           0    0.0    0.0     0.0    0.0
+ CAF                 GHC.IO.Handle.FD            48           0    0.0    0.0     0.0    0.0
+ CAF                 Main                        45           0    0.0    0.0    99.7  100.0
+  squareRoot         Main                        83           1    0.0    0.0     0.0    0.0
+  upBound            Main                        79           1   20.1   18.4    99.7  100.0
+   sPent             Main                        85        2035    0.0    0.0     0.0    0.0
+   isPentagonal      Main                        81     2347877   15.7    5.3    43.0   39.5
+    squareRoot       Main                        84           0   20.8   23.7    20.8   23.7
+    isPentagonal.det Main                        82     2347877    6.5   10.5     6.5   10.5
+   dPent             Main                        80     2345843   36.7   42.0    36.7   42.0
+  main               Main                        76           1    0.0    0.0     0.0    0.0
+   main.ans          Main                        78           1    0.0    0.0     0.0    0.0

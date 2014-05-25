@@ -11,9 +11,11 @@ since n and a are discrete, then (n-2)/n < logBase 10 9 ->> n < 2/(1 - logBase 1
 
 -- Define a function to check if a given (a,n) pair generate a "powerful number". That is,
 -- if a^n has n digits
+isPowerful :: Int -> Int -> Bool 
 isPowerful a n = (length . show) (a ^ n) == n
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = length [a^n | a <- [1..9], n <- [1..43], isPowerful a n]
         writeFile "pe63.txt" $ show ans

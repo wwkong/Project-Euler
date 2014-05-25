@@ -1,24 +1,15 @@
 -- How many different ways can one hundred be written as a sum of at least two positive integers?
 
-import           Data.Maybe
-import qualified Data.MemoCombinators as Memo
-import           Debug.Trace
+-- Adapted from: 
+-- http://www.haskell.org/haskellwiki/Euler_problems/71_to_80
 
--- This is pretty much the same as Problem #31 except that we no longer need our dictionary
-
--- Import our function to count the number of ways recursively (memoized)
--- numways' n k is the number of ways to get n with the first k types of numbers
-numWays n = numWays' n (n-1) where
-    numWays' n k
-        -- | trace ("Called with n=" ++ show n ++ ", k=" ++ show k) False = undefined
-        | n == 0 = 1
-        | (k < 1) || (n < 0) = 0
-        | otherwise = (numWays' n (k-1)) + (numWays' (n - k) k)
-            -- The first expr. is the number of ways where we don't use the number k and the second
-            -- is the number of ways in which do use it at least once
+-- Use a partition method to find the sum combinations
+build :: [[Integer]] -> [[Integer]]
+build x = (map sum (zipWith drop [0..] x) ++ [1]) : x
 
 -- Print and write out the answer
+main :: IO()
 main = do
-        let ans = numWays 100
+        let ans = (sum $ head $ iterate build [] !! 100) - 1 :: Integer
         writeFile "pe76.txt" $ show ans
         print ans

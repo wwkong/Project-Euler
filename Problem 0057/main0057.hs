@@ -22,14 +22,17 @@ import           Data.Ratio
 -- rational data type
 
 -- Define a function to find the n-th fractional expansion of sqrt(2)
+sqrtTwoExp :: Int -> Ratio Int
 sqrtTwoExp n = 1 + (sqrtTwoExp' (n-1)) where
     sqrtTwoExp' 0 = 1 % 2
     sqrtTwoExp' k = 1 / (2 + (sqrtTwoExp' (k-1)))
 
 -- Define a function to check if a rational's numerator has more digits than its denominator
+bigNumerator :: Ratio Int -> Bool
 bigNumerator r = (length . show . numerator) r > (length . show . denominator) r
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = length [ns | ns <- [1.. 1000], (bigNumerator . sqrtTwoExp) ns]
         writeFile "pe57.txt" $ show ans

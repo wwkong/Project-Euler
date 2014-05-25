@@ -3,7 +3,8 @@
 import           Data.Char
 
 -- Print and write the
+main :: IO()
 main = do
-        let ans = sum $ map digitToInt $ show (2 ^ 1000)
+        let ans = sum $ map digitToInt $ show (2^1000)
         writeFile "pe16.txt" $ show ans
         print ans

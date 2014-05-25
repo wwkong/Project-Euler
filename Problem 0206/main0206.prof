@@ -1,0 +1,69 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0206 +RTS -K512M -sstats0206.hstats -p -RTS
+
+	total time  =        0.62 secs   (619 ticks @ 1000 us, 1 processor)
+	total alloc = 285,792,736 bytes  (excludes profiling overheads)
+
+COST CENTRE         MODULE    %time %alloc
+
+nextCand.nextNum    Main       50.7   58.5
+nextLex.nextNum     Main       19.5   13.5
+iterFind.sqrLst     Main        9.9   11.5
+sigDigits           Main        4.5    4.4
+iterFind            Main        3.1    0.1
+nextCand.maskLen    Main        2.4    1.8
+iterFind.next       Main        1.9    0.3
+nextCand.nextNumLst Main        1.9    4.4
+insigDigits         Main        1.5    1.4
+nextLex.mainLst     Main        0.8    1.3
+
+
+                                                                           individual     inherited
+COST CENTRE                   MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                          MAIN                        41           0    0.2    0.0   100.0  100.0
+ main                         Main                        83           0    0.5    0.0     0.5    0.0
+ CAF                          GHC.IO.FD                   71           0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Encoding.CodePage    66           0    0.2    0.0     0.2    0.0
+ CAF                          Text.Read.Lex               64           0    0.0    0.0     0.0    0.0
+ CAF                          GHC.Show                    61           0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Encoding             58           0    0.0    0.0     0.0    0.0
+ CAF                          GHC.Conc.Windows            57           0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Handle.FD            51           0    0.0    0.0     0.0    0.0
+ CAF                          Main                        48           0    0.0    0.0    99.2  100.0
+  insigDigits                 Main                       107           0    0.0    0.0     0.0    0.0
+  iterFind                    Main                        90           0    0.0    0.0     0.0    0.0
+   iterFind.next              Main                        95           0    0.0    0.0     0.0    0.0
+    nextCand                  Main                        96           0    0.0    0.0     0.0    0.0
+     nextCand.preInsigs       Main                       113           0    0.0    0.0     0.0    0.0
+      nextLex                 Main                       114           0    0.0    0.0     0.0    0.0
+       nextLex.nextNum        Main                       115           0    0.0    0.0     0.0    0.0
+     nextCand.maskLen         Main                       103           0    0.0    0.0     0.0    0.0
+     nextCand.nextNumLst      Main                        99           0    0.0    0.0     0.0    0.0
+     nextCand.nextNum         Main                        97           0    0.0    0.0     0.0    0.0
+  sigDigits                   Main                        89           0    0.0    0.0     0.0    0.0
+  maxB                        Main                        87           1    0.0    0.0     0.0    0.0
+  minB                        Main                        86           1    0.0    0.0     0.0    0.0
+  main                        Main                        82           1    0.0    0.0    99.2  100.0
+   main.ans                   Main                        84           1    0.0    0.0    99.2  100.0
+    iterFind                  Main                        85       18420    3.1    0.1    99.2  100.0
+     iterFind.next            Main                        92       18419    1.9    0.3    84.8   86.8
+      nextCand                Main                        93       18419    0.5    0.3    82.9   86.4
+       nextCand.postInsigs    Main                       110       18419    0.6    0.7     0.6    0.7
+       nextCand.newInsigs     Main                       108       18419    0.8    0.8     0.8    0.8
+       nextCand.preInsigs     Main                       105       18419    0.6    0.9    22.8   17.2
+        nextLex               Main                       111       12113    0.3    0.0    20.7   14.9
+         nextLex.padding      Main                       117       12113    0.0    0.0     0.0    0.0
+         nextLex.mainLst      Main                       116       12113    0.8    1.3     0.8    1.3
+         nextLex.nextNum      Main                       112       12113   19.5   13.5    19.5   13.5
+        insigDigits           Main                       106       18419    1.5    1.4     1.5    1.4
+       nextCand.postSigs      Main                       104       18419    0.0    0.0     0.0    0.0
+       nextCand.maskLen       Main                       102       18419    2.4    1.8     2.4    1.8
+       nextCand.sigs          Main                       100       18419    0.0    0.0     3.1    2.9
+        sigDigits             Main                       101       18419    3.1    2.9     3.1    2.9
+       nextCand.nextNumLst    Main                        98       18419    1.9    4.4     1.9    4.4
+        nextCand.nextNumLst.\ Main                       109      165771    0.0    0.0     0.0    0.0
+       nextCand.nextNum       Main                        94       18419   50.7   58.5    50.7   58.5
+     iterFind.sqrLst          Main                        91       18420    9.9   11.5     9.9   11.5
+     sigDigits                Main                        88       18420    1.5    1.5     1.5    1.5

@@ -1,0 +1,61 @@
+{-
+The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes
+and concatenating them in any order the result will always be prime. For example,
+taking 7 and 109, both 7109 and 1097 are prime. The sum of these four primes, 792,
+represents the lowest sum for a set of four primes with this property.
+
+Find the lowest sum for a set of five primes for which any two primes concatenate
+to produce another prime.
+-}
+
+-- Custom memoization inspired by this post: 
+-- http://stackoverflow.com/questions/3208258/memoization-in-haskell
+
+import qualified Data.MemoCombinators as Memo
+import           Data.Numbers.Primes
+
+-- Define an upper bound (take a guess)
+upBound :: Int
+upBound = 10000
+
+-- Create a function to determine is two primes can be concatenated in any order
+-- to produce another prime (added memoization)
+concatPrime :: Int -> Int -> Bool
+concatPrime = Memo.memo2 Memo.integral Memo.integral cp 
+                where 
+                    cp m n = (isPrime (read $ shows m (show n) :: Int)) && 
+                             (isPrime (read $ shows n (show m) :: Int))
+
+-- Given a list, find a list of primes that produce the next group of
+-- concatenable primes using the max of the list as a lower bound and
+-- upBound as the upper bound
+nextCPrimes :: [Int] -> [Int]
+nextCPrimes cLst =  [next | next <- filter (> biggest) (takeWhile (< upBound) primes), 
+                            all (==True) (map parse $ [[next,cs] | cs <- cLst])]
+                    where 
+                        biggest     = maximum cLst
+                        parse [a,b] = if a<b then concatPrime a b else concatPrime b a
+
+
+-- Define a function that takes in a generating number and group length and
+-- returns all groups that are composed of concatenable primes
+genCPrimes :: Int -> Int -> [[Int]]
+genCPrimes n len = filter (/=[]) [genCPrimes' n len [k] [n] | k <- nextCPrimes [n]] 
+    where
+        genCPrimes' n' len' lst' ret'
+            | len' == 1 = [n']
+            | null lst' = []
+            | len' > 1 + (length nextIter) = genCPrimes' n' len' (tail lst') ret'
+            | otherwise = [n'] ++ nextIter
+            where
+                nextLst = nextCPrimes ([head lst'] ++ ret')
+                nextElem = head lst'
+                nextIter = genCPrimes' nextElem (len'-1) nextLst (ret' ++ [nextElem])
+
+-- Print and write out the answer
+main :: IO()
+main = do -- We guess that it is the first entry
+        let ans = head $ (map sum . concat) -- Clearly 2 and 5 are not candidates
+                         [genCPrimes k 5 | k <- filter (\n -> n/=2 && n/=5) primes]  
+        writeFile "pe60.txt" $ show ans
+        print ans

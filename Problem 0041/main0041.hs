@@ -10,9 +10,11 @@ import           Data.List
 import           Data.Numbers.Primes
 
 -- Create all possible 7 digit pandigital numbers in descending order
+pdNums ::  [Integer]
 pdNums = (reverse . sort) $ (map (read :: String -> Integer)) $ permutations "1234567"
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = head [ n | n <- pdNums, isPrime n ]
         writeFile "pe41.txt" $ show ans

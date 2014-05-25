@@ -1,0 +1,43 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0092 +RTS -K512M -sstats0092.hstats -p -RTS
+
+	total time  =        0.05 secs   (51 ticks @ 1000 us, 1 processor)
+	total alloc =  30,472,336 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE  %time %alloc
+
+sumSquares  Main     33.3   41.9
+multCoeff   Main     29.4   27.1
+baseNums    Main     11.8   11.7
+lastNum     Main      7.8    4.0
+main        Main      5.9    0.1
+lastNum.n   Main      5.9   14.0
+lastNum.\   Main      3.9    0.0
+main.nums   Main      2.0    1.2
+
+
+                                                             individual     inherited
+COST CENTRE     MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN            MAIN                        39           0    0.0    0.0   100.0  100.0
+ main           Main                        79           0    5.9    0.1     5.9    0.1
+ CAF            GHC.IO.FD                   67           0    0.0    0.0     0.0    0.0
+ CAF            GHC.IO.Encoding.CodePage    64           0    0.0    0.0     0.0    0.0
+ CAF            GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF            GHC.Conc.Windows            56           0    0.0    0.0     0.0    0.0
+ CAF            GHC.IO.Handle.FD            50           0    0.0    0.1     0.0    0.1
+ CAF            Main                        46           0    0.0    0.0    94.1   99.8
+  facts         Main                        91           1    0.0    0.0     0.0    0.0
+  squares       Main                        88           1    0.0    0.0     0.0    0.0
+  sumSquares    Main                        86           1    0.0    0.0     0.0    0.0
+  main          Main                        78           1    0.0    0.0    94.1   99.8
+   main.nums    Main                        81           1    2.0    1.2    94.1   99.8
+    multCoeff   Main                        89        9814   29.4   27.1    29.4   27.1
+     factorial  Main                        90       42988    0.0    0.0     0.0    0.0
+    lastNum     Main                        83       11439    7.8    4.0    51.0   59.8
+     sumSquares Main                        87           0   33.3   41.9    33.3   41.9
+     lastNum.n  Main                        85       11439    5.9   14.0     5.9   14.0
+     lastNum.\  Main                        84       78919    3.9    0.0     3.9    0.0
+    baseNums    Main                        82        8008   11.8   11.7    11.8   11.7
+   main.ans     Main                        80           1    0.0    0.0     0.0    0.0

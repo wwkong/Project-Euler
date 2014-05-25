@@ -37,6 +37,7 @@ crossDiagSum n
         cn = 3*((n-2)-1) + ((lastSum - 6*((n-2)-1)) `div` 4) + (n-1)
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = sum $ map crossDiagSum $ filter odd [1..1001]
         writeFile "pe28.txt" $ show ans

@@ -1,0 +1,44 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0043 +RTS -K512M -sstats0043.hstats -p -RTS
+
+	total time  =        0.02 secs   (19 ticks @ 1000 us, 1 processor)
+	total alloc =   5,516,036 bytes  (excludes profiling overheads)
+
+COST CENTRE             MODULE    %time %alloc
+
+nextPanNums.nextPanFn.\ Main       47.4   59.6
+panNums.subPanNums.\    Main       31.6   33.3
+main                    Main       21.1    0.7
+choose                  Main        0.0    3.9
+
+
+                                                                             individual     inherited
+COST CENTRE                     MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                            MAIN                        41           0    0.0    0.0   100.0  100.0
+ main                           Main                        83           0   21.1    0.7    21.1    0.7
+ CAF                            GHC.Show                    72           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.FD                   70           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Encoding.CodePage    67           0    0.0    0.0     0.0    0.0
+ CAF                            Text.Read.Lex               61           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Encoding             59           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.Conc.Windows            58           0    0.0    0.0     0.0    0.0
+ CAF                            GHC.IO.Handle.FD            53           0    0.0    0.6     0.0    0.6
+ CAF                            Main                        48           0    0.0    0.0    78.9   98.7
+  panNums.subPanNums.\          Main                        94           0    0.0    0.0     0.0    0.0
+  nextPanNums                   Main                        88           0    0.0    0.0     0.0    0.0
+   nextPanNums.nextPanFn        Main                        96           0    0.0    0.0     0.0    0.0
+    nextPanNums.nextPanFn.\     Main                        97           0    0.0    0.0     0.0    0.0
+  main                          Main                        82           1    0.0    0.0    78.9   98.6
+   main.ans                     Main                        84           1    0.0    0.5    78.9   98.6
+    panNums                     Main                        85           1    0.0    0.0    78.9   98.1
+     panNums.subPanNums         Main                        90           1    0.0    0.0    31.6   37.5
+      panNums.subPanNums.\      Main                        93         720   31.6   33.3    31.6   33.3
+      choose                    Main                        91           1    0.0    3.9     0.0    4.2
+       choose.choose'           Main                        92         351    0.0    0.3     0.0    0.3
+     panNums.getNums            Main                        86           1    0.0    0.0    47.4   60.6
+      nextPanNums               Main                        87           7    0.0    0.1    47.4   60.6
+       nextPanNums.nextPanFn    Main                        89          70    0.0    0.9    47.4   60.5
+        nextPanNums.nextPanFn.\ Main                        98          84    0.0    0.1     0.0    0.1
+        nextPanNums.nextPanFn.\ Main                        95        1220   47.4   59.5    47.4   59.5

@@ -11,14 +11,14 @@ d1 * d10 * d100 * d1000 * d10000 * d100000 * d1000000
 -}
 
 import           Data.Char
-import           Data.List
 
 -- Create a function to find the n-th digit of Champernowne's constant
 champ :: Int -> Int
-champ n = digitToInt $ champStr !! n where
-    champStr = concatMap show [n | n <- [0..]]
+champ k = digitToInt $ champStr !! k where
+    champStr = concatMap show [n | n <- [0..] :: [Integer]]
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans =
                 champ 1 * champ 10 * champ (10^2) *

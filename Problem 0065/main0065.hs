@@ -14,7 +14,6 @@ Find the sum of digits in the numerator of the 100th convergent of the continued
 -}
 
 import           Data.Char
-import           Data.List
 import           Data.Ratio
 
 -- Generate the tail sequence for the continued fraction representation of e
@@ -24,6 +23,7 @@ tailESeq = 1 : (concat $ map (\n -> [n,1,1]) [2*1,2*2..])
 -- Import our function from Problem #57 and modify it a little bit
 
 -- Define a function to find the n-th fractional expansion of e
+sqrtEExp :: Int -> Ratio Integer
 sqrtEExp n = 2 + sqrtEExp' 1 where
     sqrtEExp' :: Int -> Ratio Integer
     sqrtEExp' k
@@ -32,6 +32,7 @@ sqrtEExp n = 2 + sqrtEExp' 1 where
         | otherwise = 1 / (tailESeq !! (k-1) + sqrtEExp' (k+1))
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = (sum . (map digitToInt) . show) (numerator $ sqrtEExp 100)
         writeFile "pe65.txt" $ show ans

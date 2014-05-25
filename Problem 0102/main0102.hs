@@ -26,7 +26,7 @@ data Line = Line Point Point deriving (Show)
 
 -- Create a function to determine is a triangle is rightside-up, upside-down, or neither
 triangleType :: Triangle -> String
-triangleType (Triangle (Point a1 a2) (Point b1 b2) (Point c1 c2))
+triangleType (Triangle (Point _ a2) (Point _ b2) (Point _ c2))
     | (length $ filter (<0) ys) == 2 = "Rightside-up"
     | (length $ filter (>=0) ys) == 2 = "Upside-down"
     | otherwise = "Neither"
@@ -37,7 +37,7 @@ xIntercept :: Line -> Float
 xIntercept (Line (Point x0 y0) (Point x1 y1)) = (-y0) * (x1-x0)/(y1-y0) + x0
 
 -- Create a function that takes in a triangle and determines if it contains 0
--- containsZero :: Triangle -> Bool
+hasZero :: Triangle -> Bool
 hasZero t@(Triangle (Point a1 a2) (Point b1 b2) (Point c1 c2))
     | triangleType t == "Neither" = False
     | parity <= 0 = True
@@ -55,13 +55,17 @@ hasZero t@(Triangle (Point a1 a2) (Point b1 b2) (Point c1 c2))
         parity = inter1 * inter2
 
 -- Some test cases
+test1 :: Bool
+test2 :: Bool
 test1 = hasZero (Triangle (Point (-340) 495) (Point (-153) (-910)) (Point 835 (-947)))
 test2 = hasZero (Triangle (Point (-175) 41) (Point (-421) (-714)) (Point 574 (-645)))
 
 -- Create a function that takes in a list of 6 floats and returns a triangle
-toTri posns@[a1,a2,b1,b2,c1,c2] =  Triangle (Point a1 a2) (Point b1 b2) (Point c1 c2)
+toTri :: [Float] -> Triangle
+toTri [a1,a2,b1,b2,c1,c2] =  Triangle (Point a1 a2) (Point b1 b2) (Point c1 c2)
 
 -- Print and write out the answer
+main :: IO()
 main = do
         rawContents <- fmap lines $ readFile "triangles.txt"
         let contents = map (read . ('[' :) . (++ "]")) rawContents :: [[Float]]

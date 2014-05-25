@@ -6,20 +6,18 @@ To begin, first note that the multiplicand and multiplier, together, must be of 
 (this can be checked with the number 12345 or 9876 and placing a * as a partition)
 -}
 
-import           Control.Applicative
-import           Control.Monad
-import           Data.Char
 import           Data.List
 import qualified Data.Set            as S
 
 -- Create a function to generate the ordered powerset of a list of elementh size 4 or 5
+mmNums :: [String]
 mmNums = let permNums n = ((S.toList . S.fromList) $ map (take n) $ permutations "123456789") in
         (permNums 4) ++ (permNums 5)
 
 -- Check if a concatenated multiplicand and multiplier pair can produce a pandigital expression
 -- and produce the product
 getPanProd :: String -> Integer
-getPanProd nStr = getPanProd' nStr 1 where
+getPanProd str = getPanProd' str 1 where
     getPanProd' nStr posn
         | posn == len = 0
         | sort (nStr ++ mProd) == "123456789" = read mProd :: Integer
@@ -30,9 +28,11 @@ getPanProd nStr = getPanProd' nStr 1 where
             len = length nStr
 
 -- Get all unique products
+ansProds :: [Integer]
 ansProds = (S.toList . S.fromList) $ map getPanProd mmNums
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = sum ansProds
         writeFile "pe32.txt" $ show ans

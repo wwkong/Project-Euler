@@ -1,0 +1,43 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0381 +RTS -K512M -sstats0381.hstats -p -RTS
+
+	total time  =        3.66 secs   (3657 ticks @ 1000 us, 1 processor)
+	total alloc = 2,077,277,568 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE                                      %time %alloc
+
+main.nums   Main                                         33.6   44.4
+main.ans    Main                                         22.9   18.8
+primes      Math.NumberTheory.Primes.Sieve.Eratosthenes  20.0   25.5
+s           Main                                         13.9   11.1
+psieveList  Math.NumberTheory.Primes.Sieve.Eratosthenes   9.4    0.2
+
+
+                                                                                      individual     inherited
+COST CENTRE           MODULE                                        no.     entries  %time %alloc   %time %alloc
+
+MAIN                  MAIN                                           45           0    0.0    0.0   100.0  100.0
+ main                 Main                                           91           0    0.1    0.0     0.1    0.0
+ CAF                  GHC.Show                                       79           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.FD                                      77           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding.CodePage                       73           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding                                68           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.Conc.Windows                               67           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Handle.FD                               61           0    0.0    0.0     0.0    0.0
+ CAF                  Math.NumberTheory.Utils                        57           0    0.0    0.0     0.0    0.0
+  bitCountWord        Math.NumberTheory.Utils                       102           1    0.0    0.0     0.0    0.0
+ CAF                  Math.NumberTheory.Primes.Sieve.Indexing        55           0    0.0    0.0     0.0    0.0
+ CAF                  Math.NumberTheory.Primes.Sieve.Eratosthenes    54           0    0.0    0.0    29.4   25.7
+  sieveBits           Math.NumberTheory.Primes.Sieve.Eratosthenes   101           1    0.0    0.0     0.0    0.0
+  sieveBytes          Math.NumberTheory.Primes.Sieve.Eratosthenes    98           1    0.0    0.0     0.0    0.0
+  sieveRange          Math.NumberTheory.Primes.Sieve.Eratosthenes    97           1    0.0    0.0     0.0    0.0
+  psieveList          Math.NumberTheory.Primes.Sieve.Eratosthenes    96           1    9.4    0.2     9.4    0.2
+   sieveTo            Math.NumberTheory.Primes.Sieve.Eratosthenes    99           3    0.0    0.0     0.0    0.0
+    integerSquareRoot Math.NumberTheory.Powers.Squares              100           3    0.0    0.0     0.0    0.0
+  primes              Math.NumberTheory.Primes.Sieve.Eratosthenes    94           1   20.0   25.5    20.0   25.5
+ CAF                  Main                                           52           0    0.0    0.0    70.5   74.2
+  main                Main                                           90           1    0.0    0.0    70.5   74.2
+   main.nums          Main                                           93           1   33.6   44.4    47.6   55.5
+    s                 Main                                           95     5761453   13.9   11.1    13.9   11.1
+   main.ans           Main                                           92           1   22.9   18.8    22.9   18.8

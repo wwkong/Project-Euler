@@ -1,0 +1,34 @@
+	Sun May 25 18:27 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0003.exe +RTS -K512M -sstats0003.hstats -p -RTS
+
+	total time  =        0.00 secs   (4 ticks @ 1000 us, 1 processor)
+	total alloc =     607,744 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE              %time %alloc
+
+main        Main                 50.0    5.9
+CAF         Data.Numbers.Primes  50.0   80.4
+MAIN        MAIN                  0.0    1.3
+minPFactor  Main                  0.0    6.7
+CAF         GHC.IO.Handle.FD      0.0    5.5
+
+
+                                                                            individual     inherited
+COST CENTRE                    MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                           MAIN                        39           0    0.0    1.3   100.0  100.0
+ main                          Main                        79           0   25.0    5.9    25.0    5.9
+ CAF                           GHC.IO.FD                   66           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.IO.Encoding.CodePage    63           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.Conc.Windows            56           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.IO.Handle.FD            51           0    0.0    5.5     0.0    5.5
+ CAF                           Data.Numbers.Primes         47           0   50.0   80.4    50.0   80.4
+ CAF                           Main                        46           0    0.0    0.0    25.0    6.9
+  main                         Main                        78           1   25.0    0.1    25.0    6.8
+   main.ans                    Main                        80           1    0.0    0.0     0.0    6.8
+    maxPFactor                 Main                        81           1    0.0    0.0     0.0    6.8
+     maxPFactor.maxPFactor'    Main                        82           5    0.0    0.0     0.0    6.8
+      maxPFactor.maxPFactor'.m Main                        83           4    0.0    0.0     0.0    6.7
+       minPFactor              Main                        84           4    0.0    6.7     0.0    6.7

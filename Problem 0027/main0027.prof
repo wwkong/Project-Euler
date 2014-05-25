@@ -1,0 +1,32 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0027 +RTS -K512M -sstats0027.hstats -p -RTS
+
+	total time  =        1.10 secs   (1103 ticks @ 1000 us, 1 processor)
+	total alloc = 893,454,208 bytes  (excludes profiling overheads)
+
+COST CENTRE         MODULE  %time %alloc
+
+primeChain          Main     59.1   49.8
+main.ans            Main     22.8   17.9
+main.primeChainTups Main     16.6   32.3
+tupMax              Main      1.2    0.0
+
+
+                                                                    individual     inherited
+COST CENTRE            MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                   MAIN                        39           0    0.0    0.0   100.0  100.0
+ main                  Main                        79           0    0.4    0.0     0.4    0.0
+ CAF                   GHC.IO.FD                   66           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding.CodePage    62           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.Conc.Windows            56           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Handle.FD            50           0    0.0    0.0     0.0    0.0
+ CAF                   Data.Numbers.Primes         47           0    0.0    0.0     0.0    0.0
+ CAF                   Main                        46           0    0.0    0.0    99.6  100.0
+  main                 Main                        78           1    0.0    0.0    99.6  100.0
+   main.primeChainTups Main                        81           1   16.6   32.3    75.7   82.1
+    primeChain         Main                        82     4004001   59.1   49.8    59.1   49.8
+   main.ans            Main                        80           1   22.8   17.9    23.9   17.9
+    tupMax             Main                        83     4004000    1.2    0.0     1.2    0.0

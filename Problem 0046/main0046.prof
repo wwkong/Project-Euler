@@ -1,0 +1,36 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0046 +RTS -K512M -sstats0046.hstats -p -RTS
+
+	total time  =        0.04 secs   (35 ticks @ 1000 us, 1 processor)
+	total alloc =  11,294,352 bytes  (excludes profiling overheads)
+
+COST CENTRE                        MODULE              %time %alloc
+
+squareRoot                         Main                 37.1   56.1
+weakGoldbach.weakGoldbach'         Main                 25.7   12.5
+weakGoldbach.weakGoldbach'.pSquare Main                 22.9   24.9
+main                               Main                  5.7    0.3
+main.ans                           Main                  5.7    2.2
+CAF                                Data.Numbers.Primes   2.9    3.7
+
+
+                                                                                      individual     inherited
+COST CENTRE                              MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                     MAIN                        39           0    0.0    0.0   100.0  100.0
+ main                                    Main                        79           0    5.7    0.3     5.7    0.3
+ CAF                                     GHC.IO.FD                   66           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.IO.Encoding.CodePage    62           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.IO.Encoding             57           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.Conc.Windows            56           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.IO.Handle.FD            50           0    0.0    0.3     0.0    0.3
+ CAF                                     Data.Numbers.Primes         47           0    2.9    3.7     2.9    3.7
+ CAF                                     Main                        46           0    0.0    0.0    91.4   95.7
+  squareRoot                             Main                        84           1    0.0    0.0     0.0    0.0
+  main                                   Main                        78           1    0.0    0.0    91.4   95.7
+   main.ans                              Main                        80           1    5.7    2.2    91.4   95.7
+    weakGoldbach                         Main                        81        2873    0.0    0.0    85.7   93.4
+     weakGoldbach.weakGoldbach'          Main                        82      175865   25.7   12.5    85.7   93.4
+      squareRoot                         Main                        85           0   37.1   56.1    37.1   56.1
+      weakGoldbach.weakGoldbach'.pSquare Main                        83      175864   22.9   24.9    22.9   24.9

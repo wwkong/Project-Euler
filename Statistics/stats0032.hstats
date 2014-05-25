@@ -1,32 +1,29 @@
-main0032 +RTS -K512M -sstats0032.hstats (null) 
-     772,453,472 bytes allocated in the heap
-     145,669,124 bytes copied during GC
-      26,268,280 bytes maximum residency (8 sample(s))
-         567,556 bytes maximum slop
-              64 MB total memory in use (0 MB lost due to fragmentation)
+main0032 +RTS -K512M -sstats0032.hstats -p 
+   1,275,525,392 bytes allocated in the heap
+     243,922,048 bytes copied during GC
+      35,542,472 bytes maximum residency (10 sample(s))
+       1,358,336 bytes maximum slop
+             103 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0      1470 colls,     0 par    0.23s    0.24s     0.0002s    0.0016s
-  Gen  1         8 colls,     0 par    0.16s    0.15s     0.0189s    0.0525s
+  Gen  0      2436 colls,     0 par    0.25s    0.27s     0.0001s    0.0005s
+  Gen  1        10 colls,     0 par    0.14s    0.19s     0.0185s    0.0538s
 
-  Parallel GC work balance: nan (0 / 0, ideal 1)
-
-                        MUT time (elapsed)       GC time  (elapsed)
-  Task  0 (worker) :    0.00s    (  1.59s)       0.00s    (  0.00s)
-  Task  1 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
-  Task  2 (bound)  :    1.19s    (  1.20s)       0.39s    (  0.40s)
+  TASKS: 3 (1 bound, 2 peak workers (2 total), using -N1)
 
   SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    1.19s  (  1.20s elapsed)
-  GC      time    0.39s  (  0.40s elapsed)
-  EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    1.58s  (  1.59s elapsed)
+  MUT     time    2.77s  (  2.71s elapsed)
+  GC      time    0.39s  (  0.46s elapsed)
+  RP      time    0.00s  (  0.00s elapsed)
+  PROF    time    0.00s  (  0.00s elapsed)
+  EXIT    time    0.00s  (  0.02s elapsed)
+  Total   time    3.16s  (  3.19s elapsed)
 
-  Alloc rate    650,487,134 bytes per MUT second
+  Alloc rate    461,206,921 bytes per MUT second
 
-  Productivity  75.2% of total user, 74.5% of total elapsed
+  Productivity  87.6% of total user, 86.7% of total elapsed
 
 gc_alloc_block_sync: 0
 whitehole_spin: 0

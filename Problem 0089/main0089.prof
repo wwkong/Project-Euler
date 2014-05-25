@@ -1,0 +1,43 @@
+	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0089 +RTS -K512M -sstats0089.hstats -p -RTS
+
+	total time  =        0.01 secs   (14 ticks @ 1000 us, 1 processor)
+	total alloc =   3,152,236 bytes  (excludes profiling overheads)
+
+COST CENTRE        MODULE           %time %alloc
+
+main               Main              71.4   28.1
+romToNum.romToNum' Main              28.6   38.8
+main.ans           Main               0.0    1.6
+numToRom           Main               0.0   17.1
+romSeeder          Main               0.0   12.4
+CAF                GHC.IO.Handle.FD   0.0    1.1
+
+
+                                                                               individual     inherited
+COST CENTRE                       MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                              MAIN                        38           0    0.0    0.1   100.0  100.0
+ main                             Main                        77           0   71.4   28.1   100.0   98.7
+  main.ans                        Main                        78           1    0.0    1.6    28.6   70.6
+   savedChars                     Main                        79        1000    0.0    0.4    28.6   69.0
+    romToNum                      Main                        85        1000    0.0    0.3    28.6   39.1
+     romToNum.romToNum'           Main                        86       22264   28.6   38.8    28.6   38.8
+      romToNum.romToNum'.headNum  Main                        88        8557    0.0    0.0     0.0    0.0
+      romToNum.romToNum'.headChar Main                        87       21264    0.0    0.0     0.0    0.0
+    numToRom                      Main                        80        1000    0.0   17.1     0.0   29.5
+     romSeeder                    Main                        81       21516    0.0   12.4     0.0   12.4
+      romSeeder.headStr           Main                        91        7516    0.0    0.0     0.0    0.0
+      romSeeder.headNum           Main                        89       20516    0.0    0.0     0.0    0.0
+ CAF                              GHC.IO.FD                   62           0    0.0    0.0     0.0    0.0
+ CAF                              GHC.IO.Encoding.CodePage    61           0    0.0    0.0     0.0    0.0
+ CAF                              GHC.IO.Encoding             54           0    0.0    0.0     0.0    0.0
+ CAF                              GHC.Conc.Windows            53           0    0.0    0.0     0.0    0.0
+ CAF                              GHC.IO.Handle.FD            48           0    0.0    1.1     0.0    1.1
+ CAF                              Main                        45           0    0.0    0.0     0.0    0.1
+  romDict                         Main                        83           1    0.0    0.0     0.0    0.0
+   romDict.\                      Main                        84          24    0.0    0.0     0.0    0.0
+  revRomDict                      Main                        82           1    0.0    0.0     0.0    0.0
+   revRomDict.\                   Main                        90          13    0.0    0.0     0.0    0.0
+  main                            Main                        76           1    0.0    0.0     0.0    0.0

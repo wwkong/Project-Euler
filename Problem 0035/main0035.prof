@@ -1,0 +1,39 @@
+	Sun May 25 18:29 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0035 +RTS -K512M -sstats0035.hstats -p -RTS
+
+	total time  =        3.90 secs   (3896 ticks @ 1000 us, 1 processor)
+	total alloc = 1,252,649,164 bytes  (excludes profiling overheads)
+
+COST CENTRE                   MODULE               %time %alloc
+
+isCircular.isCircular'.next   Main                  39.2   44.4
+isCircular.isCircular'        Main                  26.9   24.2
+isCircular                    Main                  21.8   19.2
+CAF                           Data.Numbers.Primes    7.2    6.6
+CAF                           Data.MemoCombinators   3.7    3.9
+isCircular.isCircular'.curStr Main                   1.0    1.6
+
+
+                                                                                 individual     inherited
+COST CENTRE                         MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                MAIN                        47           0    0.0    0.0   100.0  100.0
+ main                               Main                        95           0    0.1    0.0     0.1    0.0
+ CAF                                GHC.IO.FD                   82           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Encoding.CodePage    78           0    0.0    0.0     0.0    0.0
+ CAF                                Text.Read.Lex               75           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Encoding             70           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.Conc.Windows            69           0    0.0    0.0     0.0    0.0
+ CAF                                GHC.IO.Handle.FD            60           0    0.0    0.0     0.0    0.0
+ CAF                                Data.MemoCombinators        56           0    3.7    3.9     3.7    3.9
+ CAF                                Data.Numbers.Primes         55           0    7.2    6.6     7.2    6.6
+ CAF                                Main                        54           0    0.0    0.0    89.1   89.5
+  isCircular.isCircular'            Main                       101           0    0.0    0.0     0.0    0.0
+   isCircular.isCircular'.next      Main                       102           0    0.0    0.0     0.0    0.0
+  main                              Main                        94           1    0.0    0.0    89.1   89.5
+   main.ans                         Main                        96           1    0.2    0.2    89.1   89.5
+    isCircular                      Main                        97       78498   21.8   19.2    88.9   89.3
+     isCircular.isCircular'         Main                        98      240929   26.9   24.2    67.1   70.2
+      isCircular.isCircular'.next   Main                       100      162602   39.2   44.4    39.2   44.4
+      isCircular.isCircular'.curStr Main                        99      171973    1.0    1.6     1.0    1.6

@@ -74,7 +74,10 @@ rm(p)
 Sys.sleep(1)
 
 # Export plot to pdf
-ggsave(paste("peComparisons",Sys.Date(),".pdf") , width=12, height=8, dpi=100)
+ggsave(paste("PDF\\peComparisons",Sys.Date(),".pdf") , width=12, height=8, dpi=100)
+
+# Export plot to jpeg
+ggsave(paste("JPEG\\peComparisons",Sys.Date(),".jpeg") , width=12, height=8, dpi=100)
 
 # Patch the data with today's date
 peData$Date = Sys.Date()

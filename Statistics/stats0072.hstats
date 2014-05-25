@@ -1,32 +1,29 @@
-main0072 +RTS -K512M -sstats0072.hstats (null) 
-     881,725,516 bytes allocated in the heap
-       2,332,216 bytes copied during GC
-       2,027,744 bytes maximum residency (3 sample(s))
-         268,788 bytes maximum slop
+main0072 +RTS -K512M -sstats0072.hstats -p 
+   1,367,917,196 bytes allocated in the heap
+       2,775,100 bytes copied during GC
+       2,028,544 bytes maximum residency (4 sample(s))
+         141,416 bytes maximum slop
                5 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0      1685 colls,     0 par    0.00s    0.02s     0.0000s    0.0003s
-  Gen  1         3 colls,     0 par    0.00s    0.00s     0.0001s    0.0002s
+  Gen  0      2621 colls,     0 par    0.02s    0.02s     0.0000s    0.0004s
+  Gen  1         4 colls,     0 par    0.00s    0.00s     0.0002s    0.0003s
 
-  Parallel GC work balance: nan (0 / 0, ideal 1)
-
-                        MUT time (elapsed)       GC time  (elapsed)
-  Task  0 (worker) :    0.00s    (  1.17s)       0.00s    (  0.00s)
-  Task  1 (worker) :    0.00s    (  0.00s)       0.00s    (  0.00s)
-  Task  2 (bound)  :    1.17s    (  1.16s)       0.00s    (  0.02s)
+  TASKS: 3 (1 bound, 2 peak workers (2 total), using -N1)
 
   SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    1.17s  (  1.16s elapsed)
-  GC      time    0.00s  (  0.02s elapsed)
+  MUT     time    1.58s  (  1.59s elapsed)
+  GC      time    0.02s  (  0.02s elapsed)
+  RP      time    0.00s  (  0.00s elapsed)
+  PROF    time    0.00s  (  0.00s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    1.19s  (  1.18s elapsed)
+  Total   time    1.59s  (  1.61s elapsed)
 
-  Alloc rate    742,505,697 bytes per MUT second
+  Alloc rate    866,799,015 bytes per MUT second
 
-  Productivity 100.0% of total user, 101.1% of total elapsed
+  Productivity  99.0% of total user, 97.8% of total elapsed
 
 gc_alloc_block_sync: 0
 whitehole_spin: 0

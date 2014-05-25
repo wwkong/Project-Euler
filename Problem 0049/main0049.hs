@@ -14,13 +14,18 @@ import           Data.Numbers.Primes
 import qualified Data.Set            as S
 
 -- Create a function to get all prime permutations of a number in ascending order
+pPerms :: Integer -> [Integer]
 pPerms n =  let nStr = show n in
             sort $ filter isPrime $ map (read :: String -> Integer) $ permutations nStr
 
 -- Define a function that choose 3 distinct elements from a lst
-threeDistinct lst = (S.toList . S.fromList) [sort [a,b,c] | a <-lst, b <- lst \\ [a], c <- (lst \\ [a]) \\ [b]]
+threeDistinct :: [Integer] -> [[Integer]]
+threeDistinct lst = (S.toList . S.fromList) 
+    [sort [a,b,c] | a <-lst, b <- lst \\ [a], c <- (lst \\ [a]) \\ [b]]
 
 -- Define a function to find a three element arithmetic subsequence in a list if it exists
+isArith :: [Integer] -> Bool
+subArith :: [Integer] -> [Integer]
 isArith lst = ((lst !! 1) - (lst !! 0)) == ((lst !! 2) - (lst !! 1))
 subArith lst
     | elemLst == [] = []
@@ -30,6 +35,7 @@ subArith lst
         elemLst = filter isArith threeLst
 
 -- Find all such triples by filtering throughly
+tLst :: [[Integer]]
 tLst =  filter (\lst -> isPrime (lst !! 0) && (lst !! 0) /= (lst !! 1)) $
         (S.toList . S.fromList) $
         filter (/=[])
@@ -37,6 +43,7 @@ tLst =  filter (\lst -> isPrime (lst !! 0) && (lst !! 0) /= (lst !! 1)) $
 
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = tLst
         writeFile "pe49.txt" $ show ans

@@ -1,0 +1,36 @@
+	Sun May 25 18:28 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0019 +RTS -K512M -sstats0019.hstats -p -RTS
+
+	total time  =        0.00 secs   (2 ticks @ 1000 us, 1 processor)
+	total alloc =     133,884 bytes  (excludes profiling overheads)
+
+COST CENTRE                      MODULE           %time %alloc
+
+main                             Main              50.0   27.3
+numSundays.numSundays'.nDayCount Main              50.0    7.2
+MAIN                             MAIN               0.0    9.9
+numSundays.numSundays'           Main               0.0   15.6
+numSundays.numSundays'.onSunday  Main               0.0   14.0
+CAF                              GHC.IO.Handle.FD   0.0   25.2
+
+
+                                                                                    individual     inherited
+COST CENTRE                            MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                   MAIN                        38           0    0.0    9.9   100.0  100.0
+ main                                  Main                        77           0   50.0   27.0    50.0   27.0
+ CAF                                   GHC.IO.FD                   63           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.Encoding.CodePage    59           0    0.0    0.1     0.0    0.1
+ CAF                                   GHC.IO.Encoding             54           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.Conc.Windows            53           0    0.0    0.1     0.0    0.1
+ CAF                                   GHC.IO.Handle.FD            48           0    0.0   25.2     0.0   25.2
+ CAF                                   Main                        45           0    0.0    0.0    50.0   37.6
+  nDays                                Main                        82           1    0.0    0.0     0.0    0.0
+  main                                 Main                        76           1    0.0    0.3    50.0   37.5
+   main.ans                            Main                        78           1    0.0    0.0    50.0   37.2
+    numSundays                         Main                        79           1    0.0    0.0    50.0   37.2
+     numSundays.numSundays'            Main                        80        1201    0.0   15.6    50.0   37.2
+      numSundays.numSundays'.onSundayL Main                        84          25    0.0    0.4     0.0    0.4
+      numSundays.numSundays'.onSunday  Main                        83        1175    0.0   14.0     0.0   14.0
+      numSundays.numSundays'.nDayCount Main                        81        1200   50.0    7.2    50.0    7.2

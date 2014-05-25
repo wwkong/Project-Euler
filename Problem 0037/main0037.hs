@@ -6,10 +6,10 @@
 import           Control.Monad
 import           Data.Char
 import           Data.Numbers.Primes
-import           Debug.Trace
 
 -- Create a function to determine if a number is left or right prime trucatable
-lrpt n = if lrptRtL nLst then lrptLtR nLst
+lrpt :: Integer -> Bool
+lrpt n = if lrptRtL lst then lrptLtR lst
          else False where
     lrptRtL nLst
         | nLst == [] = True
@@ -25,13 +25,16 @@ lrpt n = if lrptRtL nLst then lrptLtR nLst
         | otherwise = lrptLtR $ tail nLst
         where
             nNum = read $ map intToDigit nLst :: Integer
-    nLst = map digitToInt $ show n
+    lst = map digitToInt $ show n
 
 -- Generate a list of possible inputs for our function above
+lrptLst :: [[Int]]
+lrptNums :: [Integer]
 lrptLst = foldr1 (++) [replicateM n [1,2,3,5,7,9] | n <- [2..]] -- first in list form
 lrptNums = map (\lst -> read $ map intToDigit lst :: Integer) lrptLst -- then as a list of numbers
 
 -- Print and write out the answer
+main :: IO()
 main = do
         let ans = sum $ take 11 $ filter lrpt lrptNums
         writeFile "pe37.txt" $ show ans

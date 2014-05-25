@@ -24,6 +24,7 @@ squareRoot = floor . sqrt . (fromIntegral :: Integer -> Double)
 -- First define a function to check if a number is pentagonal
 -- Recall from a previous question that a number p is pentagonal when 1+24p is perfect square and
 -- sqrt(1+24) + 1 `mod` 6 == 0
+isPentagonal :: Integer -> Bool
 isPentagonal n
     | (squareRoot det)^2 /= det = False
     | ((squareRoot det) + 1) `mod` 6 /= 0 = False
@@ -31,12 +32,17 @@ isPentagonal n
     where det = 1+24*n
 
 -- Define our S(k,m) and D(k,m) functions
+dPent :: Integer -> Integer -> Integer
+sPent :: Integer -> Integer -> Integer
 dPent k m = k*(3*m-2) - (3*(k-1)*(k) `div` 2)
 sPent k m = (m*(3*m-1) + (m-k)*(3*(m-k)-1)) `div` 2
 
 -- Find our upper bound as a pair (m, D(k,m))
+upBound :: (Integer,Integer,Integer)
 upBound = head [(m-k, m, dPent k m) | m <- [1..], k <- [1..(m-1)], isPentagonal (dPent k m) && isPentagonal (sPent k m)]
 
+-- Print and write out the answer
+main :: IO()
 main = do
         let ans = upBound
         writeFile "pe44.txt" $ show ans

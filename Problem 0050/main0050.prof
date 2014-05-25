@@ -1,0 +1,39 @@
+	Sun May 25 18:30 2014 Time and Allocation Profiling Report  (Final)
+
+	   main0050 +RTS -K512M -sstats0050.hstats -p -RTS
+
+	total time  =        1.96 secs   (1956 ticks @ 1000 us, 1 processor)
+	total alloc = 966,383,080 bytes  (excludes profiling overheads)
+
+COST CENTRE                          MODULE  %time %alloc
+
+getMaxConsec.getMaxConsec'.len       Main     39.3    0.1
+getMaxConsec.getMaxConsec'.consecLst Main     32.9   98.7
+getMaxConsec.getMaxConsec'.consecP   Main     15.3    0.7
+getMaxConsec.getMaxConsec'           Main     12.2    0.4
+
+
+                                                                                        individual     inherited
+COST CENTRE                                MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                       MAIN                        40           0    0.1    0.0   100.0  100.0
+ main                                      Main                        81           0    0.2    0.0     0.2    0.0
+ CAF                                       GHC.IO.FD                   68           0    0.0    0.0     0.0    0.0
+ CAF                                       GHC.IO.Encoding.CodePage    64           0    0.0    0.0     0.0    0.0
+ CAF                                       GHC.IO.Encoding             59           0    0.0    0.0     0.0    0.0
+ CAF                                       GHC.Conc.Windows            58           0    0.0    0.0     0.0    0.0
+ CAF                                       GHC.IO.Handle.FD            51           0    0.0    0.0     0.0    0.0
+ CAF                                       Data.Numbers.Primes         48           0    0.0    0.1     0.0    0.1
+ CAF                                       Main                        47           0    0.0    0.0    99.7   99.9
+  getMaxConsec                             Main                        88           0    0.0    0.0     0.0    0.0
+   getMaxConsec.getMaxConsec'              Main                        89           0    0.0    0.0     0.0    0.0
+  cPrimes                                  Main                        84           1    0.0    0.0     0.0    0.0
+  cPLens                                   Main                        83           1    0.0    0.0     0.0    0.0
+  main                                     Main                        80           1    0.0    0.0    99.7   99.9
+   main.ans                                Main                        82           1    0.0    0.0    99.7   99.9
+    tupMax                                 Main                        92         248    0.0    0.0     0.0    0.0
+    getMaxConsec                           Main                        85        1110    0.1    0.0    99.7   99.9
+     getMaxConsec.getMaxConsec'            Main                        86      139979   12.2    0.4    99.7   99.9
+      getMaxConsec.getMaxConsec'.len       Main                        91      138869   39.3    0.1    39.3    0.1
+      getMaxConsec.getMaxConsec'.consecP   Main                        90      138869   15.3    0.7    15.3    0.7
+      getMaxConsec.getMaxConsec'.consecLst Main                        87      139979   32.9   98.7    32.9   98.7
