@@ -7,6 +7,17 @@
 build :: [[Integer]] -> [[Integer]]
 build x = (map sum (zipWith drop [0..] x) ++ [1]) : x
 
+-- The head of the n-th element contains the following in order:
+-- { Number of ways to create n-1 in groups,
+--   Number of ways to create n-2 in groups,
+--   ...,
+--   Number of ways to create n-(floor n/2) in groups }
+
+-- This is memoized using the information built in previous sublists
+
+-- Note that this also includes 1 element partitions (using ++ [1]) so we subtract 
+-- 1 from the sum of the head of the 100th iterate
+
 -- Print and write out the answer
 main :: IO()
 main = do

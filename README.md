@@ -1,7 +1,7 @@
 *Project Euler*
 ================================
 
-Here is where I put all of the code that I use to solve Project Euler problems. All problems are compiled with the -O flag.
+Here is where I put all of the code that I use to solve Project Euler problems. All problems are compiled with the -O flag as well as the -fprof-auto and -rtsopts for alogorithm profiling and advanced statistics respectively. These flags double the runtime of code compiled with just the -O flag.
 
 Programming languages Used
 ================================
@@ -24,7 +24,5 @@ Note: INIT = Intialization time, MUT = Mutator time (time spent running the prog
 
 Problems to be re-visited
 ================================
-Problem 0060
-Problem 0044  
-Problem 0092  
-Problem 0074
+
+All problems have now been optimized to run under 5 seconds!

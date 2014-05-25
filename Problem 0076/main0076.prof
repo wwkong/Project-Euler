@@ -1,29 +1,28 @@
-	Sun May 25 18:31 2014 Time and Allocation Profiling Report  (Final)
+	Sun May 25 19:36 2014 Time and Allocation Profiling Report  (Final)
 
-	   main0076 +RTS -K512M -sstats0076.hstats -p -RTS
+	   main0076.exe +RTS -K512M -sstats0076.hstats -p -RTS
 
-	total time  =        0.01 secs   (7 ticks @ 1000 us, 1 processor)
-	total alloc =   1,018,200 bytes  (excludes profiling overheads)
+	total time  =        0.00 secs   (4 ticks @ 1000 us, 1 processor)
+	total alloc =   1,016,184 bytes  (excludes profiling overheads)
 
 COST CENTRE MODULE           %time %alloc
 
-build       Main              57.1   92.1
-main        Main              42.9    3.6
+build       Main              75.0   92.3
+main        Main              25.0    3.6
 CAF         GHC.IO.Handle.FD   0.0    3.3
 
 
                                                          individual     inherited
 COST CENTRE MODULE                     no.     entries  %time %alloc   %time %alloc
 
-MAIN        MAIN                        38           0    0.0    0.2   100.0  100.0
- main       Main                        77           0   42.9    3.6    42.9    3.6
+MAIN        MAIN                        38           0    0.0    0.0   100.0  100.0
+ main       Main                        77           0   25.0    3.5    25.0    3.5
  CAF        GHC.IO.FD                   63           0    0.0    0.0     0.0    0.0
  CAF        GHC.IO.Encoding.CodePage    59           0    0.0    0.0     0.0    0.0
  CAF        GHC.IO.Encoding             54           0    0.0    0.0     0.0    0.0
- CAF        GHC.Conc.Windows            53           0    0.0    0.0     0.0    0.0
  CAF        GHC.IO.Handle.FD            48           0    0.0    3.3     0.0    3.3
- CAF        Main                        45           0    0.0    0.0    57.1   92.9
+ CAF        Main                        45           0    0.0    0.0    75.0   93.1
   build     Main                        80           0    0.0    0.4     0.0    0.4
-  main      Main                        76           1    0.0    0.0    57.1   92.5
-   main.ans Main                        78           1    0.0    0.7    57.1   92.5
-    build   Main                        79         100   57.1   91.7    57.1   91.7
+  main      Main                        76           1    0.0    0.0    75.0   92.7
+   main.ans Main                        78           1    0.0    0.8    75.0   92.7
+    build   Main                        79         100   75.0   91.9    75.0   91.9
