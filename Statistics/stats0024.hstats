@@ -1,25 +1,25 @@
 main0024.exe +RTS -K512M -sstats0024.hstats -p 
-   1,687,727,196 bytes allocated in the heap
-   1,518,136,692 bytes copied during GC
-     424,200,816 bytes maximum residency (13 sample(s))
-       2,108,964 bytes maximum slop
-             838 MB total memory in use (0 MB lost due to fragmentation)
+   1,700,794,160 bytes allocated in the heap
+     319,578,760 bytes copied during GC
+      65,721,300 bytes maximum residency (20 sample(s))
+         395,096 bytes maximum slop
+             138 MB total memory in use (0 MB lost due to fragmentation)
 
                                     Tot time (elapsed)  Avg pause  Max pause
-  Gen  0      2885 colls,     0 par    2.00s    1.97s     0.0007s    0.0059s
-  Gen  1        13 colls,     0 par    1.42s    1.62s     0.1250s    0.7038s
+  Gen  0      3144 colls,     0 par    0.41s    0.56s     0.0002s    0.0513s
+  Gen  1        20 colls,     0 par    0.34s    0.39s     0.0194s    0.1118s
 
   INIT    time    0.00s  (  0.00s elapsed)
-  MUT     time    1.45s  (  1.57s elapsed)
-  GC      time    3.42s  (  3.60s elapsed)
+  MUT     time    1.84s  (  1.74s elapsed)
+  GC      time    0.75s  (  0.95s elapsed)
   RP      time    0.00s  (  0.00s elapsed)
   PROF    time    0.00s  (  0.00s elapsed)
   EXIT    time    0.00s  (  0.00s elapsed)
-  Total   time    4.88s  (  5.16s elapsed)
+  Total   time    2.59s  (  2.68s elapsed)
 
-  %GC     time      70.2%  (69.6% elapsed)
+  %GC     time      28.9%  (35.3% elapsed)
 
-  Alloc rate    1,161,446,672 bytes per MUT second
+  Alloc rate    922,464,629 bytes per MUT second
 
-  Productivity  29.8% of total user, 28.1% of total elapsed
+  Productivity  71.1% of total user, 68.7% of total elapsed
 
