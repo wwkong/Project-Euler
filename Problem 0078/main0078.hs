@@ -1,5 +1,5 @@
 {-
-Let p(n) represent the number of different ways in which n coins can be separated into piles. 
+Let p(n) represent the number of different ways in which n coins can be separated into piles.
 For example, five coins can be separated into piles in exactly seven different ways, so p(5)=7.
 
 OOOOO
@@ -13,7 +13,7 @@ O   O   O   O   O
 Find the least value of n for which p(n) is divisible by one million.
 -}
 
-import Data.Array
+import           Data.Array
 
 -- We use the generating function for partitions which is of the form 1/P(x)
 -- From Wikipedia, P(x) comes from Euler's partition formula
@@ -24,13 +24,13 @@ powEuler k
     | k == 0    = 0
     | odd k     = (3*n^2-n) `div` 2
     | even k    = (3*n^2+n) `div` 2
-    | otherwise = 0   
+    | otherwise = 0
     where
         n = (k+1) `div` 2
 
 -- Store the pentagonal info
 pentagonals :: [Integer]
-pentagonals      = map powEuler [1..]
+pentagonals     = map powEuler [1..]
 pentagonalSgns :: [Integer]
 pentagonalSgns  = cycle [1,1,-1,-1]
 
