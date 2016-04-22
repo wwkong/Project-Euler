@@ -1,0 +1,66 @@
+	Tue Aug 11 14:35 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0083 +RTS -K512M -sstats0083.hstats -p -RTS
+
+	total time  =        1.51 secs   (1515 ticks @ 1000 us, 1 processor)
+	total alloc = 3,657,396,112 bytes  (excludes profiling overheads)
+
+COST CENTRE                 MODULE  %time %alloc
+
+findMinPathOne.foldMinSum   Main     49.5   49.0
+findMinPathOne.minPath      Main     37.1   45.4
+findMinPathOne.foldMinSum.\ Main      5.8    3.1
+findMinPathOne              Main      3.0    0.7
+main                        Main      2.1    0.0
+readMat                     Main      2.0    1.3
+
+
+                                                                                  individual     inherited
+COST CENTRE                          MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                 MAIN                        61           0    0.1    0.0   100.0  100.0
+ main                                Main                       123           0    2.1    0.0    99.9  100.0
+  main.ans                           Main                       127           1    0.0    0.0    95.8   98.7
+   findMinPath                       Main                       129           1    0.0    0.0    95.8   98.7
+    findDir                          Main                       134         716    0.0    0.0    95.8   98.7
+     findDir.mNext                   Main                       147         715    0.0    0.0     0.0    0.0
+     findDir.next                    Main                       145         715    0.0    0.0     0.1    0.1
+      toPathVec                      Main                       160         714    0.0    0.0     0.0    0.0
+      findMinPathTwo                 Main                       146         715    0.0    0.1     0.1    0.1
+       findMinPathTwo.newL           Main                       161         318    0.1    0.1     0.1    0.1
+     findDir.nextR                   Main                       142         716    0.1    0.0    34.9   35.3
+      toPathVec                      Main                       144        1113    0.0    0.0     0.0    0.0
+      findMinPathOne                 Main                       143         716    1.5    0.4    34.8   35.3
+       findMinPathOne.v12            Main                       155         397    0.0    0.1     0.0    0.1
+       findMinPathOne.foldMinSum     Main                       154           0    0.4    0.0     0.4    0.0
+       findMinPathOne.minPath        Main                       151       31760   14.7   16.2    32.9   34.8
+        findMinPathOne.foldMinSum    Main                       153       63520   15.8   17.5    18.2   18.6
+         findMinPathOne.foldMinSum.\ Main                       156     2509040    2.4    1.1     2.4    1.1
+        findMinPathOne.minPath.m     Main                       152       31760    0.0    0.0     0.0    0.0
+     findDir.terminate               Main                       139         716    0.1    0.1     0.1    0.1
+     toPathVec                       Main                       138         716    0.0    0.0     0.0    0.0
+     findDir.nextL                   Main                       135         716    0.0    0.0    60.8   63.2
+      toPathVec                      Main                       137        1431    0.0    0.0     0.0    0.0
+      findMinPathOne                 Main                       136         716    1.5    0.4    60.8   63.2
+       findMinPathOne.v12            Main                       158         715    0.1    0.1     0.1    0.1
+       findMinPathOne.foldMinSum     Main                       157           0    1.3    0.0     1.3    0.0
+       findMinPathOne.minPath        Main                       148       57200   22.4   29.2    57.9   62.7
+        findMinPathOne.foldMinSum    Main                       150      114400   32.0   31.5    35.4   33.5
+         findMinPathOne.foldMinSum.\ Main                       159     4518800    3.4    2.0     3.4    2.0
+        findMinPathOne.minPath.m     Main                       149       57200    0.0    0.0     0.0    0.0
+    findMinPath.m'                   Main                       130           1    0.0    0.0     0.0    0.0
+   convMat                           Main                       128           1    0.0    0.0     0.0    0.0
+  main.parsedMatrix                  Main                       124           1    0.0    0.0     2.0    1.3
+   readMat                           Main                       126           0    2.0    1.3     2.0    1.3
+ CAF                                 GHC.IO.Encoding.CodePage   108           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.FD                  104           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.Encoding             99           0    0.0    0.0     0.0    0.0
+ CAF                                 Text.Read.Lex               96           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.Conc.Windows            95           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.Handle.FD            88           0    0.0    0.0     0.0    0.0
+ CAF                                 Data.Vector                 70           0    0.0    0.0     0.0    0.0
+ CAF                                 Main                        68           0    0.0    0.0     0.0    0.0
+  findDir                            Main                       140           0    0.0    0.0     0.0    0.0
+   findDir.terminate                 Main                       141           0    0.0    0.0     0.0    0.0
+  readMat                            Main                       125           1    0.0    0.0     0.0    0.0
+  main                               Main                       122           1    0.0    0.0     0.0    0.0

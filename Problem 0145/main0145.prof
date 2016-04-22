@@ -1,0 +1,37 @@
+	Fri Aug 21 11:23 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0145 +RTS -K512M -sstats0145.hstats -p -RTS
+
+	total time  =        0.16 secs   (156 ticks @ 1000 us, 1 processor)
+	total alloc = 461,013,064 bytes  (excludes profiling overheads)
+
+COST CENTRE      MODULE  %time %alloc
+
+oddDigitNums.\   Main     34.6   44.1
+oddDigitNums     Main     25.0   32.2
+allOdds.allOdds' Main     23.7   23.7
+main             Main     11.5    0.0
+main.ans         Main      4.5    0.0
+
+
+                                                                 individual     inherited
+COST CENTRE         MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                MAIN                        42           0    0.6    0.0   100.0  100.0
+ main               Main                        85           0   11.5    0.0    11.5    0.0
+ CAF                GHC.IO.FD                   70           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Encoding.CodePage    68           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Encoding             62           0    0.0    0.0     0.0    0.0
+ CAF                GHC.Conc.Windows            60           0    0.0    0.0     0.0    0.0
+ CAF                GHC.IO.Handle.FD            54           0    0.0    0.0     0.0    0.0
+ CAF                Data.MemoCombinators        50           0    0.0    0.0     0.0    0.0
+ CAF                Main                        49           0    0.0    0.0    87.8  100.0
+  odds              Main                        92           1    0.0    0.0     0.0    0.0
+  oddDigitNums      Main                        91           0    0.0    0.0     0.0    0.0
+  allOdds           Main                        87           1    0.0    0.0    83.3  100.0
+   allOdds.allOdds' Main                        89           9   23.7   23.7    83.3  100.0
+    oddDigitNums    Main                        90          45   25.0   32.2    59.6   76.3
+     oddDigitNums.\ Main                        93      488272   34.6   44.1    34.6   44.1
+  main              Main                        84           1    0.0    0.0     4.5    0.0
+   main.ans         Main                        86           1    4.5    0.0     4.5    0.0
+    allOdds         Main                        88           0    0.0    0.0     0.0    0.0

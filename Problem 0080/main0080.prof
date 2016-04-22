@@ -1,0 +1,84 @@
+	Tue Aug 18 11:23 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0080 +RTS -K512M -sstats0080.hstats -p -RTS
+
+	total time  =        0.09 secs   (85 ticks @ 1000 us, 1 processor)
+	total alloc =  64,760,368 bytes  (excludes profiling overheads)
+
+COST CENTRE           MODULE           %time %alloc
+
+main                  Main              21.2    0.1
+squareRoot.newtonStep Main              17.6   14.8
+^!                    Main              10.6   15.8
+squareRoot.(...)      Main               9.4   18.9
+squareRoot.isRoot     Main               9.4    4.9
+squareRoot            Main               7.1    6.5
+squareRoot.iters      Main               7.1   18.9
+dSqrtDec              Main               4.7    6.5
+dSqrtDec.x            Main               4.7    2.6
+dSqrtDec.disc         Main               4.7    4.5
+dSqrtDec.y            Main               1.2    3.9
+squareRoot.lowerN     Main               1.2    0.0
+CAF                   GHC.IO.Handle.FD   1.2    0.1
+main.ans              Main               0.0    1.0
+dSqrtDec.c            Main               0.0    1.5
+
+
+                                                                            individual     inherited
+COST CENTRE                    MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                           MAIN                        38           0    0.0    0.0   100.0  100.0
+ main                          Main                        77           0   21.2    0.1    21.2    0.1
+ CAF                           GHC.IO.Encoding.CodePage    64           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.IO.FD                   63           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.IO.Encoding             59           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.Conc.Windows            55           0    0.0    0.0     0.0    0.0
+ CAF                           GHC.IO.Handle.FD            50           0    1.2    0.1     1.2    0.1
+ CAF                           Main                        45           0    0.0    0.0    77.6   99.9
+  squareRoot                   Main                        86           0    0.0    0.0     0.0    0.0
+   squareRoot.twopows          Main                        88           1    0.0    0.0     0.0    0.0
+    ^!                         Main                        89          10    0.0    0.0     0.0    0.0
+   squareRoot.(...)            Main                        87           0    0.0    0.0     0.0    0.0
+  main                         Main                        76           1    0.0    0.0    77.6   99.9
+   main.ans                    Main                        78           1    0.0    1.0    77.6   99.9
+    sqrtDec                    Main                        91          90    0.0    0.0    77.6   98.7
+     sqrtDec.r                 Main                       103          90    0.0    0.0     0.0    0.1
+      squareRoot               Main                       104         251    0.0    0.0     0.0    0.1
+       squareRoot.lowerRoot    Main                       110         161    0.0    0.0     0.0    0.0
+       squareRoot.(...)        Main                       109         161    0.0    0.0     0.0    0.0
+       squareRoot.lowerN       Main                       108         161    0.0    0.0     0.0    0.0
+       squareRoot.isRoot       Main                       106         258    0.0    0.0     0.0    0.0
+        ^!                     Main                       107         479    0.0    0.0     0.0    0.0
+       squareRoot.iters        Main                       105         161    0.0    0.0     0.0    0.1
+        squareRoot.newtonStep  Main                       123          97    0.0    0.0     0.0    0.0
+     dSqrtDec                  Main                       100        8910    4.7    6.5    77.6   98.4
+      dSqrtDec.y               Main                       120        8820    1.2    3.9     1.2    3.9
+      dSqrtDec.x               Main                       111        8910    4.7    2.6    67.1   82.0
+       squareRoot              Main                       112       49166    7.1    6.5    62.4   79.5
+        squareRoot.lowerRoot   Main                       118       40256    0.0    0.0     0.0    0.0
+        squareRoot.(...)       Main                       117       40256    9.4   18.8     9.4   18.8
+        squareRoot.lowerN      Main                       116       40256    1.2    0.0     1.2    0.0
+        squareRoot.isRoot      Main                       114      106788    9.4    4.9    20.0   20.6
+         ^!                    Main                       115      178542   10.6   15.7    10.6   15.7
+        squareRoot.iters       Main                       113       40256    7.1   18.8    24.7   33.6
+         squareRoot.newtonStep Main                       119       66532   17.6   14.8    17.6   14.8
+      dSqrtDec.c               Main                       102        8910    0.0    1.5     0.0    1.5
+      dSqrtDec.disc            Main                       101        8910    4.7    4.5     4.7    4.5
+     sqrtDec.p                 Main                        92          90    0.0    0.0     0.0    0.1
+      squareRoot               Main                        93         251    0.0    0.0     0.0    0.1
+       squareRoot.lowerRoot    Main                        99         161    0.0    0.0     0.0    0.0
+       squareRoot.(...)        Main                        98         161    0.0    0.0     0.0    0.0
+       squareRoot.lowerN       Main                        97         161    0.0    0.0     0.0    0.0
+       squareRoot.isRoot       Main                        95         258    0.0    0.0     0.0    0.0
+        ^!                     Main                        96         479    0.0    0.0     0.0    0.0
+       squareRoot.iters        Main                        94         161    0.0    0.0     0.0    0.1
+        squareRoot.newtonStep  Main                       122          97    0.0    0.0     0.0    0.0
+    nonSquares                 Main                        79           1    0.0    0.0     0.0    0.2
+     squareRoot                Main                        80         276    0.0    0.0     0.0    0.1
+      squareRoot.lowerRoot     Main                        90         176    0.0    0.0     0.0    0.0
+      squareRoot.(...)         Main                        85         176    0.0    0.0     0.0    0.0
+      squareRoot.lowerN        Main                        84         176    0.0    0.0     0.0    0.0
+      squareRoot.isRoot        Main                        82         280    0.0    0.0     0.0    0.0
+       ^!                      Main                        83         522    0.0    0.0     0.0    0.0
+      squareRoot.iters         Main                        81         176    0.0    0.0     0.0    0.1
+       squareRoot.newtonStep   Main                       121         104    0.0    0.0     0.0    0.0

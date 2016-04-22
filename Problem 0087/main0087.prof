@@ -1,0 +1,40 @@
+	Tue Aug 18 11:24 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0087 +RTS -K512M -sstats0087.hstats -p -RTS
+
+	total time  =        1.42 secs   (1422 ticks @ 1000 us, 1 processor)
+	total alloc = 4,978,785,672 bytes  (excludes profiling overheads)
+
+COST CENTRE       MODULE  %time %alloc
+
+main.ans          Main     88.2   97.6
+getPrimeLst       Main      7.4    2.3
+getPrimeLst.pairs Main      2.9    0.0
+main              Main      1.5    0.0
+
+
+                                                                      individual     inherited
+COST CENTRE              MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                     MAIN                        40           0    0.0    0.0   100.0  100.0
+ main                    Main                        81           0    1.5    0.0     1.5    0.0
+ CAF                     GHC.IO.Encoding.CodePage    67           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.FD                   66           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Encoding             62           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.Conc.Windows            58           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Handle.FD            51           0    0.0    0.0     0.0    0.0
+ CAF                     Data.Numbers.Primes         48           0    0.1    0.0     0.1    0.0
+ CAF                     Main                        47           0    0.0    0.0    98.5  100.0
+  main                   Main                        80           1    0.0    0.0    98.5  100.0
+   main.ans              Main                        82           1   88.2   97.6    98.5  100.0
+    getPrimeLst          Main                        83           1    7.4    2.3    10.3    2.3
+     getPrimeLst.cubes   Main                        91           1    0.0    0.0     0.0    0.0
+      fprimes            Main                        92           1    0.0    0.0     0.0    0.0
+       nroot             Main                        93           1    0.0    0.0     0.0    0.0
+     getPrimeLst.fourths Main                        88           1    0.0    0.0     0.0    0.0
+      fprimes            Main                        89           1    0.0    0.0     0.0    0.0
+       nroot             Main                        90           1    0.0    0.0     0.0    0.0
+     getPrimeLst.pairs   Main                        87           1    2.9    0.0     2.9    0.0
+     getPrimeLst.squares Main                        84           1    0.0    0.0     0.0    0.0
+      fprimes            Main                        85           1    0.0    0.0     0.0    0.0
+       nroot             Main                        86           1    0.0    0.0     0.0    0.0

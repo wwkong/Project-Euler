@@ -1,0 +1,43 @@
+	Tue Aug 11 14:39 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0082 +RTS -K512M -sstats0082.hstats -p -RTS
+
+	total time  =        0.19 secs   (191 ticks @ 1000 us, 1 processor)
+	total alloc = 304,175,240 bytes  (excludes profiling overheads)
+
+COST CENTRE                 MODULE  %time %alloc
+
+findMinPathOne.foldMinSum   Main     29.3   41.8
+readMat                     Main     29.3   15.3
+findMinPathOne.minPath      Main     22.5   38.8
+main                        Main     15.7    0.4
+findMinPathOne.foldMinSum.\ Main      2.1    2.6
+findMinPathOne              Main      1.0    0.5
+
+
+                                                                                individual     inherited
+COST CENTRE                        MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                               MAIN                        61           0    0.0    0.0   100.0  100.0
+ main                              Main                       123           0   15.7    0.4   100.0  100.0
+  main.parsedMatrix                Main                       125           1    0.0    0.0    29.3   15.3
+   readMat                         Main                       127           0   29.3   15.3    29.3   15.3
+  main.ans                         Main                       124           1    0.0    0.2    55.0   84.2
+   findMinPath                     Main                       129           1    0.0    0.0    55.0   84.0
+    findMinPathOne                 Main                       130          79    1.0    0.5    55.0   84.0
+     findMinPathOne.v12            Main                       135          79    0.0    0.2     0.0    0.2
+     findMinPathOne.foldMinSum     Main                       134           0    1.0    0.0     1.0    0.0
+     findMinPathOne.minPath        Main                       131        6320   22.5   38.8    52.9   83.3
+      findMinPathOne.foldMinSum    Main                       133       12640   28.3   41.8    30.4   44.5
+       findMinPathOne.foldMinSum.\ Main                       136      499280    2.1    2.6     2.1    2.6
+      findMinPathOne.minPath.m     Main                       132        6320    0.0    0.0     0.0    0.0
+   convMat                         Main                       128           1    0.0    0.1     0.0    0.1
+ CAF                               GHC.IO.Encoding.CodePage   108           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.FD                  104           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Encoding             99           0    0.0    0.0     0.0    0.0
+ CAF                               Text.Read.Lex               96           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.Conc.Windows            95           0    0.0    0.0     0.0    0.0
+ CAF                               GHC.IO.Handle.FD            88           0    0.0    0.0     0.0    0.0
+ CAF                               Main                        68           0    0.0    0.0     0.0    0.0
+  readMat                          Main                       126           1    0.0    0.0     0.0    0.0
+  main                             Main                       122           1    0.0    0.0     0.0    0.0

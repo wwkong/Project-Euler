@@ -1,0 +1,60 @@
+	Tue Aug 18 11:24 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0068 +RTS -K512M -sstats0068.hstats -p -RTS
+
+	total time  =        0.09 secs   (88 ticks @ 1000 us, 1 processor)
+	total alloc = 135,981,568 bytes  (excludes profiling overheads)
+
+COST CENTRE             MODULE  %time %alloc
+
+main                    Main     23.9    0.0
+isMagic.matchSums       Main     23.9   40.3
+isMagic.cCfg            Main     19.3   27.6
+isMagic.pairSums        Main      9.1   12.1
+isMagic.iCfg            Main      5.7    6.8
+getMagicList.pElems     Main      4.5   11.8
+isMagic                 Main      4.5    0.9
+getMagicList.innerElems Main      3.4    0.0
+main.ans                Main      2.3    0.0
+getMagicList            Main      2.3    0.0
+choose                  Main      1.1    0.1
+
+
+                                                                                  individual     inherited
+COST CENTRE                          MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                 MAIN                        42           0    0.0    0.0   100.0  100.0
+ main                                Main                        85           0   22.7    0.0    22.7    0.0
+ CAF                                 GHC.IO.Encoding.CodePage    69           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.FD                   68           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.Encoding             65           0    0.0    0.0     0.0    0.0
+ CAF                                 Text.Read.Lex               60           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.Conc.Windows            59           0    0.0    0.0     0.0    0.0
+ CAF                                 GHC.IO.Handle.FD            55           0    0.0    0.0     0.0    0.0
+ CAF                                 Main                        49           0    0.0    0.0    77.3   99.9
+  intToString                        Main                        98           1    0.0    0.0     0.0    0.0
+  main                               Main                        84           1    1.1    0.0    77.3   99.9
+   main.ans                          Main                        86           1    2.3    0.0    76.1   99.9
+    main.ans.\                       Main                        96          12    0.0    0.0     0.0    0.0
+    getMagicList                     Main                        87           1    2.3    0.0    73.9   99.9
+     getMagicString                  Main                        97          60    0.0    0.0     0.0    0.4
+      getMagicString.cCfg            Main                       110          60    0.0    0.1     0.0    0.1
+      getMagicString.ngSum           Main                       108          60    0.0    0.0     0.0    0.0
+      getMagicString.pairSums        Main                       107          60    0.0    0.0     0.0    0.0
+       getMagicString.pairSums.\     Main                       109         300    0.0    0.0     0.0    0.0
+      getMagicString.orderedEdges    Main                       103          60    0.0    0.0     0.0    0.0
+       getMagicString.orderedEdges.\ Main                       104         180    0.0    0.0     0.0    0.0
+      getMagicString.edges           Main                       102          60    0.0    0.0     0.0    0.0
+       getMagicString.edges.\        Main                       106         300    0.0    0.0     0.0    0.0
+      getMagicString.pairs           Main                       101          60    0.0    0.0     0.0    0.0
+       getMagicString.pairs.\        Main                       105         300    0.0    0.0     0.0    0.0
+      getMagicString.iCfg            Main                       100          60    0.0    0.0     0.0    0.0
+      intToString                    Main                        99           0    0.0    0.1     0.0    0.1
+     getMagicList.pElems             Main                        89           1    4.5   11.8     5.7   11.9
+      choose                         Main                        90        1275    1.1    0.1     1.1    0.1
+     getMagicList.innerElems         Main                        88           1    3.4    0.0    65.9   87.6
+      isMagic                        Main                        91       30240    4.5    0.9    62.5   87.6
+       isMagic.cCfg                  Main                        95       30240   19.3   27.6    19.3   27.6
+       isMagic.matchSums             Main                        94       30240   23.9   40.3    23.9   40.3
+       isMagic.pairSums              Main                        93       30240    9.1   12.1     9.1   12.1
+       isMagic.iCfg                  Main                        92       30240    5.7    6.8     5.7    6.8

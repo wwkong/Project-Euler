@@ -1,0 +1,36 @@
+	Thu Aug 20 18:47 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0075 +RTS -K512M -sstats0075.hstats -p -RTS
+
+	total time  =        1.17 secs   (1172 ticks @ 1000 us, 1 processor)
+	total alloc = 1,918,460,592 bytes  (excludes profiling overheads)
+
+COST CENTRE   MODULE  %time %alloc
+
+pDedup        Main     92.3   89.0
+pPythag.\     Main      2.0    5.4
+pPythag.tList Main      2.0    1.8
+pPythag       Main      1.6    3.9
+main          Main      1.5    0.0
+
+
+                                                                individual     inherited
+COST CENTRE        MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN               MAIN                        38           0    0.1    0.0   100.0  100.0
+ main              Main                        77           0    1.5    0.0     1.5    0.0
+ CAF               GHC.IO.FD                   63           0    0.0    0.0     0.0    0.0
+ CAF               GHC.IO.Encoding.CodePage    61           0    0.0    0.0     0.0    0.0
+ CAF               GHC.IO.Encoding             56           0    0.0    0.0     0.0    0.0
+ CAF               GHC.Conc.Windows            54           0    0.0    0.0     0.0    0.0
+ CAF               GHC.IO.Handle.FD            48           0    0.0    0.0     0.0    0.0
+ CAF               Main                        45           0    0.0    0.0    98.4  100.0
+  pDedup           Main                        79           1    0.0    0.0     0.0    0.0
+  main             Main                        76           1    0.0    0.0    98.4  100.0
+   main.ans        Main                        78           1    0.0    0.0    98.4  100.0
+    pPythag        Main                        81           1    1.6    3.9     5.6   11.0
+     pPythag.\     Main                        86      152236    2.0    5.4     2.0    5.4
+     pPythag.tList Main                        83           1    2.0    1.8     2.0    1.8
+     pPythag.maxM  Main                        82           1    0.0    0.0     0.0    0.0
+    pDedup         Main                        80           0   92.3   89.0    92.7   89.0
+     pDedup.\      Main                        87      355571    0.4    0.0     0.4    0.0

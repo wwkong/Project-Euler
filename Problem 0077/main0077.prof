@@ -1,0 +1,38 @@
+	Thu Aug 20 13:57 2015 Time and Allocation Profiling Report  (Final)
+
+	   main0077 +RTS -K512M -sstats0077.hstats -p -RTS
+
+	total time  =        0.33 secs   (325 ticks @ 1000 us, 1 processor)
+	total alloc =     149,240 bytes  (excludes profiling overheads)
+
+COST CENTRE      MODULE              %time %alloc
+
+numWays.numWays' Main                 93.2    0.0
+main             Main                  6.2   26.5
+MAIN             MAIN                  0.3    1.6
+CAF              Data.Numbers.Primes   0.3   13.3
+main.ans         Main                  0.0    3.8
+numWays          Main                  0.0    1.1
+numWays.primeLst Main                  0.0   30.1
+CAF              GHC.IO.Handle.FD      0.0   23.1
+
+
+                                                                      individual     inherited
+COST CENTRE              MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                     MAIN                        39           0    0.3    1.6   100.0  100.0
+ main                    Main                        79           0    6.2   26.1     6.2   26.1
+ CAF                     GHC.IO.FD                   66           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.IO.Encoding.CodePage    64           0    0.0    0.1     0.0    0.1
+ CAF                     GHC.IO.Encoding             59           0    0.0    0.0     0.0    0.0
+ CAF                     GHC.Conc.Windows            57           0    0.0    0.1     0.0    0.1
+ CAF                     GHC.IO.Handle.FD            50           0    0.0   23.1     0.0   23.1
+ CAF                     Data.Numbers.Primes         47           0    0.3   13.3     0.3   13.3
+ CAF                     Main                        46           0    0.0    0.0    93.2   35.5
+  main                   Main                        78           1    0.0    0.5    93.2   35.5
+   main.ans              Main                        80           1    0.0    3.8    93.2   35.0
+    numWays              Main                        81          71    0.0    1.1    93.2   31.2
+     numWays.numWays'.p  Main                        84          69    0.0    0.0     0.0    0.0
+     numWays.primeLst    Main                        83          71    0.0   30.1     0.0   30.1
+     numWays.numWays'    Main                        82    14222115   93.2    0.0    93.2    0.0
+      numWays.numWays'.p Main                        85     7110953    0.0    0.0     0.0    0.0

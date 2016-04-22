@@ -1,0 +1,36 @@
+{-
+Let p(n) represent the number of different ways in which n coins can be separated into piles. 
+For example, five coins can be separated into piles in exactly seven different ways, so p(5)=7.
+
+OOOOO
+OOOO   O
+OOO   OO
+OOO   O   O
+OO   OO   O
+OO   O   O   O
+O   O   O   O   O
+
+Find the least value of n for which p(n) is divisible by one million.
+-}
+
+import Data.MemoCombinators (memo2, integral)
+
+-- Return the number of partitions of a set of n coins using sets of size less than or equal
+-- to m; use memoization
+partMem :: Int -> Int -> Int
+partMem = memo2 integral integral partMem' where
+    partMem' n m
+        | m > n = partMem n n
+        | n <= 0 || m <= 0 = 1
+        | otherwise = sum [partMem (n-k) k | k <- [1..m]]
+
+-- Wrapper to the above for the case where m == n
+partMemWrap :: Int -> Int
+partMemWrap n = partMem n n
+
+-- Print and write out the answer (VERY INEFFICIENT!)
+main :: IO()
+main = do
+        let ans = head [n | n <- [1..], partMemWrap n `mod` 100 == 0] 
+        writeFile "pe78.txt" $ show ans
+        print ans
