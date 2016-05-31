@@ -17,7 +17,7 @@ import           Data.Numbers.Primes
 -- Note that the number of repeated decimals must be equal to 3, since all other number of repeats
 -- have a count of >2 in how many occurences of 0, 1, and 2 modulo 3 in their digit sum (of the repeated
 -- digits). Hence, the total sum of digits will be divisible by 3 for at least 3 of the digit replaced
--- numbers and hence we won't get 8 primes
+-- numbers and hence we won't get 8 primes.
 
 -- Create a function to return all prime numbers that have n digits
 primesOfLen :: Int -> [Int]

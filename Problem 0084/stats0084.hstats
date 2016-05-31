@@ -1,0 +1,31 @@
+main0084 +RTS -K512M -sstats0084.hstats -p 
+   2,419,291,648 bytes allocated in the heap
+   1,079,485,560 bytes copied during GC
+     174,238,688 bytes maximum residency (12 sample(s))
+       8,819,240 bytes maximum slop
+             448 MB total memory in use (0 MB lost due to fragmentation)
+
+                                     Tot time (elapsed)  Avg pause  Max pause
+  Gen  0      4687 colls,     0 par    1.295s   1.529s     0.0003s    0.0028s
+  Gen  1        12 colls,     0 par    1.030s   1.762s     0.1468s    0.5539s
+
+  TASKS: 3 (1 bound, 2 peak workers (2 total), using -N1)
+
+  SPARKS: 0 (0 converted, 0 overflowed, 0 dud, 0 GC'd, 0 fizzled)
+
+  INIT    time    0.000s  (  0.014s elapsed)
+  MUT     time    2.855s  (  2.773s elapsed)
+  GC      time    2.324s  (  3.291s elapsed)
+  RP      time    0.000s  (  0.000s elapsed)
+  PROF    time    0.000s  (  0.000s elapsed)
+  EXIT    time    0.000s  (  0.002s elapsed)
+  Total   time    5.179s  (  6.079s elapsed)
+
+  Alloc rate    847,441,551 bytes per MUT second
+
+  Productivity  55.1% of total user, 47.0% of total elapsed
+
+gc_alloc_block_sync: 0
+whitehole_spin: 0
+gen[0].sync: 0
+gen[1].sync: 0
