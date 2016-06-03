@@ -1,0 +1,39 @@
+	Wed Jun 01 16:47 2016 Time and Allocation Profiling Report  (Final)
+
+	   main0086 +RTS -K512M -sstats0086.hstats -p -RTS
+
+	total time  =        6.83 secs   (6834 ticks @ 1000 us, 1 processor)
+	total alloc = 3,856,924,544 bytes  (excludes profiling overheads)
+
+COST CENTRE     MODULE  %time %alloc
+
+pythagTriBase   Main     74.5   84.6
+nCuboids        Main     14.9   14.5
+cuboids         Main      6.5    0.9
+pythagTriBase.p Main      1.6    0.0
+pythagTriBase.q Main      1.4    0.0
+
+
+                                                                    individual     inherited
+COST CENTRE            MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                   MAIN                        39           0    0.3    0.0   100.0  100.0
+ main                  Main                        79           0    0.4    0.0     0.4    0.0
+ CAF                   GHC.IO.FD                   65           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding.CodePage    64           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding             60           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.Conc.Windows            58           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Handle.Text          56           0    0.1    0.0     0.1    0.0
+ CAF                   GHC.IO.Handle.FD            49           0    0.0    0.0     0.0    0.0
+ CAF                   Main                        46           0    0.0    0.0    99.2  100.0
+  main                 Main                        78           1    0.0    0.0    99.2  100.0
+   main.ans            Main                        80           1    0.0    0.0    99.2  100.0
+    main.ans.n         Main                        81        1719    0.0    0.0    99.2  100.0
+     nCuboids          Main                        82        1719   14.9   14.5    99.2  100.0
+      cuboids          Main                        87     3885434    6.5    0.9     6.5    0.9
+      pythagTriBase    Main                        83        1719   74.5   84.6    77.9   84.6
+       pythagTriBase.p Main                        89     3885434    1.6    0.0     1.6    0.0
+       pythagTriBase.q Main                        88     3885434    1.4    0.0     1.4    0.0
+       pythagTriBase.c Main                        86           0    0.1    0.0     0.1    0.0
+       pythagTriBase.b Main                        85     3888085    0.2    0.0     0.2    0.0
+       pythagTriBase.a Main                        84     3888877    0.1    0.0     0.1    0.0

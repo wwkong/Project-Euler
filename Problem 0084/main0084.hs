@@ -54,54 +54,102 @@ posns = [(0,"GO"),(1,"A1"),(2,"CC1"),(3,"A2"),(4,"T1"),(5,"R1"),(6,"B1"),(7,"CH1
 
 -}
 
-import           Data.Word
+-- import           Debug.Trace
+import           Data.List                     (group, sort)
+import           Data.Word                     (Word64)
 import qualified System.Random.Mersenne.Pure64 as M
 
 -- Set up high level data types
 data Position = Position {nDoubles :: Int, index :: Int} deriving (Show, Eq)
 
--- Roll four sided dices with a seed
--- rollDice4 :: Int -> [Int]
--- rollDice4 seed = M.randoms (1, 4) . M.newMTGen $ seed
+-- Roll a four sided dice with a generator
+rollDice4 :: M.PureMT -> (Int, M.PureMT)
+rollDice4 gen = ((abs k `mod` 4) + 1, g)
+    where
+        (k, g) = M.randomInt gen
 
 -- Roll a six sided dice with a generator
 rollDice6 :: M.PureMT -> (Int, M.PureMT)
-rollDice6 gen = ((a `mod` 6) + 1, g)
-    where 
-        (a, g) = M.randomInt gen
-
--- Find the next position if we hit a community chest
--- moveCommunityChest
-
--- Find the next position for a given pair of Seed Generator and Position for six-sided die 
-movePosition :: (M.PureMT, Position) -> (M.PureMT, Position)
-movePosition p@(gen, posn)
-    | nextDoubles == 3 = (genLast, Position {nDoubles = 0,            index = 0})
-    | otherwise        = (genLast, Position {nDoubles = nextDoubles,  index = nextPosn})
+rollDice6 gen = ((abs k `mod` 6) + 1, g)
     where
-        (d1, genNext1) = rollDice6 gen
-        (d2, genNext2) = rollDice6 genNext1
-        curDoubles = nDoubles posn + 1
-        nextDoubles = if d1 == d2 then curDoubles + 1 else curDoubles
-        (nextPosn, genLast)
-            | landedPosn `elem` [7,22,36] = (moveChance,           genNext2) -- Chance
-            | landedPosn `elem` [2,17,33] = (moveCommunityChest p, genNext2) -- Community Chest
-            | otherwise                   = (landedPosn,           genNext2) -- Other
-            where 
-                landedPosn = d1 + d2 + index posn `mod` 40
+        (k, g) = M.randomInt gen
 
-
--- Run a simulated game with k rolls of a given starting seed
-runGame :: Int -> Word64 -> [Position]
-runGame k seed = take k $ map snd $ iterate movePosition (startGen, startPosn)
+-- Find the next position if we hit a community chest square
+moveCommunityChest :: (Int, (M.PureMT, Int)) -> (Int, (M.PureMT, Int))
+moveCommunityChest (doubles, (gen, posn))
+    -- | trace ("card = " ++ show card) False = undefined
+    | card == 1 = (doubles, (genNext, 0))
+    | card == 2 = (0,       (genNext, 10))
+    | otherwise = (doubles, (genNext, posn))
     where
-        startGen = M.pureMT seed
+        (k, genNext) = M.randomInt gen
+        card = (abs k `mod` 16) + 1
+
+-- Find the next position if we hit a chance square
+moveChance :: (Int, (M.PureMT, Int)) -> (Int, (M.PureMT, Int))
+moveChance (doubles, (gen, posn))
+    -- | trace ("card = " ++ show card) False = undefined
+    | card == 1  = (doubles, (genNext, 0))
+    | card == 2  = (0,       (genNext, 10))
+    | card == 3  = (doubles, (genNext, 11))
+    | card == 4  = (doubles, (genNext, 24))
+    | card == 5  = (doubles, (genNext, 39))
+    | card == 6  = (doubles, (genNext, 5))
+    | card == 7  = (doubles, (genNext, (nextR  + 40) `mod` 40))
+    | card == 8  = (doubles, (genNext, (nextR  + 40) `mod` 40))
+    | card == 9  = (doubles, (genNext, (nextU  + 40) `mod` 40))
+    | card == 10 = (doubles, (genNext, (posn-3 + 40) `mod` 40))
+    | otherwise =  (doubles, (genNext,  posn))
+    where
+        (k, genNext) = M.randomInt gen
+        card = (abs k `mod` 16) + 1
+        nextR = snd . minimum $ filter (\(a,_) -> a>0) [(rs-posn, rs) | rs <- [5,15,25,35,45]]
+        nextU = snd . minimum $ filter (\(a,_) -> a>0) [(us-posn, us) | us <- [12,28,     52]]
+
+-- Find the next position for a given pair of Seed Generator and Position for six-sided die
+movePosition :: ((M.PureMT, Position), M.PureMT -> (Int, M.PureMT)) ->
+                ((M.PureMT, Position), M.PureMT -> (Int, M.PureMT))
+movePosition ((gen, posn), dRoller)
+    -- | trace ("d1 = " ++ show d1 ++ ", d2=" ++ show d2) False = undefined
+    | nextDoubles == 3  = ((genLast, Position {nDoubles = 0,            index = 10}      ), dRoller) -- Triple double
+    | nextPosn    == 30 = ((genLast, Position {nDoubles = 0,            index = 10}      ), dRoller) -- Go to Jail
+    | otherwise         = ((genLast, Position {nDoubles = nextDoubles,  index = nextPosn}), dRoller) -- Other
+    where
+        (d1, genNext1) = dRoller gen
+        (d2, genNext2) = dRoller genNext1
+        curDoubles = nDoubles posn
+        rolledDoubles = if d1 == d2 then curDoubles + 1 else 0
+        (nextDoubles, (genLast, nextPosn))
+            | landedPosn `elem` [7,22,36] = moveChance         (rolledDoubles,  (genNext2, landedPosn)) -- Chance
+            | landedPosn `elem` [2,17,33] = moveCommunityChest (rolledDoubles,  (genNext2, landedPosn)) -- Community Chest
+            | otherwise                   = (rolledDoubles, (genNext2, landedPosn))                     -- Other
+            where
+                landedPosn = (d1 + d2 + index posn) `mod` 40
+
+
+-- Run a simulated game with k rolls of a given starting seed and dice roller
+runGame :: Int -> Word64 -> (M.PureMT -> (Int, M.PureMT)) -> [Position]
+runGame k seed dRoller = take k $ map (snd . fst) $ iterate movePosition ((startGen, startPosn), dRoller)
+    where
+        -- Initialize
+        startGen  = M.pureMT seed
         startPosn = Position {nDoubles = 0, index = 0}
+
+-- Given a list of positions, find the three most frequent squares and print the 6-digit modal string
+top3 :: [Position] -> [(Int, Int)]
+top3 posns = take 5 digits
+    where
+        digitGroups  = group . sort $ map index posns
+        digits       = map (\(a,b)->(-a,b)) . sort $ map (\a -> (-length a, head a)) digitGroups
 
 -- Print and write
 main :: IO()
 main = do
-        let game = runGame 1000000 777 -- Pick a random seed
-        let ans  = sum $ map nDoubles game
+        let game6 = runGame 100000 23434235 rollDice6 -- Pick a random seed
+        let game4 = runGame 100000 14423423 rollDice4 -- Pick a random seed
+        let test = top3 game6
+        let ans  = top3 game4
         writeFile "pe84.txt" $ show ans
-        print ans
+        print $ "6-sided Die: " ++ show test
+        print $ "4-sided Die: " ++ show ans
+        -- mapM_ print game6
