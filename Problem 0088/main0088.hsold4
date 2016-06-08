@@ -23,7 +23,6 @@ What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 import           Data.List.Extra
 import           Data.List
 import           Data.Numbers.Primes (primeFactors, isPrime)
-import qualified Data.Map as M 
 
 -- Takes in a finite repeating list of primes and returns the set of unique factorizations efficiently 
 ppFactorize :: [Int] -> [[Int]]
@@ -32,7 +31,6 @@ ppFactorize ps = ppFactorize' e0 e0
     where 
         (p, e0) = (head ps, length ps)
         ppFactorize' mx e
-            | e == 0    = [[]]
             | mx == 1   = [take e (repeat p)]
             | otherwise = [(take m (repeat (p^k))) ++ sfs | k <- [1..min mx e], 
                                                             let lowerM = if k/=1 then 1 else e,
@@ -40,9 +38,8 @@ ppFactorize ps = ppFactorize' e0 e0
                                                             m <- [lowerM..upperM], 
                                                             sfs <- if k==1 then [[]] else ppFactorize' (k-1) (e-m*k)]
 
--- > ---- INSERT JEFFREY NEGREA'S CODE HERE ---- <
-
-partitions2ff :: [(Int,Int)]->[(Int,Int)]->[[(Int,Int)]]
+-- Take two pairwise relatively prime factor lists and get the unique set of factor combinations
+partitions2ff:: [(Int,Int)]->[(Int,Int)]->[[(Int,Int)]]
 partitions2ff _ [] =[]
 partitions2ff [] _ =[]
 partitions2ff [(ma,a)] [(mb,b)] = [ if k==0 then [(ma,a),(mb,b)]
@@ -75,40 +72,29 @@ partitions2ff ((ma,a):maas) mbbs = [if ll==[] then (ma,a):l2 else l1++l2|
         let ll = (partitions2ff [(ma,a)] (filter (\(x,y)->(gcd a y) ==1) l)),
         let ll' = if ll==[] then [[]] else ll,
         l1<-ll',
-        let l2=(filter (\(x,y)->(gcd a y) >1) l)]
+        let l2=(filter (\(x,y)->(gcd a y) >1) l)
+        ]
 
-partitions2ll :: [[(Int,Int)]]->[[(Int,Int)]]->[[(Int,Int)]]
+partitions2ll:: [[(Int,Int)]]->[[(Int,Int)]]->[[(Int,Int)]]
 partitions2ll l1 l2 = concat [partitions2ff maas baas|maas<-l1, baas<-l2]
 
--- > ---- END JEFFREY NEGREA'S CODE HERE ---- <
+partitions:: [(Int,Int)]->[[(Int,Int)]]
+partitions [(p,e)] = partitions2pp' (p,e)
+partitions lope = foldr1 partitions2ll $ map partitions2pp' lope            
 
--- Get the list of disjoint factorizations of prime groups
-ppConvert :: Int -> [[(Int,Int)]]
-ppConvert n = foldl1 partitions2ll disjointF
-    where 
-        disjointF = map (convert . ppFactorize) $ group (primeFactors n)
-        convert lofe = map ((map (\l -> (length l, head l))) . group) lofe        
+partitionsUloPE::(Int,[(Int,Int)])->[(Int,[(Int,Int)])]
+partitionsUloPE (u,loPE) = [(u,l)|l<-(partitions loPE)]
 
--- Adapt Jeff's version of the score function
-score :: Int -> [(Int,Int)]
-score n = sort [(k,n) | f <- ppConvert n, let k = calcK f, k/=1]
-    where
-        calcK lofe = n - (foldr (\(a,b) n-> n+a*(b-1)) 0 lofe)
+score :: (Int,[(Int,Int)]) -> (Int,Int)
+score (u,loPE) = (u - (foldr (\(a,b) n-> n+a*(b-1)) 0 loPE),u)
 
--- Calculate the sum of the minimum product numbers k for 2≤k≤n
-sumMinProdSum n = sumDistinct $ foldl' addKs M.empty . filter (not . isPrime) $ [2..(13*n) `div` 12]
-    where 
-        foldl' f z []       =   z
-        foldl' f z (x:xs)   =   let z' = z `f` x in seq z' $ foldl' f z' xs
-        sumDistinct         =   sum . nubOrd . M.elems
-        addKs nm m          =   foldl' (addK m) nm (score m)
-        addK m nm (ki, ni)
-            | ki > n || ki `M.member` nm    = nm
-            | otherwise                     = M.insert ki ni nm
+-- Factorize a power of a prime
+factorize :: Int -> [[Int]]
+factorize n = ppFactorize (primeFactors n)
 
 -- Print and write
 main :: IO()
 main = do
-        let ans  = sumMinProdSum 12000
+        let ans  = 1
         writeFile "pe88.txt" $ show ans
         print ans

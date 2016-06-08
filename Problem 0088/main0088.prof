@@ -1,0 +1,83 @@
+	Wed Jun 08 14:18 2016 Time and Allocation Profiling Report  (Final)
+
+	   main0088 +RTS -K512M -sstats0088.hstats -p -RTS
+
+	total time  =        0.86 secs   (859 ticks @ 1000 us, 1 processor)
+	total alloc = 350,390,640 bytes  (excludes profiling overheads)
+
+COST CENTRE              MODULE           %time %alloc
+
+partitions2ff            Main              29.5   46.7
+score                    Main              20.5   26.0
+sumMinProdSum.addK       Main              10.6    3.0
+ppConvert.convert        Main               5.8    7.8
+score.calcK              Main               5.1    0.0
+partitions2ll            Main               4.2    6.0
+ppConvert.disjointF      Main               4.0    4.1
+sumMinProdSum            Main               3.8    1.6
+CAF                      GHC.Conc.Windows   2.7    0.0
+main                     Main               2.6    0.0
+ppFactorize.ppFactorize' Main               2.4    3.4
+ppFactorize              Main               1.5    1.0
+sumMinProdSum.foldl'     Main               1.3    0.0
+sumMinProdSum.foldl'.z'  Main               1.2    0.1
+score.k                  Main               1.2    0.0
+ppConvert.convert.\      Main               1.0    0.2
+
+
+                                                                                          individual     inherited
+COST CENTRE                                  MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                         MAIN                        42           0    0.2    0.0   100.0  100.0
+ main                                        Main                        85           0    2.3    0.0     2.3    0.0
+ CAF                                         GHC.IO.FD                   71           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.IO.Encoding.CodePage    70           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.IO.Encoding             66           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.Conc.Windows            64           0    2.7    0.0     2.7    0.0
+ CAF                                         GHC.IO.Handle.Text          62           0    0.0    0.0     0.0    0.0
+ CAF                                         GHC.IO.Handle.FD            55           0    0.0    0.0     0.0    0.0
+ CAF                                         Data.Numbers.Primes         50           0    0.0    0.0     0.0    0.0
+ CAF                                         Main                        49           0    0.0    0.0    94.8  100.0
+  main                                       Main                        84           1    0.2    0.0    94.8  100.0
+   main.ans                                  Main                        86           1    0.1    0.0    94.5  100.0
+    sumMinProdSum                            Main                        87           1    3.8    1.6    94.4  100.0
+     sumMinProdSum.addKs                     Main                        95           0    0.0    0.0     0.7    0.0
+      score                                  Main                        96           0    0.0    0.0     0.7    0.0
+       ppConvert                             Main                        97           0    0.2    0.0     0.7    0.0
+        ppConvert.disjointF                  Main                        98           0    0.2    0.0     0.5    0.0
+         ppConvert.convert                   Main                       108           0    0.2    0.0     0.2    0.0
+     sumMinProdSum.foldl'                    Main                        89      205544    1.3    0.0    89.9   98.3
+      sumMinProdSum.foldl'.z'                Main                        90      194091    1.2    0.1    88.6   98.3
+       sumMinProdSum.addK                    Main                       112      182639   10.6    3.0    10.6    3.0
+       sumMinProdSum.addKs                   Main                        91       11452    0.0    0.0    76.8   95.3
+        score                                Main                        92       11452   20.5   26.0    76.8   95.3
+         score.k                             Main                       106      194091    1.2    0.0     6.6    0.0
+          score.calcK                        Main                       107      194091    5.1    0.0     5.5    0.0
+           score.calcK.\                     Main                       111      537801    0.3    0.0     0.3    0.0
+         ppConvert                           Main                        93       11452    0.3    0.0    49.7   69.3
+          partitions2ll                      Main                       113       18978    4.2    6.0    35.0   52.7
+           partitions2ff                     Main                       114      216772   29.5   46.7    30.8   46.8
+            partitions2ff.l2                 Main                       126        1820    0.1    0.0     0.1    0.0
+             partitions2ff.l2.\              Main                       127        4908    0.0    0.0     0.0    0.0
+            partitions2ff.ll'                Main                       125        1820    0.0    0.0     0.0    0.0
+            partitions2ff.ll                 Main                       123        1820    0.5    0.0     0.7    0.0
+             partitions2ff.ll.\              Main                       124        4908    0.2    0.0     0.2    0.0
+            partitions2ff.mb'                Main                       122       77264    0.0    0.0     0.0    0.0
+            partitions2ff.pb                 Main                       121       77264    0.0    0.0     0.0    0.0
+            partitions2ff.pa                 Main                       120       77264    0.1    0.0     0.1    0.0
+            partitions2ff.ma'                Main                       119      153975    0.0    0.0     0.0    0.0
+            partitions2ff.mb'                Main                       118       88238    0.0    0.0     0.0    0.0
+            partitions2ff.pb                 Main                       117       88238    0.5    0.0     0.5    0.0
+            partitions2ff.pa                 Main                       116       88238    0.0    0.0     0.0    0.0
+            partitions2ff.ma'                Main                       115       88238    0.0    0.0     0.0    0.0
+          ppConvert.disjointF                Main                        94       11452    3.7    4.1    14.3   16.6
+           ppFactorize                       Main                       100       30430    1.5    1.0     4.0    4.4
+            ppFactorize.p                    Main                       110       30430    0.0    0.0     0.0    0.0
+            ppFactorize.ppFactorize'         Main                       103       43639    2.4    3.4     2.4    3.4
+             ppFactorize.ppFactorize'.upperM Main                       105       19314    0.0    0.0     0.0    0.0
+             ppFactorize.ppFactorize'.lowerM Main                       104       19314    0.0    0.0     0.0    0.0
+            ppFactorize.e0                   Main                       102       30430    0.0    0.0     0.0    0.0
+            ppFactorize.(...)                Main                       101       30430    0.0    0.0     0.0    0.0
+           ppConvert.convert                 Main                        99       30430    5.6    7.8     6.6    8.1
+            ppConvert.convert.\              Main                       109       50992    1.0    0.2     1.0    0.2
+     sumMinProdSum.sumDistinct               Main                        88           1    0.0    0.0     0.0    0.0

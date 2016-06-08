@@ -23,6 +23,13 @@ What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 import           Data.List           (nub, sort)
 import           Data.Numbers.Primes (primeFactors)
 
+-- cartProd (x:xs) = [[]]
+    -- | length x <= 1 = subs
+    -- | otherwise     = subs ++ prods
+    -- where 
+    --     subs  = [take k x ++ subXs |  k <- [0..1 + (length x) `div` 2], subXs <- cartProd xs]
+    --     prods = [product (take k x) : subXs |  k <- [2..1 + (length x) `div` 2], subXs <- cartProd xs]
+
 -- For a given numeric list, find all of the partitions of that list
 partitions :: [Int] -> [[[Int]]]
 partitions [] = [[[]]]

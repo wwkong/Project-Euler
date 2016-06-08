@@ -29,3 +29,35 @@ factorsN n =  sort $ foldl (\l1 l2 -> [a*b|a<-l1,b<-l2]) [1] pMult
         pFact = group (primeFactors n)
         pDecmp = zip (map head pFact) (map length pFact)
         pMult = map (\(p,e) -> [p^k | k <- [0..e]]) pDecmp
+
+-- Takes in a finite repeating list of primes and returns the set of unique factorizations efficiently 
+ppFactorize :: [Int] -> [[Int]]
+ppFactorize [] = [[]]
+ppFactorize ps = ppFactorize' e0 e0
+    where 
+        (p, e0) = (head ps, length ps)
+        ppFactorize' mx e
+            -- | trace ("\nCalled with mx=" ++ show mx ++ ", e=" ++ show e ++ "\n") False = undefined
+            | mx == 1   = [take e (repeat p)]
+            | otherwise = [(take m (repeat (p^k))) ++ sfs | k <- [1..min mx e], 
+                                                            let lowerM = if k/=1 then 1 else e,
+                                                            let upperM = if k/=1 then (div e k) else e, 
+                                                            m <- [lowerM..upperM], 
+                                                            sfs <- if k==1 then [[]] else ppFactorize' (k-1) (e-m*k)]
+
+-- Take two pairwise relatively prime factor lists and get the unique set of factor combinations
+ppsFactorize :: [Int] -> [Int] -> [[Int]]
+ppsFactorize fs1 fs2 
+    | l1 <= 0 || l2 <= 0    = []
+    | l1 == 1 && l2 == 1    = [fs1 ++ fs2]
+    | l1 == 1               = [fs1 ++ fs2] ++ [[f1 * (fst rms)] ++ snd rms | rms <- rmOneElem fs2]
+    | l2 == 1               = [fs1 ++ fs2] ++ [[f2 * (fst rms)] ++ snd rms | rms <- rmOneElem fs1]
+    | otherwise             = [fs1 ++ fs2] ++ [((fst rms1) * (fst rms2)) : next | 
+                                                rms1 <- rmOneElem fs1, rms2 <- rmOneElem fs2,
+                                                next <- ppsFactorize (snd rms1) (snd rms2)]
+    where 
+        (l1, l2, f1, f2, tfs1, tfs2) = (length fs1, length fs2, head fs1, head fs2, tail fs1, tail fs2)
+        rmOneElem [x] = [(x,[])]
+        rmOneElem xs = [(head rxs, hxs ++ tail rxs) |   n <- [0..(length xs)-1], 
+                                                        let hxs = take n xs, 
+                                                        let rxs = drop n xs]

@@ -1,0 +1,81 @@
+{-
+
+A natural number, N, that can be written as the sum and product of a given set of at least two natural numbers, {a1, a2, ... , ak} is called a product-sum number: N = a1 + a2 + ... + ak = a1 × a2 × ... × ak.
+
+For example, 6 = 1 + 2 + 3 = 1 × 2 × 3.
+
+For a given set of size, k, we shall call the smallest N with this property a minimal product-sum number. The minimal product-sum numbers for sets of size, k = 2, 3, 4, 5, and 6 are as follows.
+
+k=2: 4 = 2 × 2 = 2 + 2
+k=3: 6 = 1 × 2 × 3 = 1 + 2 + 3
+k=4: 8 = 1 × 1 × 2 × 4 = 1 + 1 + 2 + 4
+k=5: 8 = 1 × 1 × 2 × 2 × 2 = 1 + 1 + 2 + 2 + 2
+k=6: 12 = 1 × 1 × 1 × 1 × 2 × 6 = 1 + 1 + 1 + 1 + 2 + 6
+
+Hence for 2≤k≤6, the sum of all the minimal product-sum numbers is 4+6+8+12 = 30; note that 8 is only counted once in the sum.
+
+In fact, as the complete set of minimal product-sum numbers for 2≤k≤12 is {4, 6, 8, 12, 15, 16}, the sum is 61.
+
+What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
+
+-}
+
+-- (1) Primes are excluded from the search
+-- (2) 
+
+import           Data.List (sort, delete)
+import           Data.Array
+import           Data.Maybe (fromJust, isNothing, isJust)
+import           Data.Numbers.Primes (primeFactors, isPrime)
+import qualified Data.Set as S
+import qualified Data.Map as M
+
+-- Get the set of factors for a prime factorization
+facts = concat . takeWhile valid . iterate facts' . (:[])
+    where 
+        valid xs = length (head xs) > 1
+        facts' = nub' . concatMap factsnext
+        nub' = S.toList . S.fromList
+        factsnext xs = 
+          let factsnext' [] = []
+              factsnext' (y:ys) = map (form y) ys ++ factsnext' ys
+              form a b = a*b : (delete b . delete a $ xs)
+          in map sort . factsnext' $ xs    
+
+-- For a given n, get the set of factor combinations
+factorize :: Int -> [[Int]]
+factorize n = facts (primeFactors n)
+
+-- For a given number n, generate the association list of entries into the final array
+assocN :: Int -> [(Int, Maybe Int)]
+assocN 1 = [(1, Just 0)]
+assocN n
+    | isPrime n = []
+    | otherwise = [(k, Just n) | k <- ks]
+    where
+        calcK ls = n - (sum ls) + (length ls)
+        ks = sort $ map calcK (factorize n)
+
+-- Get the array of minimal product-sum numbers for 1≤k≤n without duplication
+arrMinProdSum :: Int -> Array Int (Maybe Int)
+arrMinProdSum n = accumArray accFun Nothing (1,n) [(k,m) | (k,m) <- (sort . concat $ map assocN [1..(2*n)]), k <= n]
+    where
+        accFun m1 m2
+            | isJust m1    = m1
+            | otherwise    = m2
+
+-- Wrapper to the above to sum the array for 2≤k≤n
+sumMinProdSum :: Int -> Int
+sumMinProdSum n = snd $ foldl accDistinct (0, 0) mpsArr
+    where 
+        mpsArr = arrMinProdSum n
+        accDistinct (prev, curSum) (Just x)
+            | prev == x = (prev, curSum)
+            | otherwise = (x, curSum + x) 
+
+-- Print and write
+main :: IO()
+main = do
+        let ans  = sumMinProdSum 24000
+        writeFile "pe88.txt" $ show ans
+        print ans
