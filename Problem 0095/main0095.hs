@@ -15,8 +15,9 @@ Find the smallest member of the longest amicable chain with no element exceeding
 -}
 
 import Data.List
-import Data.Numbers.Primes
 import Data.Maybe
+import Data.Numbers.Primes
+import qualified Data.Map as M
 import Debug.Trace
 
 -- Given a number, get the set of all divisors excluding the number itself
@@ -27,24 +28,18 @@ divisors n = init $ combinePs pFacts
         combinePs [] = [1]
         combinePs (lp@(p:ps):pss) = [(p^k)*rps | k <- [0..length lp], rps <- combinePs pss]
 
--- Get the amicable chain of elments from a starting element
-amiChain :: Int -> Int -> Maybe [Int]
-amiChain bound n0 = amiChains' (Just [n0])
+-- Get the amicable chain mapping for numbers 1<=k<=n with values (n0, l), smallest element and length of the chain
+amiChain :: Int -> Int -> M.Map Int (Int, Int)
+amiChain bound n = foldl addAmis M.empty [1..n]
     where 
-        amiChains' :: Maybe [Int] -> Maybe [Int]
-        amiChains' mlst
-            -- | trace ("n0="++show n0++", divs="++show divs++", sn="++show sn) False = undefined
-            | divs == []                         = Nothing
-            | sn > bound                         = Nothing
-            | fromJust $ Just (elem sn) <*> mlst = pure (++) <*> Just [sn] <*> mlst
-            | otherwise                          = amiChains' (pure (++) <*> Just [sn] <*> mlst)
+        addAmis nm k
+            | k  `M.member` nm || divs == [] = nm
+            | k == sk                        = M.insert k (k,1)                     nm
+            | otherwise                      = M.insert k (min k nextN, 1+nextL)    nm
             where 
-                divs = divisors (head $ fromJust mlst)
-                sn = sum divs
-
--- Get the set of amicable chains with (n,l) pairs of initial values and non-zero lengths of the chain
--- amiChains :: [(Int,Maybe Int)]
-amiChains = [l | n <- [1..(10^6)], let l=amiChain (10^6) n, isJust l]
+                divs = divisors k
+                sk = sum divs
+                (nextN, nextL) = fromJust $ M.lookup k (addAmis nm sk)
 
 -- Print and write
 main :: IO()
