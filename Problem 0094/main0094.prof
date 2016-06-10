@@ -1,0 +1,54 @@
+	Fri Jun 10 13:52 2016 Time and Allocation Profiling Report  (Final)
+
+	   main0094 +RTS -K512M -sstats0094.hstats -p -RTS
+
+	total time  =        0.02 secs   (16 ticks @ 1000 us, 1 processor)
+	total alloc =      96,784 bytes  (excludes profiling overheads)
+
+COST CENTRE    MODULE           %time %alloc
+
+main           Main             100.0   40.8
+MAIN           MAIN               0.0    3.3
+sumPerimeter   Main               0.0    4.7
+aeTriangles    Main               0.0    6.0
+pells.nextPell Main               0.0    3.6
+pells.next     Main               0.0    1.9
+CAF            GHC.IO.Handle.FD   0.0   35.7
+
+
+                                                                               individual     inherited
+COST CENTRE                       MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                              MAIN                        39           0    0.0    3.3   100.0  100.0
+ main                             Main                        79           0  100.0   39.8   100.0   39.8
+ CAF                              GHC.IO.FD                   65           0    0.0    0.0     0.0    0.0
+ CAF                              GHC.IO.Encoding.CodePage    64           0    0.0    0.2     0.0    0.2
+ CAF                              GHC.IO.Encoding             60           0    0.0    0.1     0.0    0.1
+ CAF                              GHC.Conc.Windows            58           0    0.0    0.2     0.0    0.2
+ CAF                              GHC.IO.Handle.Text          56           0    0.0    0.1     0.0    0.1
+ CAF                              GHC.IO.Handle.FD            49           0    0.0   35.7     0.0   35.7
+ CAF                              Main                        46           0    0.0    0.0     0.0   20.6
+  aeTriangles                     Main                        84           0    0.0    0.0     0.0    1.6
+   pells                          Main                        85           0    0.0    0.0     0.0    1.6
+    pells.y1                      Main                       101           1    0.0    0.0     0.0    0.0
+    pells.(...)                   Main                        87           1    0.0    0.1     0.0    1.6
+     convergents                  Main                        88           1    0.0    0.2     0.0    1.4
+      convergents.an              Main                        91           1    0.0    0.0     0.0    0.5
+       lstFracs                   Main                        92           1    0.0    0.0     0.0    0.5
+        lstFracs.iterFracs        Main                        94           1    0.0    0.2     0.0    0.3
+         lstFracs.iterFracs.dNext Main                        97           1    0.0    0.0     0.0    0.0
+         lstFracs.iterFracs.mNext Main                        96           1    0.0    0.0     0.0    0.0
+         lstFracs.iterFracs.aNext Main                        95           1    0.0    0.1     0.0    0.1
+        lstFracs.a0               Main                        93           1    0.0    0.1     0.0    0.1
+      seqCF                       Main                        89           4    0.0    0.5     0.0    0.7
+       seqCF.seqCFn               Main                        90           4    0.0    0.1     0.0    0.1
+    pells.x1                      Main                        86           1    0.0    0.0     0.0    0.0
+  main                            Main                        78           1    0.0    1.0     0.0   19.0
+   main.ans                       Main                        80           1    0.0    0.4     0.0   18.0
+    sumPerimeter                  Main                        81           1    0.0    4.7     0.0   17.6
+     sumPerimeter.\               Main                       103          15    0.0    0.5     0.0    0.5
+     aeTriangles                  Main                        82           1    0.0    6.0     0.0   12.5
+      aeTriangles.a               Main                        98          16    0.0    0.9     0.0    0.9
+      pells                       Main                        83           1    0.0    0.1     0.0    5.5
+       pells.nextPell             Main                        99          15    0.0    3.6     0.0    5.4
+        pells.next                Main                       100          29    0.0    1.9     0.0    1.9

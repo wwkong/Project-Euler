@@ -1,5 +1,3 @@
--- Will be revisited because I will be doing this by hand
-
 -- Given that the three characters are always asked for in order, analyse the file keylog.txt so as to
 -- determine the shortest possible secret passcode of unknown length.
 

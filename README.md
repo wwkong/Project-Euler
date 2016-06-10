@@ -15,6 +15,7 @@ Data.MemoCombinators
 Data.Numbers.Primes  
 Math.Sieve.Phi  
 Math.NumberTheory.Powers.Cubes  
+Data.List.Extra
 
 Statistics
 ================================

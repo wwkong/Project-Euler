@@ -1,0 +1,61 @@
+	Fri Jun 10 15:34 2016 Time and Allocation Profiling Report  (Final)
+
+	   jeff94 +RTS -K512M -sstatsjeff94.hstats -p -RTS
+
+	total time  =        0.00 secs   (0 ticks @ 1000 us, 1 processor)
+	total alloc =      92,192 bytes  (excludes profiling overheads)
+
+COST CENTRE      MODULE           %time %alloc
+
+MAIN             MAIN               0.0    2.4
+main             Main               0.0   12.9
+pellList         Main               0.0    3.6
+pell3list'       Main               0.0   32.5
+pell3list'.(...) Main               0.0    3.5
+convergents'     Main               0.0    4.4
+CAF              GHC.IO.Handle.FD   0.0   37.5
+
+
+                                                                                 individual     inherited
+COST CENTRE                         MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                MAIN                        38           0    0.0    2.4     0.0  100.0
+ main                               Main                        77           0    0.0   10.1     0.0   10.1
+ CAF                                GHC.IO.Encoding.CodePage    62           0    0.0    0.2     0.0    0.2
+ CAF                                GHC.IO.Encoding             57           0    0.0    0.1     0.0    0.1
+ CAF                                GHC.Conc.Windows            55           0    0.0    0.2     0.0    0.2
+ CAF                                GHC.IO.Handle.Text          53           0    0.0    0.1     0.0    0.1
+ CAF                                GHC.IO.Handle.FD            48           0    0.0   37.5     0.0   37.5
+ CAF                                Main                        45           0    0.0    0.0     0.0   49.4
+  convergents10ofsqrt3              Main                        83           1    0.0    0.4     0.0    5.3
+   continuedFractionSqrt            Main                        90           1    0.0    0.0     0.0    0.4
+    continuedFractionSqrtHelp       Main                        96           1    0.0    0.2     0.0    0.3
+     continuedFractionSqrtHelp.mnew Main                        99           1    0.0    0.0     0.0    0.0
+     continuedFractionSqrtHelp.dnew Main                        98           1    0.0    0.0     0.0    0.0
+     continuedFractionSqrtHelp.anew Main                        97           1    0.0    0.0     0.0    0.0
+    continuedFractionSqrt.rs        Main                        91           1    0.0    0.0     0.0    0.1
+     sqrtInt                        Main                        92           1    0.0    0.0     0.0    0.1
+      sqrtInt.sqrtAlpha             Main                        93           2    0.0    0.1     0.0    0.1
+       sqrtInt.sqrtBeta             Main                        94           2    0.0    0.0     0.0    0.0
+   convergents'                     Main                        84          10    0.0    4.4     0.0    4.5
+    convergents'.h1                 Main                       100           1    0.0    0.0     0.0    0.0
+    convergents'.k1                 Main                        95           1    0.0    0.0     0.0    0.0
+    convergents'.h2                 Main                        89           2    0.0    0.0     0.0    0.0
+    convergents'.k2                 Main                        88           2    0.0    0.0     0.0    0.0
+    convergents'.(...)              Main                        86           9    0.0    0.2     0.0    0.2
+    convergents'.cvts               Main                        85           9    0.0    0.0     0.0    0.0
+  firstPell3                        Main                        82           1    0.0    0.1     0.0    0.3
+   firstPell3.\                     Main                        87           2    0.0    0.1     0.0    0.1
+  pellList                          Main                        78           1    0.0    3.6     0.0   40.1
+   pellList.\                       Main                       101          16    0.0    0.5     0.0    0.5
+   pell3list'                       Main                        79         101    0.0   32.5     0.0   36.0
+    pell3list'.x0                   Main                       106           1    0.0    0.0     0.0    0.0
+    pell3list'.(...)                Main                       105           1    0.0    0.0     0.0    0.0
+    pell3list'.y0                   Main                       104           1    0.0    0.0     0.0    0.0
+    pell3list'.yn                   Main                       103          15    0.0    0.0     0.0    0.0
+    pell3list'.xn                   Main                       102          16    0.0    0.0     0.0    0.0
+    pell3list'.(...)                Main                        81         100    0.0    3.5     0.0    3.5
+    pell3list'.xys                  Main                        80         100    0.0    0.0     0.0    0.0
+  main                              Main                        76           1    0.0    2.8     0.0    3.7
+   main.\                           Main                       107          14    0.0    0.0     0.0    1.0
+    f                               Main                       108          14    0.0    1.0     0.0    1.0

@@ -1,0 +1,47 @@
+	Thu Jun 09 14:11 2016 Time and Allocation Profiling Report  (Final)
+
+	   main0091 +RTS -K512M -sstats0091.hstats -p -RTS
+
+	total time  =        0.04 secs   (39 ticks @ 1000 us, 1 processor)
+	total alloc =   2,238,200 bytes  (excludes profiling overheads)
+
+COST CENTRE         MODULE                   %time %alloc
+
+main                Main                      71.8    1.8
+CAF                 GHC.IO.Encoding.CodePage  25.6    0.0
+MAIN                MAIN                       2.6    0.1
+lBaseTriangles      Main                       0.0   40.8
+baseTriangles       Main                       0.0   48.6
+baseTriangles.(...) Main                       0.0    1.8
+baseTriangles.(...) Main                       0.0    3.6
+baseTriangles.gcdXY Main                       0.0    1.8
+CAF                 GHC.IO.Handle.FD           0.0    1.5
+
+
+                                                                        individual     inherited
+COST CENTRE                MODULE                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                       MAIN                        39           0    2.6    0.1   100.0  100.0
+ main                      Main                        79           0   71.8    1.7    71.8    1.7
+ CAF                       GHC.IO.FD                   64           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.IO.Encoding.CodePage    63           0   25.6    0.0    25.6    0.0
+ CAF                       GHC.IO.Encoding             59           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.Conc.Windows            57           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.IO.Handle.Text          55           0    0.0    0.0     0.0    0.0
+ CAF                       GHC.IO.Handle.FD            49           0    0.0    1.5     0.0    1.5
+ CAF                       Main                        46           0    0.0    0.0     0.0   96.6
+  main                     Main                        78           1    0.0    0.0     0.0   96.6
+   main.ans                Main                        80           1    0.0    0.0     0.0   96.6
+    triangles              Main                        81           1    0.0    0.0     0.0   96.6
+     lBaseTriangles        Main                        82           1    0.0   40.8     0.0   96.6
+      baseTriangles        Main                        83        2500    0.0   48.6     0.0   55.8
+       baseTriangles.y2    Main                        93       22953    0.0    0.0     0.0    0.0
+       baseTriangles.x2    Main                        92       34490    0.0    0.0     0.0    0.0
+       baseTriangles.(...) Main                        91       34490    0.0    0.0     0.0    0.0
+       baseTriangles.upK   Main                        90        2500    0.0    0.0     0.0    0.0
+       baseTriangles.dy    Main                        89        2500    0.0    0.0     0.0    0.0
+       baseTriangles.(...) Main                        88        2500    0.0    1.8     0.0    1.8
+       baseTriangles.lowK  Main                        87        2500    0.0    0.0     0.0    0.0
+       baseTriangles.dx    Main                        86        2500    0.0    0.0     0.0    0.0
+       baseTriangles.gcdXY Main                        85        2500    0.0    1.8     0.0    1.8
+       baseTriangles.(...) Main                        84        2500    0.0    3.6     0.0    3.6
